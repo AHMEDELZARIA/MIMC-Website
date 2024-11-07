@@ -13,14 +13,14 @@ import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import NextLink from "next/link";
 import clsx from "clsx";
-import { usePathname } from "next/navigation";  // Use usePathname to determine active link
+import { usePathname } from "next/navigation"; // Use usePathname to determine active link
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { HeartFilledIcon, Logo, InstagramIcon } from "@/components/icons";
 
 export const Navbar = () => {
-  const pathname = usePathname();  // Get the current path
+  const pathname = usePathname(); // Get the current path
 
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
@@ -40,21 +40,21 @@ export const Navbar = () => {
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
-                href={item.href}
                 className={clsx(
-                  "transition-all duration-300 ease-in-out relative",  // Smooth transition for all properties, including font weight
+                  "transition-all duration-300 ease-in-out relative", // Smooth transition for all properties, including font weight
                   pathname === item.href
-                    ? "text-violet-600 font-bold"  // Active tab: bold and violet
-                    : "text-default-500 font-normal hover:text-violet-500"  // Normal tabs
+                    ? "text-white font-bold" // Active tab: bold and white text
+                    : "text-default-500 font-normal hover:text-white", // Normal tabs
                 )}
+                href={item.href}
               >
                 {item.label}
                 <span
                   className={clsx(
-                    "absolute left-0 -bottom-1 w-full h-[2px] bg-violet-600 transform transition-transform duration-300 ease-in-out",
-                    pathname === item.href ? "scale-x-100" : "scale-x-0"
+                    "absolute left-0 -bottom-1 w-full h-[2px] bg-white transform transition-transform duration-300 ease-in-out",
+                    pathname === item.href ? "scale-x-100" : "scale-x-0",
                   )}
-                ></span>
+                />
               </NextLink>
             </NavbarItem>
           ))}
@@ -64,7 +64,11 @@ export const Navbar = () => {
       {/* Right-aligned Icons */}
       <NavbarContent className="basis-1/5" justify="end">
         <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal aria-label="Instagram" href={siteConfig.links.instagram}>
+          <Link
+            isExternal
+            aria-label="Instagram"
+            href={siteConfig.links.instagram}
+          >
             <InstagramIcon className="text-default-500" />
           </Link>
           <ThemeSwitch />
@@ -84,7 +88,11 @@ export const Navbar = () => {
 
       {/* Mobile Menu (For small screens) */}
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Instagram" href={siteConfig.links.instagram}>
+        <Link
+          isExternal
+          aria-label="Instagram"
+          href={siteConfig.links.instagram}
+        >
           <InstagramIcon className="text-default-500" />
         </Link>
         <ThemeSwitch />
@@ -97,22 +105,22 @@ export const Navbar = () => {
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                href={item.href}
                 className={clsx(
-                  "transition-colors duration-300 ease-in-out relative",  // Smooth color transition
+                  "transition-colors duration-300 ease-in-out relative", // Smooth color transition
                   pathname === item.href
-                    ? "text-violet-600 font-bold"
-                    : "text-default-500 hover:text-violet-500"
+                    ? "text-white font-bold"
+                    : "text-default-500 hover:text-white"
                 )}
+                href={item.href}
                 size="lg"
               >
                 {item.label}
                 <span
                   className={clsx(
-                    "absolute left-0 -bottom-1 w-full h-[2px] bg-violet-600 transform transition-transform duration-300 ease-in-out",
-                    pathname === item.href ? "scale-x-100" : "scale-x-0"
+                    "absolute left-0 -bottom-1 w-full h-[2px] bg-white transform transition-transform duration-300 ease-in-out",
+                    pathname === item.href ? "scale-x-100" : "scale-x-0",
                   )}
-                ></span>
+                />
               </Link>
             </NavbarMenuItem>
           ))}
