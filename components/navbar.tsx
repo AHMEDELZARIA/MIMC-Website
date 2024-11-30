@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Navbar as NextUINavbar,
@@ -13,11 +13,10 @@ import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import NextLink from "next/link";
 import clsx from "clsx";
-import { usePathname } from "next/navigation"; // Use usePathname to determine active link
+import { usePathname } from "next/navigation";
 
 import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
-import { HeartFilledIcon, Logo, InstagramIcon } from "@/components/icons";
+import { Logo, InstagramIcon } from "@/components/icons";
 
 export const Navbar = () => {
   const pathname = usePathname(); // Get the current path
@@ -41,7 +40,7 @@ export const Navbar = () => {
             <NavbarItem key={item.href}>
               <NextLink
                 className={clsx(
-                  "transition-all duration-300 ease-in-out relative", // Smooth transition for all properties, including font weight
+                  "transition-all duration-300 ease-in-out relative font-semibold", // Smooth transition for all properties, including font weight
                   pathname === item.href
                     ? "text-white font-bold" // Active tab: bold and white text
                     : "text-default-500 font-normal hover:text-white", // Normal tabs
@@ -71,7 +70,6 @@ export const Navbar = () => {
           >
             <InstagramIcon className="text-default-500" />
           </Link>
-          <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className="hidden md:flex">
           <Button
@@ -95,7 +93,15 @@ export const Navbar = () => {
         >
           <InstagramIcon className="text-default-500" />
         </Link>
-        <ThemeSwitch />
+        <Button
+          isExternal
+          as={Link}
+          className="text-sm font-normal text-default-600 bg-default-100"
+          href={siteConfig.links.instagram}
+          variant="flat"
+        >
+          Register
+        </Button>
         <NavbarMenuToggle />
       </NavbarContent>
 
@@ -109,7 +115,7 @@ export const Navbar = () => {
                   "transition-colors duration-300 ease-in-out relative", // Smooth color transition
                   pathname === item.href
                     ? "text-white font-bold"
-                    : "text-default-500 hover:text-white"
+                    : "text-default-500 hover:text-white",
                 )}
                 href={item.href}
                 size="lg"

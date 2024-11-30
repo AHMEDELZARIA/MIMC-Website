@@ -9,24 +9,16 @@ export const siteConfig = {
       href: "/",
     },
     {
-      label: "About",
-      href: "/about",
-    },
-    {
-      label: "Program",
+      label: "Program Details",
       href: "/program",
     },
     {
-      label: "Gallery",
-      href: "/gallery",
+      label: "Itinerary & Map",
+      href: "/itinerary-map",
     },
     {
       label: "Sponsors",
       href: "/sponsors",
-    },
-    {
-      label: "Contact",
-      href: "/contact",
     },
   ],
   navMenuItems: [
@@ -35,24 +27,16 @@ export const siteConfig = {
       href: "/",
     },
     {
-      label: "About",
-      href: "/about",
-    },
-    {
-      label: "Program",
+      label: "Program Details",
       href: "/program",
     },
     {
-      label: "Gallery",
-      href: "/gallery",
+      label: "Itinerary & Map",
+      href: "/itinerary-map",
     },
     {
       label: "Sponsors",
       href: "/sponsors",
-    },
-    {
-      label: "Contact",
-      href: "/contact",
     },
   ],
   links: {

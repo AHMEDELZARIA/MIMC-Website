@@ -33,3 +33,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# VSCODE
+.idea
+
+# public folder
+/public/imgs
+/public/vids

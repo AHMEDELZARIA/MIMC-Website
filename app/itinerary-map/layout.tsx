@@ -1,4 +1,4 @@
-export default function ProgramLayout({
+export default function ItineraryMapLayout({
   children,
 }: {
   children: React.ReactNode;

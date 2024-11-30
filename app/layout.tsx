@@ -47,16 +47,15 @@ export default function RootLayout({
             <main className="container mx-auto max-w-full flex-grow">
               {children}
             </main>
-            <footer className="w-full flex items-center justify-center py-3">
+            <footer className="w-full flex items-center justify-center font-medium py-3">
+              <span className="text-default-600">©️ MIMC at</span>
               <Link
                 isExternal
-                className="flex items-center gap-1 text-current"
+                className="flex items-center gap-1 text-current ml-1.5"
                 href="https://macmsa.com"
-                title="nextui.org homepage"
+                title="macmsa website"
               >
-                <span className="text-default-600">Made with ❤️ by the</span>
                 <p className="text-primary">MacMSA</p>
-                <span className="text-default-600"> Team</span>
               </Link>
             </footer>
           </div>
