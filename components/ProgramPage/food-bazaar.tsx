@@ -16,7 +16,7 @@ export default function FoodBazaar() {
         <span className="inline-block relative">
           FOOD & BAZAAR
           {/* Underline Animation */}
-          <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-blue-500 transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
+          <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
         </span>
       </h1>
     </section>

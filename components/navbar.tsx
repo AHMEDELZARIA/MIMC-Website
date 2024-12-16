@@ -1,137 +1,177 @@
 "use client";
 
-import {
-  Navbar as NextUINavbar,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
-  NavbarBrand,
-  NavbarItem,
-  NavbarMenuItem,
-} from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
-import { Link } from "@nextui-org/link";
-import NextLink from "next/link";
-import clsx from "clsx";
+import React, { useState } from "react";
 import { usePathname } from "next/navigation";
-
-import { siteConfig } from "@/config/site";
+import clsx from "clsx";
 import { Logo, InstagramIcon } from "@/components/icons";
 
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/program", label: "Program Details" },
+  { href: "/itinerary-map", label: "Itinerary & Maps" },
+  { href: "/sponsors", label: "Sponsors" },
+];
+
 export const Navbar = () => {
-  const pathname = usePathname(); // Get the current path
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
-    <NextUINavbar maxWidth="xl" position="sticky">
-      {/* Left-aligned Logo */}
-      <NavbarContent className="basis-1/5" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
+    <nav className="bg-[rgba(87,3,38,0.7)] backdrop-blur-md shadow-lg sticky top-0 z-50">
+      <div className="container mx-auto px-4 flex justify-between items-center h-16">
+        {/* Logo */}
+        <div className="flex items-center">
+          <a href="/" className="flex items-center gap-2">
             <Logo />
-            <p className="font-bold text-inherit">MIMC</p>
-          </NextLink>
-        </NavbarBrand>
-      </NavbarContent>
+          </a>
+        </div>
 
-      {/* Centered Navigation Links with Transition Effects */}
-      <NavbarContent className="hidden lg:flex basis-3/5 justify-center">
-        <ul className="flex gap-10">
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
-              <NextLink
-                className={clsx(
-                  "transition-all duration-300 ease-in-out relative font-semibold", // Smooth transition for all properties, including font weight
-                  pathname === item.href
-                    ? "text-white font-bold" // Active tab: bold and white text
-                    : "text-default-500 font-normal hover:text-white", // Normal tabs
-                )}
+        {/* Desktop Navigation (visible on large screens) */}
+        <ul className="hidden lg:flex gap-10 items-center">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <a
                 href={item.href}
+                className={clsx(
+                  "text-[#F0FFC9] font-semibold relative transition-all duration-300 ease-in-out",
+                  pathname === item.href
+                    ? "text-[#F0FFC9] font-bold"
+                    : "opacity-70 hover:opacity-100"
+                )}
               >
                 {item.label}
+                {/* Smooth underline animation */}
                 <span
                   className={clsx(
-                    "absolute left-0 -bottom-1 w-full h-[2px] bg-white transform transition-transform duration-300 ease-in-out",
-                    pathname === item.href ? "scale-x-100" : "scale-x-0",
+                    "absolute left-0 -bottom-1 w-full h-[2px] bg-[#F0FFC9] transform transition-transform duration-300 ease-in-out",
+                    pathname === item.href ? "scale-x-100" : "scale-x-0"
                   )}
                 />
-              </NextLink>
-            </NavbarItem>
+              </a>
+            </li>
           ))}
         </ul>
-      </NavbarContent>
 
-      {/* Right-aligned Icons */}
-      <NavbarContent className="basis-1/5" justify="end">
-        <NavbarItem className="hidden sm:flex gap-2">
-          <Link
-            isExternal
+        {/* Right-side Icons */}
+        <div className="flex items-center gap-3">
+          {/* Instagram Icon */}
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:scale-110 transition-transform duration-300"
             aria-label="Instagram"
-            href={siteConfig.links.instagram}
           >
-            <InstagramIcon className="text-default-500" />
-          </Link>
-        </NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <Button
-            isExternal
-            as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
-            href={siteConfig.links.instagram}
-            variant="flat"
+            <InstagramIcon className="w-6 h-6" />
+          </a>
+
+          {/* Mail Icon */}
+          <a
+            href="mailto:mimc@gmail.com?subject=MIMC%20Question"
+            className="text-white hover:scale-110 transition-transform duration-300"
+            aria-label="Email Us"
           >
-            Register
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-8 h-8"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75l8.25 6 8.25-6M3 8.25v7.5a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021 15.75v-7.5a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 8.25z"
+              />
+            </svg>
+          </a>
 
-      {/* Mobile Menu (For small screens) */}
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link
-          isExternal
-          aria-label="Instagram"
-          href={siteConfig.links.instagram}
-        >
-          <InstagramIcon className="text-default-500" />
-        </Link>
-        <Button
-          isExternal
-          as={Link}
-          className="text-sm font-normal text-default-600 bg-default-100"
-          href={siteConfig.links.instagram}
-          variant="flat"
-        >
-          Register
-        </Button>
-        <NavbarMenuToggle />
-      </NavbarContent>
+          {/* BUY NOW */}
+          <a
+            href="/buy-tickets"
+            className="px-4 py-1 text-[#F0FFC9] border-2 border-[#F0FFC9] font-semibold hover:bg-[#F0FFC9] hover:text-[#570326] transition-all"
+          >
+            BUY NOW
+          </a>
 
-      {/* Collapsible Menu for mobile */}
-      <NavbarMenu>
-        <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
+          {/* Burger Menu (visible on small screens) */}
+          <button
+            className={clsx(
+              "lg:hidden text-[#F0FFC9] focus:outline-none transition-transform duration-300",
+              isOpen ? "rotate-90" : "rotate-0"
+            )}
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle Menu"
+          >
+            {isOpen ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Collapsible Mobile Menu (visible on small screens) */}
+      <div
+        className={clsx(
+          "lg:hidden bg-[#570326] overflow-hidden transition-all duration-500 ease-in-out",
+          isOpen ? "max-h-[500px] py-4" : "max-h-0"
+        )}
+      >
+        <ul className="flex flex-col gap-4 px-4">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
                 className={clsx(
-                  "transition-colors duration-300 ease-in-out relative", // Smooth color transition
+                  "text-[#F0FFC9] font-medium relative transition-all duration-300 ease-in-out",
                   pathname === item.href
                     ? "text-white font-bold"
-                    : "text-default-500 hover:text-white",
+                    : "opacity-80 hover:opacity-100"
                 )}
-                href={item.href}
-                size="lg"
+                onClick={() => setIsOpen(false)} // Close menu on click
               >
                 {item.label}
+                {/* Underline for active tab */}
                 <span
                   className={clsx(
-                    "absolute left-0 -bottom-1 w-full h-[2px] bg-white transform transition-transform duration-300 ease-in-out",
-                    pathname === item.href ? "scale-x-100" : "scale-x-0",
+                    "absolute left-0 -bottom-1 w-full h-[2px] bg-[#F0FFC9] transform transition-transform duration-300 ease-in-out",
+                    pathname === item.href ? "scale-x-100" : "scale-x-0"
                   )}
                 />
-              </Link>
-            </NavbarMenuItem>
+              </a>
+            </li>
           ))}
-        </div>
-      </NavbarMenu>
-    </NextUINavbar>
+        </ul>
+      </div>
+    </nav>
   );
 };

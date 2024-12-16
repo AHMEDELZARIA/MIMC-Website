@@ -24,13 +24,16 @@
 		"@nextui-org/theme": "2.2.11",
 		"@react-aria/ssr": "3.9.4",
 		"@react-aria/visually-hidden": "3.8.12",
+		"@react-google-maps/api": "^2.20.3",
 		"clsx": "2.1.1",
 		"framer-motion": "~11.1.1",
 		"intl-messageformat": "^10.5.0",
 		"next": "^15.0.3",
 		"next-themes": "^0.2.1",
 		"react": "18.3.1",
+		"react-countup": "^6.5.3",
 		"react-dom": "18.3.1",
+		"rodal": "^2.1.0",
 		"swiper": "^11.1.14"
 	},
 	"devDependencies": {

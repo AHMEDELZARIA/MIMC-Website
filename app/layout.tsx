@@ -8,6 +8,7 @@ import { Providers } from "./providers";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
+import CustomCursor from "@/components/custom-cursor";
 
 export const metadata: Metadata = {
   title: {
@@ -37,7 +38,7 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-[#570326] font-sans antialiased",
           fontSans.variable,
         )}
       >
@@ -45,17 +46,18 @@ export default function RootLayout({
           <div className="relative flex flex-col h-screen">
             <Navbar />
             <main className="container mx-auto max-w-full flex-grow">
+              <CustomCursor />
               {children}
             </main>
-            <footer className="w-full flex items-center justify-center font-medium py-3">
-              <span className="text-default-600">©️ MIMC at</span>
+            <footer className="w-full flex items-center justify-center font-medium py-3 bg-[#F0FFC9]">
+              <span className="text-[#570326]">© MIMC at</span>
               <Link
                 isExternal
                 className="flex items-center gap-1 text-current ml-1.5"
                 href="https://macmsa.com"
                 title="macmsa website"
               >
-                <p className="text-primary">MacMSA</p>
+                <p className="text-[#570326] underline">MacMSA</p>
               </Link>
             </footer>
           </div>

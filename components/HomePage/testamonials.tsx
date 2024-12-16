@@ -1,46 +1,59 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
 export default function TestimonialSection() {
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1, ease: "easeOut" },
+    },
+  };
+
   return (
-    <section className="px-0 md:px-0 mt-20 mb-100">
-      {/* Swiper with Dynamic Pagination */}
+    <motion.section
+      className="px-0 md:px-0 mt-20 mb-100 bg-white"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }} // Animation triggers when 20% of the section is in view
+      variants={sectionVariants}
+    >
+      {/* Swiper with Fixed Height */}
       <Swiper
-        navigation
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         className="w-full"
+        loop={true}
         modules={[Pagination, Autoplay]}
         pagination={{
           dynamicBullets: true,
           clickable: true,
           renderBullet: (index, className) =>
-            `<span class="${className}" style="background-color: rgba(255, 255, 255, 0.5); width: 12px; height: 12px;"></span>`,
+            `<span class="${className}" style="background-color: rgba(87, 3, 38); width: 12px; height: 12px;"></span>`,
         }}
         slidesPerView={1}
-        spaceBetween={10}
+        spaceBetween={0}
+        style={{ height: "400px" }} // Fixed height for the Swiper
       >
-        {/* Slide 1 - Brock */}
+        {/* Slide 1 */}
         <SwiperSlide>
-          <div className="relative flex flex-col md:flex-row items-center gap-4 md:gap-10">
-            {/* Image Section */}
-            <div className="relative w-full md:w-[65%] h-64 md:h-80 overflow-hidden">
+          <div className="flex h-full bg-[#570326]">
+            <div className="relative w-full md:w-[65%] h-full overflow-hidden pointer-events-none">
               <img
                 alt="Testimonial 1"
-                className="absolute w-full h-full object-cover"
-                src="/imgs/quote/brock.jpg" // Replace with your image path
+                className="absolute w-full h-full object-cover opacity-40"
+                src="/imgs/quote/brock.jpg"
               />
-              {/* Gradient Overlay for Fade Effect */}
-              <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-l from-black via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white" />
             </div>
-
-            {/* Testimonial Content */}
-            <div className="relative w-full md:w-[35%] text-left flex flex-col gap-4 px-4 md:px-8 bg-black bg-opacity-50 py-6 rounded-lg">
-              <div className="text-4xl text-white/70">&ldquo;</div>
-              <p className="text-base md:text-lg font-medium leading-relaxed">
+            <div className="w-full md:w-[35%] flex flex-col justify-center px-6 bg-white pointer-events-auto">
+              <div className="text-7xl text-[#570326]">&ldquo;</div>
+              <p className="text-base md:text-lg font-medium leading-relaxed text-[#570326]">
                 <em>
                   The reason I came this year was actually because I was
                   convinced by everyone. There’s only benefits when I came
@@ -54,36 +67,33 @@ export default function TestimonialSection() {
                   src="/imgs/msa-logos/brock.png"
                 />
                 <div>
-                  <p className="text-base font-bold">
+                  <p className="text-base font-bold text-[#570326]">
                     A Brock University Student
                   </p>
-                  <p className="text-sm text-white/70">Keynote Lecture</p>
+                  <p className="text-sm text-gray-500">Keynote Lecture</p>
                 </div>
               </div>
             </div>
           </div>
         </SwiperSlide>
 
-        {/* Slide 2 - Waterloo */}
+        {/* Slide 2 */}
         <SwiperSlide>
-          <div className="relative flex flex-col md:flex-row items-center gap-4 md:gap-10">
-            {/* Image Section */}
-            <div className="relative w-full md:w-[65%] h-64 md:h-80 overflow-hidden">
+          <div className="flex h-full bg-[#570326]">
+            <div className="relative w-full md:w-[65%] h-full overflow-hidden pointer-events-none">
               <img
-                alt="Testimonial 1"
-                className="absolute w-full h-full object-cover"
-                src="/imgs/quote/wmsa.jpg" // Replace with your image path
+                alt="Testimonial 2"
+                className="absolute w-full h-full object-cover opacity-40"
+                src="/imgs/quote/wmsa.jpg"
               />
-              {/* Gradient Overlay for Fade Effect */}
-              <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-l from-black via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white" />
             </div>
-
-            {/* Testimonial Content */}
-            <div className="relative w-full md:w-[35%] text-left flex flex-col gap-4 px-4 md:px-8 bg-black bg-opacity-50 py-6 rounded-lg">
-              <div className="text-4xl text-white/70">&ldquo;</div>
-              <p className="text-base md:text-lg font-medium leading-relaxed">
+            <div className="w-full md:w-[35%] flex flex-col justify-center px-6 bg-white pointer-events-auto">
+              <div className="text-7xl text-[#570326]">&ldquo;</div>
+              <p className="text-base md:text-lg font-medium leading-relaxed text-[#570326]">
                 <em>
-                  It’s being around people from different universities and how we come together for one [goal] - getting closer to our deen.
+                  It’s being around people from different universities and how we
+                  come together for one [goal] - getting closer to our deen.
                 </em>
               </p>
               <div className="flex items-center gap-4 mt-4">
@@ -93,34 +103,30 @@ export default function TestimonialSection() {
                   src="/imgs/msa-logos/wmsa.png"
                 />
                 <div>
-                  <p className="text-base font-bold">
+                  <p className="text-base font-bold text-[#570326]">
                     A Waterloo University Student
                   </p>
-                  <p className="text-sm text-white/70">Keynote Panel Lecture</p>
+                  <p className="text-sm text-gray-500">Keynote Panel Lecture</p>
                 </div>
               </div>
             </div>
           </div>
         </SwiperSlide>
 
-        {/* Slide 3 - TMU */}
+        {/* Slide 3 */}
         <SwiperSlide>
-          <div className="relative flex flex-col md:flex-row items-center gap-4 md:gap-10">
-            {/* Image Section */}
-            <div className="relative w-full md:w-[65%] h-64 md:h-80 overflow-hidden">
+          <div className="flex h-full bg-[#570326]">
+            <div className="relative w-full md:w-[65%] h-full overflow-hidden pointer-events-none">
               <img
-                alt="Testimonial 1"
-                className="absolute w-full h-full object-cover"
-                src="/imgs/quote/tmu.jpg" // Replace with your image path
+                alt="Testimonial 3"
+                className="absolute w-full h-full object-cover opacity-40"
+                src="/imgs/quote/tmu.jpg"
               />
-              {/* Gradient Overlay for Fade Effect */}
-              <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-l from-black via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white" />
             </div>
-
-            {/* Testimonial Content */}
-            <div className="relative w-full md:w-[35%] text-left flex flex-col gap-4 px-4 md:px-8 bg-black bg-opacity-50 py-6 rounded-lg">
-              <div className="text-4xl text-white/70">&ldquo;</div>
-              <p className="text-base md:text-lg font-medium leading-relaxed">
+            <div className="w-full md:w-[35%] flex flex-col justify-center px-6 bg-white pointer-events-auto">
+              <div className="text-7xl text-[#570326]">&ldquo;</div>
+              <p className="text-base md:text-lg font-medium leading-relaxed text-[#570326]">
                 <em>
                   I love the sense of community. There’s a lot of people that I
                   met here at MIMC last year that I got to see again this year.
@@ -130,38 +136,34 @@ export default function TestimonialSection() {
               <div className="flex items-center gap-4 mt-4">
                 <img
                   alt="TMU University Student"
-                  className="h-auto w-auto max-h-12 object-contain"
+                  className="h-auto w-auto max-h-12"
                   src="/imgs/msa-logos/tmu.png"
                 />
                 <div>
-                  <p className="text-base font-bold">A TMU Student</p>
-                  <p className="text-sm text-white/70">
-                    Arabic Calligraphy Workshop
+                  <p className="text-base font-bold text-[#570326]">
+                    A TMU Student
                   </p>
+                  <p className="text-sm text-gray-500">Arabic Calligraphy Workshop</p>
                 </div>
               </div>
             </div>
           </div>
         </SwiperSlide>
 
-        {/* Slide 4 - MacMsa */}
+        {/* Slide 4 */}
         <SwiperSlide>
-          <div className="relative flex flex-col md:flex-row items-center gap-4 md:gap-10">
-            {/* Image Section */}
-            <div className="relative w-full md:w-[65%] h-64 md:h-80 overflow-hidden">
+          <div className="flex h-full bg-[#570326]">
+            <div className="relative w-full md:w-[65%] h-full overflow-hidden pointer-events-none">
               <img
-                alt="Testimonial 1"
-                className="absolute w-full h-full object-cover"
-                src="/imgs/quote/macmsa.jpg" // Replace with your image path
+                alt="Testimonial 4"
+                className="absolute w-full h-full object-cover opacity-40"
+                src="/imgs/quote/macmsa.jpg"
               />
-              {/* Gradient Overlay for Fade Effect */}
-              <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-l from-black via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white" />
             </div>
-
-            {/* Testimonial Content */}
-            <div className="relative w-full md:w-[35%] text-left flex flex-col gap-4 px-4 md:px-8 bg-black bg-opacity-50 py-6 rounded-lg">
-              <div className="text-4xl text-white/70">&ldquo;</div>
-              <p className="text-base md:text-lg font-medium leading-relaxed">
+            <div className="w-full md:w-[35%] flex flex-col justify-center px-6 bg-white pointer-events-auto">
+              <div className="text-7xl text-[#570326]">&ldquo;</div>
+              <p className="text-base md:text-lg font-medium leading-relaxed text-[#570326]">
                 <em>
                   One of the most inspiring things about MIMC is the vast amount
                   of people that come out, and as a result you hear about all
@@ -170,21 +172,21 @@ export default function TestimonialSection() {
               </p>
               <div className="flex items-center gap-4 mt-4">
                 <img
-                  alt="Mac University Student"
-                  className="h-auto w-auto max-h-12 object-contain"
+                  alt="MacMSA University Student"
+                  className="h-auto w-auto max-h-12"
                   src="/imgs/msa-logos/macmsa.png"
                 />
                 <div>
-                  <p className="text-base font-bold">
+                  <p className="text-base font-bold text-[#570326]">
                     A McMaster University Student
                   </p>
-                  <p className="text-sm text-white/70">Shark Tank</p>
+                  <p className="text-sm text-gray-500">Shark Tank</p>
                 </div>
               </div>
             </div>
           </div>
         </SwiperSlide>
       </Swiper>
-    </section>
+    </motion.section>
   );
 }

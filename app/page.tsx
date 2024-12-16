@@ -10,7 +10,7 @@ import Landing from "@/components/HomePage/landing";
 
 export default function Home() {
   return (
-    <>
+    <div className="bg-[#570326]">
       {/* ========================= */}
       {/* landing Section */}
       {/* ========================= */}
@@ -22,10 +22,14 @@ export default function Home() {
       {/* Content Section */}
       <Intro />
 
+      <Spacer y={20} />
+
       {/* ========================= */}
       {/* Stats Section */}
       {/* ========================= */}
       <Stats />
+
+      <Spacer y={10} />
 
       {/* ========================= */}
       {/* Testimonial Section */}
@@ -40,6 +44,6 @@ export default function Home() {
       <PhotoGallery />
 
       <Spacer y={10} />
-    </>
+    </div>
   );
 }

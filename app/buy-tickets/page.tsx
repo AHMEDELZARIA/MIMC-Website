@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 
 import TicketPurchaseForm from "@/components/ticket-purchase-form";
 
-export default function SponsorsPage() {
+
+export default function TicketPage() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,24 +37,12 @@ export default function SponsorsPage() {
         variants={itemVariants}
       >
         <span className="inline-block relative">
-          SPONSORS
+          PURCHASE TICKETS
           {/* Underline Animation */}
           <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
         </span>
       </motion.h1>
-
-      {/* Description */}
-      <motion.p
-        className="text-sm md:text-base font-medium text-[#F0FFC9] opacity-80 mb-8 text-justify"
-        variants={itemVariants}
-      >
-        JazakumAllah khair to our incredible sponsors for their generous support
-        and unwavering commitment to making MIMC 2025 a success. Your
-        contributions play a vital role in running this event, fostering
-        meaningful connections, and empowering the community. We are deeply
-        grateful for your partnership and the positive impact you help us
-        create. Together, we are building a brighter future.
-      </motion.p>
+      <TicketPurchaseForm />
     </motion.div>
   );
 }

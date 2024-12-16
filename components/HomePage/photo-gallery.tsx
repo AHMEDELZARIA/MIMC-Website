@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Card, Spacer, CardBody, CardHeader, Divider } from "@nextui-org/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Pagination, Autoplay } from "swiper/modules";
@@ -10,7 +11,7 @@ import "swiper/css/pagination";
 export default function GallerySection() {
   // Image data for card decks
   const galleryData = {
-    Lectures: {
+    LECTURES: {
       images: [
         "/imgs/lec/l1.jpg",
         "/imgs/lec/l2.jpg",
@@ -60,7 +61,7 @@ export default function GallerySection() {
       ],
       description: "Explore captivating lectures that inspire and enlighten.",
     },
-    Activities: {
+    ACTIVITIES: {
       images: [
         "/imgs/act/act1.jpg",
         "/imgs/act/act2.jpg",
@@ -98,7 +99,7 @@ export default function GallerySection() {
       ],
       description: "Discover engaging activities that bring everyone together.",
     },
-    Community: {
+    COMMUNITY: {
       images: [
         "/imgs/com/c1.jpg",
         "/imgs/com/c2.jpg",
@@ -200,38 +201,74 @@ export default function GallerySection() {
     },
   };
 
+  // Framer Motion Variants
+  const titleVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 1, ease: "easeOut" },
+    },
+  };
+
+  const swiperSlideVariants = {
+    hidden: { scale: 0.8, rotate: -10, opacity: 0 },
+    visible: {
+      scale: 1,
+      rotate: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
   return (
-    <section className="px-4 md:px-8 mt-16">
-      {/* Section Title */}
-      <h2 className="text-7xl font-bold mb-8 text-center relative group">
+    <motion.section
+      className="px-4 md:px-8 mt-16"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      <motion.h2
+        className="text-7xl font-bold mb-8 text-center relative group"
+        variants={titleVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <span className="inline-block relative">
           MIMC IN A GALLERY
           {/* Underline Animation */}
-          <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-blue-500 transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
+          <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
         </span>
-      </h2>
+      </motion.h2>
       {/* 1x3 Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-12">
         {Object.entries(galleryData).map(
-          ([category, { images, description }]) => (
-            <div
+          ([category, { images, description }], index) => (
+            <motion.div
               key={category}
-              className="bg-black bg-opacity-40 p-4 rounded-lg"
+              className="p-4 rounded-lg"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.3 }}
             >
-              {/* Category Title */}
               <h3 className="text-2xl font-semibold mb-2 text-center text-white">
                 {category}
               </h3>
-              {/* Category Description */}
-              <p className="text-sm text-center font-medium text-gray-300 mb-4">
+              <p className="text-sm text-center font-semibold text-[#F0FFC9] opacity-80 mb-4">
                 {description}
               </p>
-
-              {/* Swiper for Category */}
               <Swiper
                 className="w-full max-w-sm mx-auto"
                 effect="cards"
-                grabCursor={true}
+                grabCursor={false}
                 modules={[EffectCards, Pagination]}
                 pagination={{
                   el: ".custom-pagination",
@@ -247,116 +284,170 @@ export default function GallerySection() {
                   "></span>`,
                 }}
               >
-                {images.map((imgSrc, index) => (
+                {images.map((imgSrc, idx) => (
                   <SwiperSlide
-                    key={index}
-                    className="rounded-lg overflow-hidden"
+                    key={idx}
+                    className="rounded-lg pointer-events-none"
                   >
-                    <img
-                      alt={`${category} ${index + 1}`}
-                      className="w-full h-full object-cover"
+                    <motion.img
+                      alt={`${category} ${idx + 1}`}
+                      className="w-full h-full object-cover pointer-events-none"
                       src={imgSrc}
+                      variants={swiperSlideVariants}
                     />
                   </SwiperSlide>
                 ))}
               </Swiper>
-            </div>
-          ),
+            </motion.div>
+          )
         )}
       </div>
 
       <Spacer y={10} />
 
-      {/* Infinite Loop of Images */}
-      {/* Category Title */}
-      <h3 className="text-5xl font-bold mb-4 text-center relative group">
+      {/* EXPERIENCE THE JOURNEY */}
+      <motion.h3
+        className="text-5xl font-bold mb-4 text-center relative group"
+        variants={titleVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <span className="inline-block relative">
           EXPERIENCE THE JOURNEY
           {/* Underline Animation */}
-          <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-blue-500 transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
+          <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
         </span>
-      </h3>
-      {/* Category Description */}
-      <p className="text-sm md:text-base font-medium text-gray-300 mb-8 text-center">
+      </motion.h3>
+      <motion.p
+        className="text-sm md:text-base font-semibold text-[#F0FFC9] opacity-80 mb-8 text-center"
+        variants={titleVariants}
+        transition={{ delay: 0.2 }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         Every image tells a story — relive the moments that brought us closer as
         a community.
-      </p>
-      <div>
-        <Swiper
-          autoplay={{
-            delay: 1500,
-            disableOnInteraction: false,
-          }}
-          className="w-full"
-          loop={true}
-          modules={[Autoplay]}
-          slidesPerView={3}
-          spaceBetween={30}
-        >
-          {galleryData["Lectures"].images.map((imgSrc, index) => (
-            <SwiperSlide key={index}>
-              <div className="w-full h-40 md:h-60 overflow-hidden rounded-lg">
-                <img
-                  alt={`Loop ${index + 1}`}
-                  className="w-full h-full object-cover"
-                  src={imgSrc}
-                />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      </motion.p>
+      <Swiper
+        autoplay={{
+          delay: 1500,
+          disableOnInteraction: false,
+        }}
+        className="w-full"
+        loop={true}
+        modules={[Autoplay]}
+        slidesPerView={3}
+        spaceBetween={30}
+      >
+        {galleryData["LECTURES"].images.map((imgSrc, index) => (
+          <SwiperSlide key={index}>
+            <motion.div
+              className="w-full h-40 md:h-60 overflow-hidden rounded-lg"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={swiperSlideVariants}
+            >
+              <img
+                alt={`Loop ${index + 1}`}
+                className="w-full h-full object-cover"
+                src={imgSrc}
+              />
+            </motion.div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-      {/* Infinite Loop of Images */}
-      {/* Category Title */}
-      <div className="mt-8">
+      {/* Vertical Sliding Images */}
+      <motion.div className="mt-8">
         <Swiper
           autoplay={{
             delay: 1000,
             disableOnInteraction: false,
-            reverseDirection: true,
           }}
           className="w-full"
           loop={true}
           modules={[Autoplay]}
           slidesPerView={3}
-          spaceBetween={60}
+          spaceBetween={15}
         >
           {slidingData["Vertical"].images.map((imgSrc, index) => (
             <SwiperSlide key={index}>
-              <div className="w-full h-full overflow-hidden rounded-lg">
+              <motion.div
+                className="w-full h-full overflow-hidden rounded-lg"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={swiperSlideVariants}
+              >
                 <img
-                  alt={`Loop ${index + 1}`}
+                  alt={`Vertical Loop ${index + 1}`}
                   className="w-full h-full object-cover"
                   src={imgSrc}
                 />
-              </div>
+              </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </motion.div>
 
       <Spacer y={14} />
 
-      <h2 className="text-5xl font-bold mb-4 text-center relative group">
+      {/* RELIVE THE HIGHLIGHTS */}
+      <motion.h3
+        className="text-5xl font-bold mb-4 text-center relative group"
+        variants={titleVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <span className="inline-block relative">
           RELIVE THE HIGHLIGHTS
           {/* Underline Animation */}
-          <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-blue-500 transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
+          <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
         </span>
-      </h2>
-      <p className="text-base text-center font-medium text-gray-300 mb-8">
+      </motion.h3>
+      <motion.p
+        className="text-base text-center font-semibold text-[#F0FFC9] opacity-80 mb-8"
+        variants={titleVariants}
+        transition={{ delay: 0.2 }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         Watch our recap videos from MIMC 2023 and MIMC 2024 to experience the
         energy, excitement, and unity of these unforgettable events.
-      </p>
+      </motion.p>
 
-      {/* Highlight Videos Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      {/* Highlight Videos */}
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 gap-12"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.3, // Stagger animations for children
+            },
+          },
+        }}
+      >
         {/* MIMC 2023 Video */}
-        <div className="relative w-full h-0 pb-[56.25%]">
+        <motion.div
+          className="relative w-full h-0 pb-[56.25%]"
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+          }}
+        >
           <iframe
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-            src="https://www.youtube.com/embed/MMS6QCKd_Us?si=70-r8VGYcKfuyx2y"
+            src="https://www.youtube.com/embed/MMS6QCKd_Us"
             style={{
               position: "absolute",
               top: 0,
@@ -366,13 +457,19 @@ export default function GallerySection() {
             }}
             title="MIMC 2023 Highlights"
           />
-        </div>
+        </motion.div>
 
         {/* MIMC 2024 Video */}
-        <div className="relative w-full h-0 pb-[56.25%]">
+        <motion.div
+          className="relative w-full h-0 pb-[56.25%]"
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+          }}
+        >
           <iframe
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-            src="https://www.youtube.com/embed/hff0PwUltNo?si=76sE7yVqnhYojHa-"
+            src="https://www.youtube.com/embed/hff0PwUltNo"
             style={{
               position: "absolute",
               top: 0,
@@ -382,30 +479,37 @@ export default function GallerySection() {
             }}
             title="MIMC 2024 Highlights"
           />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <Spacer y={20} />
 
-      <div className="flex justify-center w-full">
+      <Spacer y={16} />
+
+      {/* Playlist Card */}
+      <motion.div
+        className="flex justify-center w-full"
+        variants={cardVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <Card
           isHoverable
           isPressable
-          className="w-3/4 bg-black bg-opacity-50 rounded-lg shadow-lg"
+          className="w-3/4 bg-[#45021e] bg-opacity-70 rounded-lg shadow-lg p-5"
         >
           <CardHeader className="py-6 px-8 flex flex-col items-center justify-center">
             <h3 className="text-2xl font-semibold text-white text-center">
               MIMC Lecture Playlist
             </h3>
-            <p className="text-sm font-medium text-gray-300 text-center mt-2">
+            <p className="text-sm font-medium text-[#F0FFC9] opacity-80 text-center mt-2">
               <strong>Missed last year's lectures?</strong> Catch up with our{" "}
-              <strong>high-quality </strong>
-              recordings and get inspired by our speakers.
+              <strong>high-quality</strong> recordings and get inspired by our
+              speakers.
             </p>
           </CardHeader>
           <Divider className="mb-4" />
           <CardBody>
-            {/* YouTube Embed */}
             <div className="relative w-full h-0 pb-[56.25%]">
               <iframe
                 allowFullScreen
@@ -417,7 +521,7 @@ export default function GallerySection() {
             </div>
           </CardBody>
         </Card>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

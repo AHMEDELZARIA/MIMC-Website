@@ -1,4 +1,4 @@
-export default function SponsorLayout({
+export default function BuyTicketsLayout({
   children,
 }: {
   children: React.ReactNode;

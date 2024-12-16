@@ -8,12 +8,11 @@ import FoodBazaar from "@/components/ProgramPage/food-bazaar";
 
 export default function ProgramPage() {
   return (
-    <div>
+    <div className="bg-[#570326]">
       <Speakers />
       <Spacer y={24} />
       <Activities />
-      <Spacer y={24} />
-      <FoodBazaar />
+      <Spacer y={10} />
     </div>
   );
 }
