@@ -1,5 +1,6 @@
 "use client";
 
+import { cinzel } from "@/config/fonts";
 import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 
@@ -79,14 +80,15 @@ export default function Landing() {
             variants={textVariants}
             transition={{ duration: 1 }}
           >
-            MIMC 2025
+            <h1 className={cinzel.className}>MIMC 2025</h1>
           </motion.h1>
           <motion.p
             className="text-4xl font-bold italic text-[#F0FFC9] mb-4"
             variants={textVariants}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            Truth and Falsehood
+            
+            <h1 className={cinzel.className}>Truth and Falsehood</h1>
           </motion.p>
 
           {/* Countdown Timer */}

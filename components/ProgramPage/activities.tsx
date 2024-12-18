@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CalendarIcon } from "@heroicons/react/24/solid";
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline"; // Import additional icons for the legend
+import { cinzel } from "@/config/fonts";
 
 export default function Activities() {
   // Activities Data
@@ -87,8 +88,10 @@ export default function Activities() {
       variants={containerVariants}
     >
       {/* Section Title */}
-      <h3 className="text-xl font-bold text-center px-4 md:px-8">ENGAGE IN</h3>
-      <h1 className="text-7xl font-bold mb-4 text-center relative group px-4 md:px-8">
+      <h3 className={`${cinzel.className} text-xl font-bold text-center px-4 md:px-8`}>PRESENTING OUR</h3>
+      <h1 className={`${cinzel.className} text-7xl font-bold mb-4 text-center relative group px-4 md:px-8`}>
+      {/* <h3 className="text-xl font-bold text-center px-4 md:px-8">ENGAGE IN</h3> */}
+      {/* <h1 className="text-7xl font-bold mb-4 text-center relative group px-4 md:px-8"> */}
         <span className="inline-block relative">
           ACTIVITIES
           {/* Underline Animation */}

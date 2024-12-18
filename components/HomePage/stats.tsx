@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/pagination";
 import { Spacer } from "@nextui-org/react";
+import { cinzel } from "@/config/fonts";
 
 export default function Stats() {
   const containerVariants = {
@@ -87,7 +88,7 @@ export default function Stats() {
           variants={containerVariants}
         >
           <span className="inline-block relative">
-            MIMC IN NUMBERS
+            <h1 className={cinzel.className}>MIMC IN NUMBERS</h1>
             <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
           </span>
         </motion.h2>

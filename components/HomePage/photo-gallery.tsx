@@ -7,6 +7,7 @@ import { EffectCards, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/pagination";
+import { cinzel } from "@/config/fonts";
 
 export default function GallerySection() {
   // Image data for card decks
@@ -241,7 +242,7 @@ export default function GallerySection() {
         viewport={{ once: true }}
       >
         <span className="inline-block relative">
-          MIMC IN A GALLERY
+          <h1 className={cinzel.className}>MIMC IN A GALLERY</h1>
           {/* Underline Animation */}
           <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
         </span>
@@ -252,7 +253,7 @@ export default function GallerySection() {
           ([category, { images, description }], index) => (
             <motion.div
               key={category}
-              className="p-4 rounded-lg"
+              className={"p-4 rounded-lg"}
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
@@ -314,7 +315,7 @@ export default function GallerySection() {
         viewport={{ once: true }}
       >
         <span className="inline-block relative">
-          EXPERIENCE THE JOURNEY
+          <h1 className={cinzel.className}>EXPERIENCE THE JOURNEY</h1>
           {/* Underline Animation */}
           <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
         </span>
@@ -404,7 +405,7 @@ export default function GallerySection() {
         viewport={{ once: true }}
       >
         <span className="inline-block relative">
-          RELIVE THE HIGHLIGHTS
+          <h1 className={cinzel.className}>RELIVE THE HIGHLIGHTS</h1>
           {/* Underline Animation */}
           <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
         </span>

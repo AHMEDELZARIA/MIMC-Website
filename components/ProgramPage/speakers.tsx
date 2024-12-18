@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css"; // Import Rodal styles
 import { Button } from "@nextui-org/react";
+import { cinzel } from "@/config/fonts";
 
 export default function Speakers() {
   const [activeSpeaker, setActiveSpeaker] = useState(null); // State for the active speaker
@@ -110,8 +111,8 @@ export default function Speakers() {
         }}
         variants={containerVariants}
       >
-        <h3 className="text-xl font-bold text-center">PRESENTING OUR</h3>
-        <h1 className="text-7xl font-bold mb-8 text-center relative group">
+        <h3 className={`${cinzel.className} text-xl font-bold text-center`}>PRESENTING OUR</h3>
+        <h1 className={`${cinzel.className} text-7xl font-bold mb-8 text-center relative group`}>
           <span className="inline-block relative">
             SPEAKERS
             {/* Underline Animation */}

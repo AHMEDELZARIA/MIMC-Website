@@ -6,6 +6,7 @@ import "swiper/css/effect-cards";
 import "swiper/css/pagination";
 import { Card, CardHeader, Spacer, Image, Link } from "@nextui-org/react";
 import { useRef } from "react";
+import { cinzel } from "@/config/fonts";
 
 export default function Intro() {
   const sectionRef = useRef(null);
@@ -44,7 +45,7 @@ export default function Intro() {
           variants={fadeInVariants}
         >
           <span className="inline-block relative">
-            MIMC 2025?!
+            <h1 className={cinzel.className}>MIMC 2025?!</h1>
             {/* Underline Animation */}
             <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
           </span>
