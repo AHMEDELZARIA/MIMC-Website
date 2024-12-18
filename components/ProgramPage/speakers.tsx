@@ -31,7 +31,7 @@ export default function Speakers() {
       bio: "Razia Hamidi is a renowned spiritual teacher, relationship coach, and CEO of DiscoverU, the leading Islam-based self-development organization. Holding degrees in family psychology and education, she integrates Islamic spirituality with modern counseling to empower individuals and couples. Certified in the Gottman Seven Principles and trained in Alima studies, Razia provides tailored premarital and marriage coaching. With over 20 years of experience in nonprofits, advisory boards, and international speaking, she addresses topics like Qur’anic growth and faith-centered relationships. Through her programs, Razia’s mission, 'building believers,' inspires Muslims to cultivate resilience, self-awareness, and excellence (Ihsan) in all aspects of life.",
     },
     {
-      name: "Ustadhah Nabeela Syeda",
+      name: "Ust. Nabeela Syeda",
       occupation: "Registered Psychotherapist",
       imageUrl: "/imgs/speakers/ustNabeela.png",
       bio: "Nabeela Syeda is a Registered Psychotherapist (Qualifying) with the CRPO and a member of the Ontario Association of Mental Health Professionals. She holds an Alimiyyah degree, a Master of Education in Counselling, and a Bachelor’s in Mental Health Studies. Nabeela specializes in self-esteem, stress management, immigrant experiences, trauma, and mood disorders, integrating Islamic principles with a client-centered approach. She has worked at CAMH, supported university students, and empowered Muslim women with eating disorders. Passionate about fostering resilience and hope, Nabeela combines her expertise and faith to promote healing and well-being within her community.",
@@ -94,9 +94,20 @@ export default function Speakers() {
     <>
       {/* Main Section */}
       <motion.section
-        className="w-full px-4 md:px-8"
+        className="relative w-full"
         initial="hidden"
         animate="visible"
+        style={{
+          backgroundImage: `
+            linear-gradient(to bottom, #570326 10%,rgba(87, 3, 38, 0.85) 30%, rgba(87, 3, 38, 0.85) 90%, #570326 100%), 
+            url('/imgs/speakers/bg-speakers.jpg')
+          `,
+          backgroundSize: "cover", // Keep the image filling the container
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          // width: "100vw", // Full viewport width
+          // height: "100vh", // Full viewport height
+        }}
         variants={containerVariants}
       >
         <h3 className="text-xl font-bold text-center">PRESENTING OUR</h3>
@@ -108,7 +119,7 @@ export default function Speakers() {
           </span>
         </h1>
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-14"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-14 px-4"
           variants={containerVariants}
         >
           {people.map((person, index) => (

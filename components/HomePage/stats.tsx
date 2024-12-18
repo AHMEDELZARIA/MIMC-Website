@@ -113,7 +113,7 @@ export default function Stats() {
           <StatCircle
             start={-50000}
             end={50000}
-            suffix=""
+            suffix="+"
             label="SOCIAL MEDIA REACH"
             imgSrc="/imgs/stats/stat_2.jpg"
             direction="center"

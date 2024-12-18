@@ -8,8 +8,8 @@ import { Logo, InstagramIcon } from "@/components/icons";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/program", label: "Program Details" },
-  { href: "/itinerary-map", label: "Itinerary & Maps" },
-  { href: "/sponsors", label: "Sponsors" },
+  // { href: "/itinerary-map", label: "Itinerary & Maps" },
+  // { href: "/sponsors", label: "Sponsors" },
 ];
 
 export const Navbar = () => {
@@ -56,7 +56,7 @@ export const Navbar = () => {
         <div className="flex items-center gap-3">
           {/* Instagram Icon */}
           <a
-            href="https://instagram.com"
+            href="https://instagram.com/macmsa_mimc/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:scale-110 transition-transform duration-300"
@@ -67,7 +67,7 @@ export const Navbar = () => {
 
           {/* Mail Icon */}
           <a
-            href="mailto:mimc@gmail.com?subject=MIMC%20Question"
+            href="mailto:mimc@macmsa.com?subject=MIMC%20Question"
             className="text-white hover:scale-110 transition-transform duration-300"
             aria-label="Email Us"
           >

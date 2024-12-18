@@ -17,7 +17,7 @@ export const Logo: React.FC<LogoProps> = ({
   <img
     alt="Logo"
     height={height || size} // Default to size if height is not provided
-    src="favicon.ico" // Path to your image
+    src="imgs/site-logo.png" // Path to your image
     width={width || size} // Default to size if width is not provided
     {...props} // Pass any additional props
   />

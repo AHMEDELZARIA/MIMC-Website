@@ -177,7 +177,7 @@ export default function Intro() {
         <Spacer y={10} />
 
         {/* Qiyām Accommodations Link */}
-        <p className="text-lg mb-4 text-center">
+        {/* <p className="text-lg mb-4 text-center">
           <strong className="text-[#F0FFC9]">Long travels?</strong> Sign-up for
           Qiyām Accommodations{" "}
           <Link
@@ -188,7 +188,7 @@ export default function Intro() {
           >
             here
           </Link>
-        </p>
+        </p> */}
       </div>
     </motion.section>
   );

@@ -24,7 +24,7 @@ export default function SponsorsPage() {
 
   return (
     <motion.div
-      className="px-4 md:px-8"
+      className=""
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -32,7 +32,7 @@ export default function SponsorsPage() {
     >
       {/* Section Title */}
       <motion.h1
-        className="text-7xl font-bold mb-4 text-center relative group"
+        className="text-7xl font-bold mb-4 text-center relative group px-4 md:px-8"
         variants={itemVariants}
       >
         <span className="inline-block relative">
@@ -44,7 +44,7 @@ export default function SponsorsPage() {
 
       {/* Description */}
       <motion.p
-        className="text-sm md:text-base font-medium text-[#F0FFC9] opacity-80 mb-8 text-justify"
+        className="text-sm md:text-base font-medium text-[#F0FFC9] opacity-80 mb-8 text-justify px-4 md:px-8"
         variants={itemVariants}
       >
         JazakumAllah khair to our incredible sponsors for their generous support
@@ -54,6 +54,28 @@ export default function SponsorsPage() {
         grateful for your partnership and the positive impact you help us
         create. Together, we are building a brighter future.
       </motion.p>
+
+      <motion.div
+        className=""
+        style={{
+          backgroundImage: `
+            linear-gradient(to bottom, #570326 5%,rgba(87, 3, 38, 0.85) 30%, rgba(87, 3, 38, 0.85) 95%, #570326 100%), 
+            url('imgs/sponsors/bg-sponsors.png')
+          `,
+          backgroundSize: "cover", // Keep the image filling the container
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          height: '1000px',
+        }}
+
+      >
+        {/* <motion.p
+          className="text-sm md:text-base font-medium text-[#F0FFC9] opacity-80 mb-8 text-justify"
+        >
+          temp
+        </motion.p> */}
+      </motion.div>
+      
     </motion.div>
   );
 }

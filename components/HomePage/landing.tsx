@@ -130,7 +130,7 @@ export default function Landing() {
           loop
           muted
           className="w-full h-full object-cover"
-          src="/vids/background.mp4"
+          src="/vids/home-background.mp4"
           style={{
             maskImage: "linear-gradient(to bottom, #570326 60%, transparent 100%)",
             WebkitMaskImage:

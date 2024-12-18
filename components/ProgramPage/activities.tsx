@@ -8,54 +8,54 @@ import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline"; // Import ad
 export default function Activities() {
   // Activities Data
   const activities = [
-    {
-      title: "QIYAM",
-      category: "ACCOMMODATIONS",
-      imageUrl: "/imgs/com/c33.jpg",
-      date: "Dec 10, 2024",
-      time: "10:00 AM - 6:00 PM",
-      requiresSignUp: false,
-    },
-    {
-      title: "SHARK TANK",
-      category: "CASE COMPETITION",
-      imageUrl: "/imgs/act/act22.jpg",
-      date: "Dec 11, 2024",
-      time: "2:00 PM - 5:00 PM",
-      requiresSignUp: true,
-    },
+    // {
+    //   title: "QIYAM",
+    //   category: "ACCOMMODATIONS",
+    //   imageUrl: "/imgs/com/c33.jpg",
+    //   date: "Feb 15, 2025",
+    //   time: "11:00 AM - 4:30 PM",
+    //   requiresSignUp: true,
+    // },
+    // {
+    //   title: "SHARK TANK",
+    //   category: "CASE COMPETITION",
+    //   imageUrl: "/imgs/act/act22.jpg",
+    //   date: "Feb XX, 2024",
+    //   time: "2:00 PM - 5:00 PM",
+    //   requiresSignUp: true,
+    // },
     {
       title: "QIRAA'ATUL",
       category: "QUR'AN COMPETITION",
       imageUrl: "/imgs/act/act19.jpg",
-      date: "Dec 12, 2024",
-      time: "1:00 PM - 3:00 PM",
+      date: "Feb 15, 2025",
+      time: "11:00 AM - 4:30 PM",
       requiresSignUp: true,
     },
-    {
-      title: "STAINED",
-      category: "GLASS MAKING",
-      imageUrl: "/imgs/act/stained-glass.jpg",
-      date: "Dec 13, 2024",
-      time: "7:00 PM - 9:00 PM",
-      requiresSignUp: true,
-    },
-    {
-      title: "ESCAPE ROOM",
-      category: "TEST YOUR WITS",
-      imageUrl: "/imgs/act/escape-room.png",
-      date: "Dec 14, 2024",
-      time: "4:00 PM - 5:30 PM",
-      requiresSignUp: true,
-    },
-    {
-      title: "CALLIGRAPHY",
-      category: "MASTER THE ART OF WRITING",
-      imageUrl: "/imgs/act/act4.jpg",
-      date: "Dec 15, 2024",
-      time: "11:00 AM - 1:00 PM",
-      requiresSignUp: false,
-    },
+    // {
+    //   title: "STAINED",
+    //   category: "GLASS MAKING",
+    //   imageUrl: "/imgs/act/stained-glass.jpg",
+    //   date: "Dec 13, 2024",
+    //   time: "7:00 PM - 9:00 PM",
+    //   requiresSignUp: true,
+    // },
+    // {
+    //   title: "ESCAPE ROOM",
+    //   category: "TEST YOUR WITS",
+    //   imageUrl: "/imgs/act/escape-room.png",
+    //   date: "Dec 14, 2024",
+    //   time: "4:00 PM - 5:30 PM",
+    //   requiresSignUp: true,
+    // },
+    // {
+    //   title: "CALLIGRAPHY",
+    //   category: "MASTER THE ART OF WRITING",
+    //   imageUrl: "/imgs/act/act4.jpg",
+    //   date: "Dec 15, 2024",
+    //   time: "11:00 AM - 1:00 PM",
+    //   requiresSignUp: false,
+    // },
   ];
 
   const containerVariants = {
@@ -79,22 +79,23 @@ export default function Activities() {
 
   return (
     <motion.section
-      className="px-4 md:px-8"
+      className=""
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
+      
       variants={containerVariants}
     >
       {/* Section Title */}
-      <h3 className="text-xl font-bold text-center">ENGAGE IN</h3>
-      <h1 className="text-7xl font-bold mb-4 text-center relative group">
+      <h3 className="text-xl font-bold text-center px-4 md:px-8">ENGAGE IN</h3>
+      <h1 className="text-7xl font-bold mb-4 text-center relative group px-4 md:px-8">
         <span className="inline-block relative">
           ACTIVITIES
           {/* Underline Animation */}
           <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
         </span>
       </h1>
-      <p className="text-sm md:text-base font-medium text-[#F0FFC9] opacity-80 mb-4 text-justify">
+      {/* <p className="text-sm md:text-base font-medium text-[#F0FFC9] opacity-80 mb-4 text-justify px-4 md:px-8">
         Explore a variety of exciting activities designed to inspire, engage,
         and connect you with fellow attendees. From creative workshops to
         thrilling challenges, there's something for everyone to enjoy. Be sure
@@ -108,7 +109,13 @@ export default function Activities() {
           you must sign up after purchasing your ticket to guarantee your place,
           as spaces are limited!
         </strong>
+      </p> */}
+      <p className="text-sm md:text-base font-medium text-[#F0FFC9] opacity-80 mb-4 text-center px-4 md:px-8">
+      Aside from the Qiraa’atul Qur’an Comeptition, all other activity sign-ups will 
+      be released early January! Please keep checking our social media and your email 
+      for updates.{" "}
       </p>
+      
 
       {/* Legend */}
       <div className="flex justify-center gap-8 mb-12">
@@ -124,13 +131,23 @@ export default function Activities() {
 
       {/* Activities Grid */}
       <motion.div
-        className="grid lg:grid-cols-2 xl:grid-cols-3 gap-y-12"
+        // className="grid lg:grid-cols-2 xl:grid-cols-3 gap-y-12 py-3 px-4"
+        className="grid gap-y-12 py-3 px-4" // temp while we only have QQC up to keep it centered.
+        style={{
+          backgroundImage: `
+            linear-gradient(to bottom, #570326 10%,rgba(87, 3, 38, 0.85) 30%, rgba(87, 3, 38, 0.85) 90%, #570326 100%), 
+            url('/imgs/act/bg-activities.jpg')
+          `,
+          backgroundSize: "cover", // Keep the image filling the container
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
         variants={containerVariants}
       >
         {activities.map((activity, index) => (
           <div
             key={index}
-            className="relative cursor-pointer w-80 h-80 mx-auto rounded-full overflow-hidden border-5 border-[#A9DA88] flex flex-col items-center justify-center transition-all duration-400 hover:scale-105 hover:border-[#A9DA88] hover:shadow-2xl hover:shadow-[#A9DA88] active:scale-95 group"
+            className="relative cursor-pointer w-80 h-80 mx-auto rounded-full overflow-hidden border-5 border-[#A9DA88] flex flex-col items-center justify-self transition-all duration-400 hover:scale-105 hover:border-[#A9DA88] hover:shadow-2xl hover:shadow-[#A9DA88] active:scale-95 group"
           >
             {/* Background Image */}
             <img
@@ -161,9 +178,9 @@ export default function Activities() {
 
               {/* Sign-Up Icon */}
               {activity.requiresSignUp ? (
-                <XMarkIcon className="w-6 h-6 mt-3 text-red-500" />
-              ) : (
                 <CheckIcon className="w-6 h-6 mt-3 text-green-500" />
+              ) : (
+                <XMarkIcon className="w-6 h-6 mt-3 text-red-500" />
               )}
             </div>
           </div>

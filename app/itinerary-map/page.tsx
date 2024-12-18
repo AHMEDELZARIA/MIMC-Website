@@ -150,7 +150,7 @@ export default function ItineraryPage() {
   };
 
   return (
-    <div className="px-4 md:px-8">
+    <div className="">
       {/* Section Title */}
       <motion.section
         className="mb-8"
@@ -159,13 +159,13 @@ export default function ItineraryPage() {
         viewport={{ once: true }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <h1 className="text-7xl font-bold mb-4 text-center relative group">
+        <h1 className="text-7xl font-bold mb-4 text-center relative group px-4 md:px-8">
           <span className="inline-block relative">
             ITINERARY
             <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
           </span>
         </h1>
-        <p className="text-sm md:text-base font-medium text-[#F0FFC9] opacity-80 mb-8 text-justify">
+        <p className="text-sm md:text-base font-medium text-[#F0FFC9] opacity-80 mb-8 text-justify px-4 md:px-8">
           Get ready for an incredible two-day experience filled with inspiring
           lectures, engaging workshops, and unforgettable activities. Our
           itinerary is thoughtfully designed to provide a balance between
@@ -177,9 +177,18 @@ export default function ItineraryPage() {
 
       {/* Side-by-Side Itinerary */}
       <motion.section
-        className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-12 px-4 md:px-8"
         initial="hidden"
         whileInView="visible"
+        style={{
+          backgroundImage: `
+            linear-gradient(to bottom, #570326 5%,rgba(87, 3, 38, 0.85) 30%, rgba(87, 3, 38, 0.85) 95%, #570326 100%), 
+            url('imgs/itinerary-maps/bg-itinerary-maps.png')
+          `,
+          backgroundSize: "cover", // Keep the image filling the container
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
         viewport={{ once: true }}
         variants={{
           hidden: { opacity: 0 },
