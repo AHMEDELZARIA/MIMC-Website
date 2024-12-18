@@ -76,19 +76,18 @@ export default function Landing() {
       >
         <div className="container mx-auto text-center">
           <motion.h1
-            className="text-9xl font-bold mb-4"
+            className={`${cinzel.className} text-9xl font-bold mb-4`}
             variants={textVariants}
             transition={{ duration: 1 }}
           >
-            <h1 className={cinzel.className}>MIMC 2025</h1>
+            MIMC 2025
           </motion.h1>
           <motion.p
-            className="text-4xl font-bold italic text-[#F0FFC9] mb-4"
+            className={`${cinzel.className} text-4xl font-bold italic text-[#F0FFC9] mb-4`}
             variants={textVariants}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            
-            <h1 className={cinzel.className}>Truth and Falsehood</h1>
+            Truth and Falsehood
           </motion.p>
 
           {/* Countdown Timer */}
