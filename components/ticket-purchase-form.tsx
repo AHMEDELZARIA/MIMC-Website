@@ -1,7 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Button, Input, Checkbox, Divider, RadioGroup, Radio } from "@nextui-org/react";
+import {
+  Button,
+  Checkbox,
+  Divider,
+  Input,
+  Radio,
+  RadioGroup,
+} from "@nextui-org/react";
+import { useEffect, useState } from "react";
 
 export default function TicketPurchaseForm() {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -11,6 +18,7 @@ export default function TicketPurchaseForm() {
     youth: 0,
     child: 0,
   });
+  // const { push } = useRouter();
   const [donation, setDonation] = useState(false);
   const [personalDetails, setPersonalDetails] = useState({
     firstName: "",
@@ -22,6 +30,12 @@ export default function TicketPurchaseForm() {
     emergencyContactName: "",
     emergencyContactPhone: "",
   });
+
+  // Dynamic forms state
+  const [adultTicketDetails, setAdultTicketDetails] = useState<any[]>([]);
+  const [marriageTicketDetails, setMarriageTicketDetails] = useState<any[]>([]);
+  const [youthTicketDetails, setYouthTicketDetails] = useState<any[]>([]);
+  const [childTicketDetails, setChildTicketDetails] = useState<any[]>([]);
 
   const prices = {
     adult: 20,
@@ -45,6 +59,23 @@ export default function TicketPurchaseForm() {
       ...prev,
       [id]: count,
     }));
+
+    // Update dynamic forms when ticket counts change
+    if (id === "adult") {
+      setAdultTicketDetails(
+        Array(count).fill({ fullName: "", email: "", school: "", gender: "" })
+      );
+    } else if (id === "marriage") {
+      setMarriageTicketDetails(Array(count).fill({ fullName: "", email: "" }));
+    } else if (id === "youth") {
+      setYouthTicketDetails(
+        Array(count).fill({ fullName: "", caregiverPhone: "" })
+      );
+    } else if (id === "child") {
+      setChildTicketDetails(
+        Array(count).fill({ fullName: "", caregiverPhone: "" })
+      );
+    }
   };
 
   const handlePersonalDetailsChange = (e) => {
@@ -53,6 +84,55 @@ export default function TicketPurchaseForm() {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
+  };
+
+  const handleDynamicFormChange = (
+    index: number,
+    type: string,
+    field: string,
+    value: string
+  ) => {
+    if (type === "adult") {
+      setAdultTicketDetails((prev) =>
+        prev.map((item, i) =>
+          i === index ? { ...item, [field]: value } : item
+        )
+      );
+    } else if (type === "marriage") {
+      setMarriageTicketDetails((prev) =>
+        prev.map((item, i) =>
+          i === index ? { ...item, [field]: value } : item
+        )
+      );
+    } else if (type === "youth" || type === "child") {
+      const setDetails =
+        type === "youth" ? setYouthTicketDetails : setChildTicketDetails;
+      setDetails((prev) =>
+        prev.map((item, i) =>
+          i === index ? { ...item, [field]: value } : item
+        )
+      );
+    }
+  };
+
+  const handleSubmit = async () => {
+    const finalTickets = {
+      personalDetails,
+      adult: adultTicketDetails,
+      marriage: marriageTicketDetails,
+      youth: youthTicketDetails,
+      child: childTicketDetails,
+      donation,
+    };
+    console.log(finalTickets);
+
+    // const link = await (
+    //   await fetch(`http://localhost:8000/tickets-link`, {
+    //     method: "POST",
+    //     body: JSON.stringify(finalTickets),
+    //   })
+    // ).json();
+    // push(link.link);
   };
 
   return (
@@ -64,14 +144,15 @@ export default function TicketPurchaseForm() {
             Event Information
           </h3>
           <p className="text-white text-sm">
-            <strong className="text-[#A9DA88]">Date:</strong> Saturday-Sunday, February 15-16, 2025
+            <strong className="text-[#A9DA88]">Date:</strong> Saturday-Sunday,
+            February 15-16, 2025
           </p>
           <p className="text-white text-sm">
             <strong className="text-[#A9DA88]">Time:</strong> 10 AM - 9 PM
           </p>
           <p className="text-white text-sm">
-            <strong className="text-[#A9DA88]">Location:</strong> McMaster University (1280 Main Street
-            West, Hamilton, Ontario L8S 4L8)
+            <strong className="text-[#A9DA88]">Location:</strong> McMaster
+            University (1280 Main Street West, Hamilton, Ontario L8S 4L8)
           </p>
         </div>
         <Divider className="my-3" />
@@ -262,14 +343,25 @@ export default function TicketPurchaseForm() {
 
         {/* Dynamic Forms Section */}
         <div className="space-y-6">
-          {Array.from({ length: tickets.adult }).map((_, index) => (
+          {/* Adult Ticket Forms */}
+          {adultTicketDetails.map((_, index) => (
             <div key={`adult-${index}`}>
-              <h4 className="font-bold text-[#F0FFC9] mb-3">Adult Ticket #{index + 1}</h4>
+              <h4 className="font-bold text-[#F0FFC9] mb-3">
+                Adult Ticket #{index + 1}
+              </h4>
               <Input
                 isRequired
                 label="Full Name"
                 placeholder="Enter full name"
-                required
+                value={adultTicketDetails[index].fullName}
+                onChange={(e) =>
+                  handleDynamicFormChange(
+                    index,
+                    "adult",
+                    "fullName",
+                    e.target.value
+                  )
+                }
                 className="mb-3"
               />
               <Input
@@ -277,10 +369,26 @@ export default function TicketPurchaseForm() {
                 label="Email Address"
                 type="email"
                 placeholder="Enter email address"
-                required
+                value={adultTicketDetails[index].email}
+                onChange={(e) =>
+                  handleDynamicFormChange(
+                    index,
+                    "adult",
+                    "email",
+                    e.target.value
+                  )
+                }
                 className="mb-3"
               />
-              <RadioGroup label="Select your school (if applicable)" orientation="horizontal" color="success">
+              <RadioGroup
+                label="Select your school (if applicable)"
+                orientation="horizontal"
+                color="success"
+                value={adultTicketDetails[index].school}
+                onValueChange={(value) =>
+                  handleDynamicFormChange(index, "adult", "school", value)
+                }
+              >
                 <Radio value="mcmaster">McMaster</Radio>
                 <Radio value="brock">Brock</Radio>
                 <Radio value="uoft">UofT</Radio>
@@ -296,39 +404,141 @@ export default function TicketPurchaseForm() {
                 <Radio value="guelph">Guelph</Radio>
                 <Radio value="seneca">Seneca</Radio>
               </RadioGroup>
-              <RadioGroup isRequired label="Gender" orientation="horizontal" color="success" className="mt-2">
+              <RadioGroup
+                isRequired
+                label="Gender"
+                orientation="horizontal"
+                color="success"
+                className="mt-2"
+                value={adultTicketDetails[index].gender}
+                onValueChange={(value) =>
+                  handleDynamicFormChange(index, "adult", "gender", value)
+                }
+              >
                 <Radio value="male">Male</Radio>
                 <Radio value="female">Female</Radio>
               </RadioGroup>
             </div>
           ))}
 
-          {Array.from({ length: tickets.youth + tickets.child }).map(
-            (_, index) => (
-              <div key={`youth-child-${index}`}>
-                <h4 className="font-bold text-[#F0FFC9] mb-3">
-                  {index < tickets.youth
-                    ? `Youth Ticket #${index + 1}`
-                    : `Child Ticket #${index - tickets.youth + 1}`}
-                </h4>
-                <Input
-                  isRequired
-                  label="Full Name"
-                  placeholder="Enter full name"
-                  required
-                  className="mb-3"
-                />
-                <Input
-                  isRequired
-                  label="Caregiver's Phone Number"
-                  type="tel"
-                  placeholder="Enter phone number"
-                  required
-                  className="mb-3"
-                />
-              </div>
-            )
-          )}
+          {/* Marriage Ticket Forms */}
+          {marriageTicketDetails.map((_, index) => (
+            <div key={`marriage-${index}`}>
+              <h4 className="font-bold text-[#F0FFC9] mb-3">
+                Marriage Lecture Ticket #{index + 1}
+              </h4>
+              <Input
+                isRequired
+                label="Full Name"
+                placeholder="Enter full name"
+                value={marriageTicketDetails[index].fullName}
+                onChange={(e) =>
+                  handleDynamicFormChange(
+                    index,
+                    "marriage",
+                    "fullName",
+                    e.target.value
+                  )
+                }
+                className="mb-3"
+              />
+              <Input
+                isRequired
+                label="Email Address"
+                type="email"
+                placeholder="Enter email address"
+                value={marriageTicketDetails[index].email}
+                onChange={(e) =>
+                  handleDynamicFormChange(
+                    index,
+                    "marriage",
+                    "email",
+                    e.target.value
+                  )
+                }
+                className="mb-3"
+              />
+            </div>
+          ))}
+
+          {/* Youth and Child Ticket Forms */}
+          {youthTicketDetails.map((_, index) => (
+            <div key={`youth-${index}`}>
+              <h4 className="font-bold text-[#F0FFC9] mb-3">
+                Youth Ticket #{index + 1}
+              </h4>
+              <Input
+                isRequired
+                label="Full Name"
+                placeholder="Enter full name"
+                value={youthTicketDetails[index].fullName}
+                onChange={(e) =>
+                  handleDynamicFormChange(
+                    index,
+                    "youth",
+                    "fullName",
+                    e.target.value
+                  )
+                }
+                className="mb-3"
+              />
+              <Input
+                isRequired
+                label="Caregiver's Phone Number"
+                type="tel"
+                placeholder="Enter phone number"
+                value={youthTicketDetails[index].caregiverPhone}
+                onChange={(e) =>
+                  handleDynamicFormChange(
+                    index,
+                    "youth",
+                    "caregiverPhone",
+                    e.target.value
+                  )
+                }
+                className="mb-3"
+              />
+            </div>
+          ))}
+
+          {childTicketDetails.map((_, index) => (
+            <div key={`child-${index}`}>
+              <h4 className="font-bold text-[#F0FFC9] mb-3">
+                Child Ticket #{index + 1}
+              </h4>
+              <Input
+                isRequired
+                label="Full Name"
+                placeholder="Enter full name"
+                value={childTicketDetails[index].fullName}
+                onChange={(e) =>
+                  handleDynamicFormChange(
+                    index,
+                    "child",
+                    "fullName",
+                    e.target.value
+                  )
+                }
+                className="mb-3"
+              />
+              <Input
+                isRequired
+                label="Caregiver's Phone Number"
+                type="tel"
+                placeholder="Enter phone number"
+                value={childTicketDetails[index].caregiverPhone}
+                onChange={(e) =>
+                  handleDynamicFormChange(
+                    index,
+                    "child",
+                    "caregiverPhone",
+                    e.target.value
+                  )
+                }
+                className="mb-3"
+              />
+            </div>
+          ))}
         </div>
 
         {/* Checkout Buttons */}
@@ -346,6 +556,7 @@ export default function TicketPurchaseForm() {
             className="font-bold uppercase text-black"
             radius="full"
             variant="solid"
+            onClick={() => handleSubmit()}
           >
             Proceed to Checkout
           </Button>
