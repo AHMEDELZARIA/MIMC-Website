@@ -96,12 +96,14 @@ const Speakers: React.FC = () => {
 
   useEffect(() => {
     if (isModalOpen) {
-      document.body.classList.add("no-scroll");
+      document.body.style.overflow = "hidden"; // Prevent body scrolling
     } else {
-      document.body.classList.remove("no-scroll");
+      document.body.style.overflow = "auto"; // Restore body scrolling
     }
 
-    return () => document.body.classList.remove("no-scroll");
+    return () => {
+      document.body.style.overflow = "auto"; // Clean up on unmount
+    };
   }, [isModalOpen]);
 
   return (
@@ -180,27 +182,31 @@ const Speakers: React.FC = () => {
       {/* Modal */}
       <Rodal
         animation="zoom"
+        className=""
         customStyles={{
           backgroundColor: "#3B0819",
-          width: "95%",
-          maxWidth: "600px",
-          height: "86vh",
-          maxHeight: "200vh",
-          overflowY: "auto",
-          borderRadius: "20px",
-          padding: "30px",
+          width: "95%", // Responsive width
+          maxWidth: "500px", // Limit width on larger screens
+          height: "auto", // Let content determine the height
+          maxHeight: "70vh", // Prevent overflowing the viewport
+          overflowY: "auto", // Enable scrolling within the modal
+          borderRadius: "0px",
+          padding: "20px", // Reduce padding for smaller screens
           textAlign: "center",
           display: "flex",
-          justifyContent: "center",
+          flexDirection: "column", // Column layout for better spacing
+          justifyContent: "flex-start", // Align content at the top
           alignItems: "center",
+          margin: "20vh auto", // Center the modal with enough top margin
         }}
         visible={isModalOpen}
         onClose={() => setModalOpen(false)}
+        closeMaskOnClick={false}
       >
         {activeSpeaker && (
           <div className="flex flex-col items-center">
             {/* Speaker Image */}
-            <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-[#A9DA88] mb-4 shadow-md transition-transform duration-300 hover:scale-105">
+            <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-[#A9DA88] mb-4 shadow-md transition-transform duration-300 hover:scale-105">
               <img
                 alt={activeSpeaker.name}
                 className="w-full h-full object-cover"
@@ -210,10 +216,10 @@ const Speakers: React.FC = () => {
             </div>
 
             {/* Name and Occupation */}
-            <h2 className="text-2xl uppercase font-bold text-[#F0FFC9]">
+            <h2 className="text-xl md:text-2xl uppercase font-bold text-[#F0FFC9] mb-2">
               {activeSpeaker.name}
             </h2>
-            <p className="text-white font-medium uppercase tracking-widest mb-4">
+            <p className="text-sm md:text-base text-white font-medium uppercase tracking-widest mb-4">
               {activeSpeaker.occupation}
             </p>
 
@@ -221,7 +227,7 @@ const Speakers: React.FC = () => {
             <div className="w-16 h-[2px] bg-[#A9DA88] mb-4" />
 
             {/* Bio */}
-            <p className="text-white text-md leading-relaxed text-justify">
+            <p className="text-sm md:text-md text-white leading-relaxed text-justify">
               {activeSpeaker.bio}
             </p>
           </div>
