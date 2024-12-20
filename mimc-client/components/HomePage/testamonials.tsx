@@ -27,7 +27,7 @@ export default function TestimonialSection() {
       {/* Swiper with Fixed Height */}
       <Swiper
         autoplay={{ delay: 5000, disableOnInteraction: false }}
-        className="w-full"
+        className="w-full h-4xl"
         loop={true}
         modules={[Pagination, Autoplay]}
         pagination={{
@@ -38,7 +38,7 @@ export default function TestimonialSection() {
         }}
         slidesPerView={1}
         spaceBetween={0}
-        style={{ height: "400px" }} // Fixed height for the Swiper
+        style={{ height: "550px" }} // Fixed height for the Swiper
       >
         {/* Slide 1 */}
         <SwiperSlide>
