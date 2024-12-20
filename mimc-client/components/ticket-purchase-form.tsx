@@ -554,14 +554,6 @@ const TicketPurchaseForm: React.FC = () => {
         {/* Checkout Buttons */}
         <div className="flex justify-end gap-4 mt-6">
           <Button
-            className="font-bold uppercase"
-            color="danger"
-            radius="full"
-            variant="flat"
-          >
-            Cancel
-          </Button>
-          <Button
             className="font-bold uppercase bg-[#A9DA88] text-[#3B0819]"
             radius="full"
             variant="solid"
