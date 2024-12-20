@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 
 import TicketPurchaseForm from "@/components/ticket-purchase-form";
 
+import { cinzel } from "@/config/fonts";
+
 export default function TicketPage() {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -25,7 +27,7 @@ export default function TicketPage() {
   return (
     <motion.div
       animate="visible"
-      className="relative w-full"
+      className="relative w-full py-8 md:py-10"
       initial="hidden"
       style={{
         backgroundImage: `
@@ -39,7 +41,7 @@ export default function TicketPage() {
     >
       {/* Section Title */}
       <motion.h1
-        className="text-7xl font-bold mb-4 text-center relative group"
+        className={`${cinzel.className} text-6xl md:text-7xl font-bold mb-4 text-center relative group`}
         variants={itemVariants}
       >
         <span className="inline-block relative">

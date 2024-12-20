@@ -173,7 +173,7 @@ export default function ItineraryPage() {
         viewport={{ once: true }}
         whileInView={{ opacity: 1, y: 0 }}
       >
-        <h1 className="text-7xl font-bold mb-4 text-center relative group px-4 md:px-8">
+        <h1 className="text-6xl md:text-7xl font-bold mb-4 text-center relative group px-4 md:px-8">
           <span className="inline-block relative">
             ITINERARY
             <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />

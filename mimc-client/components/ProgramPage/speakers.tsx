@@ -109,7 +109,7 @@ const Speakers: React.FC = () => {
       {/* Main Section */}
       <motion.section
         animate="visible"
-        className="relative w-full"
+        className="relative w-full py-8 md:py-10"
         initial="hidden"
         style={{
           backgroundImage: `
@@ -128,7 +128,7 @@ const Speakers: React.FC = () => {
           PRESENTING OUR
         </h3>
         <h1
-          className={`${cinzel.className} text-7xl font-bold mb-8 text-center relative group`}
+          className={`${cinzel.className} text-6xl md:text-7xl font-bold mb-8 text-center relative group`}
         >
           <span className="inline-block relative">
             SPEAKERS
