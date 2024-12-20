@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css"; // Import Rodal styles
-import { Button } from "@nextui-org/react";
+import { Button, card } from "@nextui-org/react";
 
 import { cinzel } from "@/config/fonts";
 
@@ -74,7 +74,6 @@ const Speakers: React.FC = () => {
       imageUrl: "/imgs/speakers/shAarij.png",
       bio: "Shaykh Aarij Anwer is an Imam in London, Ontario, with diverse academic and professional experience. He holds degrees in Computer Science, Education, and Islamic Jurisprudence and is pursuing a Master’s in Tafsir. He leads Qutoof Academy for Arabic studies, teaches at AlKauthar Institute, and coordinates Islamic education at the London Muslim Mosque. Previously, he held leadership roles at London Muslim Mosque and Khalid Bin Waleed Mosque and served as a chaplain at Western University. He is also a marriage officiant, Hajj and Umrah leader, Zakat advisor, IDA lecturer, and board member at SPFunds Trust and the London Muslim Mosque.",
     },
-    
   ];
 
   const containerVariants = {
@@ -124,20 +123,23 @@ const Speakers: React.FC = () => {
           // width: "100vw", // Full viewport width
           // height: "100vh", // Full viewport height
         }}
-        variants={containerVariants}
       >
-        <h3 className={`${cinzel.className} text-xl font-bold text-center`}>
+        <motion.h3
+          className={`${cinzel.className} text-xl font-bold text-center`}
+          variants={containerVariants}
+        >
           PRESENTING OUR
-        </h3>
-        <h1
+        </motion.h3>
+        <motion.h1
           className={`${cinzel.className} text-6xl md:text-7xl font-bold mb-8 text-center relative group`}
+          variants={containerVariants}
         >
           <span className="inline-block relative">
             SPEAKERS
             {/* Underline Animation */}
             <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
           </span>
-        </h1>
+        </motion.h1>
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-14 px-4"
           variants={containerVariants}
