@@ -39,16 +39,16 @@ const Speakers: React.FC = () => {
       bio: "Razia Hamidi is a renowned spiritual teacher, relationship coach, and CEO of DiscoverU, the leading Islam-based self-development organization. Holding degrees in family psychology and education, she integrates Islamic spirituality with modern counseling to empower individuals and couples. Certified in the Gottman Seven Principles and trained in Alima studies, Razia provides tailored premarital and marriage coaching. With over 20 years of experience in nonprofits, advisory boards, and international speaking, she addresses topics like Qur’anic growth and faith-centered relationships. Through her programs, Razia’s mission, 'building believers,' inspires Muslims to cultivate resilience, self-awareness, and excellence (Ihsan) in all aspects of life.",
     },
     {
-      name: "Ust. Nabeela Syeda",
-      occupation: "Registered Psychotherapist at CMC",
-      imageUrl: "/imgs/speakers/ustNabeela.png",
-      bio: "Nabeela Syeda is a Registered Psychotherapist (Qualifying) with the CRPO and a member of the Ontario Association of Mental Health Professionals. She holds an Alimiyyah degree, a Master of Education in Counselling, and a Bachelor’s in Mental Health Studies. Nabeela specializes in self-esteem, stress management, immigrant experiences, trauma, and mood disorders, integrating Islamic principles with a client-centered approach. She has worked at CAMH, supported university students, and empowered Muslim women with eating disorders. Passionate about fostering resilience and hope, Nabeela combines her expertise and faith to promote healing and well-being within her community.",
-    },
-    {
       name: "Sh. Hosam Helal",
       occupation: "Imam at ISNA",
       imageUrl: "/imgs/speakers/shHosam.png",
       bio: "Sheikh Hosam Helal memorized the Qur’an at the age of eight and has received several Ijazahs in its recitation styles. He completed his Islamic studies at Al-Azhar University and is pursuing a PhD in Qur’anic exegesis at the University of Toronto. He founded Qur’an Journey, is an Imam and Youth & Education Manager at ISNA Canada, and serves as a Muslim Chaplain at Brock and McMaster University. He is part of the Stanford Muslim Mental Health Lab and actively engages with many MSAs across Ontario, including McMaster’s, inspiring youth through education and community involvement.",
+    },
+    {
+      name: "Ust. Nabeela Syeda",
+      occupation: "Registered Psychotherapist at CMC",
+      imageUrl: "/imgs/speakers/ustNabeela.png",
+      bio: "Nabeela Syeda is a Registered Psychotherapist (Qualifying) with the CRPO and a member of the Ontario Association of Mental Health Professionals. She holds an Alimiyyah degree, a Master of Education in Counselling, and a Bachelor’s in Mental Health Studies. Nabeela specializes in self-esteem, stress management, immigrant experiences, trauma, and mood disorders, integrating Islamic principles with a client-centered approach. She has worked at CAMH, supported university students, and empowered Muslim women with eating disorders. Passionate about fostering resilience and hope, Nabeela combines her expertise and faith to promote healing and well-being within her community.",
     },
     {
       name: "Sh. Moutasem Al-Hameedy",
@@ -63,17 +63,18 @@ const Speakers: React.FC = () => {
       bio: "Sheikh Sohaib Zuberi memorized the Qur'an while studying Business Economics at York University. He completed management training at Cornell University and CELTA from Cambridge University before pursuing higher Islamic studies at Al-Rashid Islamic Institute. After completing the seven-year Alimiyyah program, he began an advanced Iftaa Degree in Islamic Law at Jamiah Qasim ul Uloom in Scarborough. Sheikh Sohaib works full-time with Islamic Relief Canada as Major Donors Manager. He is an instructor at Mathabah Institute, delivers khutbahs, and leads halaqahs at various masaajid and MSAs across the GTA. He is cherished by MacMSA and every community he serves.",
     },
     {
-      name: "Sh. Aarij Anwer",
-      occupation: "Imam in London, Ontario",
-      imageUrl: "/imgs/speakers/shAarij.png",
-      bio: "Shaykh Aarij Anwer is an Imam in London, Ontario, with diverse academic and professional experience. He holds degrees in Computer Science, Education, and Islamic Jurisprudence and is pursuing a Master’s in Tafsir. He leads Qutoof Academy for Arabic studies, teaches at AlKauthar Institute, and coordinates Islamic education at the London Muslim Mosque. Previously, he held leadership roles at London Muslim Mosque and Khalid Bin Waleed Mosque and served as a chaplain at Western University. He is also a marriage officiant, Hajj and Umrah leader, Zakat advisor, IDA lecturer, and board member at SPFunds Trust and the London Muslim Mosque.",
-    },
-    {
       name: "Sh. Numan Attique",
       occupation: "Resident Scholar at ICCM",
       imageUrl: "/imgs/speakers/shNuman.png",
       bio: "Sheikh Numan Attique memorized the Qur’an at age 13 and graduated from a 5-year dawah and Sharia program under the Ministry of Islamic Affairs in Riyadh, Saudi Arabia. He holds Ijazaat in the six books of Hadith and served as an Imam in South Korea. Sheikh Numan earned a bachelor’s degree in Human Kinetics from the University of Guelph and has been involved with various Islamic institutions, including Al Falah Islamic Center and Mountain Masjid. Currently, he is the religious director at ICCM Milton and is pursuing an 8-year specialization in Ilm Al-Aqeedah under Dr. Sultan Alumayri in Makkah.",
     },
+    {
+      name: "Sh. Aarij Anwer",
+      occupation: "Imam in London, Ontario",
+      imageUrl: "/imgs/speakers/shAarij.png",
+      bio: "Shaykh Aarij Anwer is an Imam in London, Ontario, with diverse academic and professional experience. He holds degrees in Computer Science, Education, and Islamic Jurisprudence and is pursuing a Master’s in Tafsir. He leads Qutoof Academy for Arabic studies, teaches at AlKauthar Institute, and coordinates Islamic education at the London Muslim Mosque. Previously, he held leadership roles at London Muslim Mosque and Khalid Bin Waleed Mosque and served as a chaplain at Western University. He is also a marriage officiant, Hajj and Umrah leader, Zakat advisor, IDA lecturer, and board member at SPFunds Trust and the London Muslim Mosque.",
+    },
+    
   ];
 
   const containerVariants = {

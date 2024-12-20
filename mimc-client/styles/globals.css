@@ -6,6 +6,10 @@ html, div {
   scroll-behavior: smooth;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 img {
   -webkit-user-drag: none;
   /* Chrome, Safari */
