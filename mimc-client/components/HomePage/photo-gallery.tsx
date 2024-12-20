@@ -20,7 +20,7 @@ const PhotoGallery: React.FC = () => {
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2Flec%2Fl12.jpg?alt=media&token=f0ecda57-732c-44fe-9b24-10066688a447",
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2Flec%2Fl13.jpg?alt=media&token=ee31f36e-ef1f-4c40-a3a5-d8ce0b40c0be",
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2Flec%2Fl14.jpg?alt=media&token=3981bcd2-16ae-4be6-a381-a500509239de",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2Flec%2Fl15.jpg?alt=media&token=2b49e216-2588-4f2e-933d-0234febfb879",
+        // "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2Flec%2Fl15.jpg?alt=media&token=2b49e216-2588-4f2e-933d-0234febfb879",
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2Flec%2Fl16.jpg?alt=media&token=4be180de-5934-4c73-a787-bd3515f2d74d",
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2Flec%2Fl17.jpg?alt=media&token=522b13a4-e52f-4448-bb00-4fe3d51834d5",
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2Flec%2Fl18.jpg?alt=media&token=ce50b5b7-1284-4633-a42f-d4ab0dc67600",
