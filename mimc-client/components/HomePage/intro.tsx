@@ -70,7 +70,7 @@ const Intro: React.FC = () => {
       style={{
         backgroundImage: `
           linear-gradient(to bottom, #570326 20%, transparent 30%, transparent 80%, #570326 100%), 
-          url('/imgs/about/bg.png')
+          url('https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2Fabout%2Fbg.png?alt=media&token=754b7456-9330-45e4-a0a1-5348fd004c2b')
         `,
         backgroundSize: "cover", // Keep the image filling the container
         backgroundPosition: "center",
@@ -186,7 +186,7 @@ const Intro: React.FC = () => {
                 removeWrapper
                 alt="About Image 2"
                 className="object-cover"
-                src="/imgs/about/about_2.jpg"
+                src="https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2Fabout%2Fabout_2.jpg?alt=media&token=6d7b2e56-5869-4834-8f35-9e3f2b690e37"
               />
             </Card>
           </motion.div>
@@ -218,7 +218,7 @@ const Intro: React.FC = () => {
                 removeWrapper
                 alt="About Image 1"
                 className="object-cover"
-                src="/imgs/about/about_1.jpg"
+                src="https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2Fabout%2Fabout_1.jpg?alt=media&token=2556ccff-8816-4dea-b61e-2af42e1b6279"
               />
             </Card>
           </motion.div>
@@ -250,7 +250,7 @@ const Intro: React.FC = () => {
                 removeWrapper
                 alt="About Image 3"
                 className="object-cover"
-                src="/imgs/about/about_3.jpg"
+                src="https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2Fabout%2Fabout_3.jpg?alt=media&token=7b865a14-0ff8-4930-807d-e302479c4b59"
               />
             </Card>
           </motion.div>
