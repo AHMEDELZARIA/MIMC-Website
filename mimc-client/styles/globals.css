@@ -35,7 +35,7 @@ img {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 2px;
   /* Width of the scrollbar */
 }
 
