@@ -10,7 +10,7 @@ export default function FoodBazaar() {
     <section className="px-4 md:px-8">
       {/* Section Title */}
       <h3 className="text-xl font-bold text-center">INDULGE AND BROWSE OUR</h3>
-      <h1 className="text-7xl font-bold mb-8 text-center relative group">
+      <h1 className="text-6xl md:text-7xl font-bold mb-8 text-center relative group">
         <span className="inline-block relative">
           FOOD & BAZAAR
           {/* Underline Animation */}

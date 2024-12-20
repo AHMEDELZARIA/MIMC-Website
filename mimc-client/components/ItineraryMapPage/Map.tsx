@@ -101,7 +101,7 @@ const Map: React.FC = () => {
     >
       {/* Section Title */}
       <motion.h1
-        className="text-6xl font-bold mb-4 text-center relative group"
+        className="text-6xl md:text-7xl font-bold mb-4 text-center relative group"
         initial="hidden"
         variants={containerVariants}
         viewport={{ once: true, amount: 0.2 }}

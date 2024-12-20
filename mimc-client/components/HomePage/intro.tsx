@@ -119,7 +119,7 @@ const Intro: React.FC = () => {
         {/* Section Title */}
         <motion.h2
           animate={isInView ? "visible" : "hidden"}
-          className="text-7xl font-bold mb-8 text-center relative group"
+          className="text-6xl md:text-7xl font-bold mb-8 text-center relative group"
           initial="hidden"
           transition={{ duration: 0.8, delay: 0.2 }}
           variants={fadeInVariants}

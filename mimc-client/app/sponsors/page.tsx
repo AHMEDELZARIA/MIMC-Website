@@ -30,7 +30,7 @@ export default function SponsorsPage() {
     >
       {/* Section Title */}
       <motion.h1
-        className="text-7xl font-bold mb-4 text-center relative group px-4 md:px-8"
+        className="text-6xl md:text-7xl font-bold mb-4 text-center relative group px-4 md:px-8"
         variants={itemVariants}
       >
         <span className="inline-block relative">

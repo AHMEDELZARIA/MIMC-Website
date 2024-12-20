@@ -95,7 +95,7 @@ export default function Activities() {
         PRESENTING OUR
       </h3>
       <h1
-        className={`${cinzel.className} text-7xl font-bold mb-4 text-center relative group px-4 md:px-8`}
+        className={`${cinzel.className} text-6xl md:text-7xl font-bold mb-4 text-center relative group px-4 md:px-8`}
       >
         {/* <h3 className="text-xl font-bold text-center px-4 md:px-8">ENGAGE IN</h3> */}
         {/* <h1 className="text-7xl font-bold mb-4 text-center relative group px-4 md:px-8"> */}

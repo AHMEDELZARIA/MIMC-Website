@@ -130,7 +130,7 @@ const PhotoGallery: React.FC = () => {
       whileInView="visible"
     >
       <motion.h2
-        className="text-7xl font-bold mb-8 text-center relative group"
+        className="text-6xl md:text-7xl font-bold mb-8 text-center relative group"
         initial="hidden"
         variants={titleVariants}
         viewport={{ once: true }}
@@ -204,7 +204,7 @@ const PhotoGallery: React.FC = () => {
 
       {/* EXPERIENCE THE JOURNEY */}
       <motion.h3
-        className="text-5xl font-bold mb-4 text-center relative group"
+        className="text-4xl md:text-5xl font-bold mb-4 text-center relative group"
         initial="hidden"
         variants={titleVariants}
         viewport={{ once: true }}
@@ -296,7 +296,7 @@ const PhotoGallery: React.FC = () => {
 
       {/* RELIVE THE HIGHLIGHTS */}
       <motion.h3
-        className="text-5xl font-bold mb-4 text-center relative group"
+        className="text-4xl md:text-5xl font-bold mb-4 text-center relative group"
         initial="hidden"
         variants={titleVariants}
         viewport={{ once: true }}

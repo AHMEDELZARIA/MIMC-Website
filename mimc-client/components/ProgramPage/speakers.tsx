@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css"; // Import Rodal styles
-import { Button } from "@nextui-org/react";
+import { Button, card } from "@nextui-org/react";
 
 import { cinzel } from "@/config/fonts";
 
@@ -74,7 +74,6 @@ const Speakers: React.FC = () => {
       imageUrl: "/imgs/speakers/shAarij.png",
       bio: "Shaykh Aarij Anwer is an Imam in London, Ontario, with diverse academic and professional experience. He holds degrees in Computer Science, Education, and Islamic Jurisprudence and is pursuing a Master’s in Tafsir. He leads Qutoof Academy for Arabic studies, teaches at AlKauthar Institute, and coordinates Islamic education at the London Muslim Mosque. Previously, he held leadership roles at London Muslim Mosque and Khalid Bin Waleed Mosque and served as a chaplain at Western University. He is also a marriage officiant, Hajj and Umrah leader, Zakat advisor, IDA lecturer, and board member at SPFunds Trust and the London Muslim Mosque.",
     },
-    
   ];
 
   const containerVariants = {
@@ -96,12 +95,14 @@ const Speakers: React.FC = () => {
 
   useEffect(() => {
     if (isModalOpen) {
-      document.body.classList.add("no-scroll");
+      document.body.style.overflow = "hidden"; // Prevent body scrolling
     } else {
-      document.body.classList.remove("no-scroll");
+      document.body.style.overflow = "auto"; // Restore body scrolling
     }
 
-    return () => document.body.classList.remove("no-scroll");
+    return () => {
+      document.body.style.overflow = "auto"; // Clean up on unmount
+    };
   }, [isModalOpen]);
 
   return (
@@ -109,7 +110,7 @@ const Speakers: React.FC = () => {
       {/* Main Section */}
       <motion.section
         animate="visible"
-        className="relative w-full"
+        className="relative w-full py-8 md:py-10"
         initial="hidden"
         style={{
           backgroundImage: `
@@ -122,20 +123,23 @@ const Speakers: React.FC = () => {
           // width: "100vw", // Full viewport width
           // height: "100vh", // Full viewport height
         }}
-        variants={containerVariants}
       >
-        <h3 className={`${cinzel.className} text-xl font-bold text-center`}>
+        <motion.h3
+          className={`${cinzel.className} text-xl font-bold text-center`}
+          variants={containerVariants}
+        >
           PRESENTING OUR
-        </h3>
-        <h1
-          className={`${cinzel.className} text-7xl font-bold mb-8 text-center relative group`}
+        </motion.h3>
+        <motion.h1
+          className={`${cinzel.className} text-6xl md:text-7xl font-bold mb-8 text-center relative group`}
+          variants={containerVariants}
         >
           <span className="inline-block relative">
             SPEAKERS
             {/* Underline Animation */}
             <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
           </span>
-        </h1>
+        </motion.h1>
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-14 px-4"
           variants={containerVariants}
@@ -180,27 +184,31 @@ const Speakers: React.FC = () => {
       {/* Modal */}
       <Rodal
         animation="zoom"
+        className=""
         customStyles={{
           backgroundColor: "#3B0819",
-          width: "95%",
-          maxWidth: "600px",
-          height: "86vh",
-          maxHeight: "200vh",
-          overflowY: "auto",
-          borderRadius: "20px",
-          padding: "30px",
+          width: "95%", // Responsive width
+          maxWidth: "500px", // Limit width on larger screens
+          height: "auto", // Let content determine the height
+          maxHeight: "70vh", // Prevent overflowing the viewport
+          overflowY: "auto", // Enable scrolling within the modal
+          borderRadius: "0px",
+          padding: "20px", // Reduce padding for smaller screens
           textAlign: "center",
           display: "flex",
-          justifyContent: "center",
+          flexDirection: "column", // Column layout for better spacing
+          justifyContent: "flex-start", // Align content at the top
           alignItems: "center",
+          margin: "20vh auto", // Center the modal with enough top margin
         }}
         visible={isModalOpen}
         onClose={() => setModalOpen(false)}
+        closeMaskOnClick={false}
       >
         {activeSpeaker && (
           <div className="flex flex-col items-center">
             {/* Speaker Image */}
-            <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-[#A9DA88] mb-4 shadow-md transition-transform duration-300 hover:scale-105">
+            <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-[#A9DA88] mb-4 shadow-md transition-transform duration-300 hover:scale-105">
               <img
                 alt={activeSpeaker.name}
                 className="w-full h-full object-cover"
@@ -210,10 +218,10 @@ const Speakers: React.FC = () => {
             </div>
 
             {/* Name and Occupation */}
-            <h2 className="text-2xl uppercase font-bold text-[#F0FFC9]">
+            <h2 className="text-xl md:text-2xl uppercase font-bold text-[#F0FFC9] mb-2">
               {activeSpeaker.name}
             </h2>
-            <p className="text-white font-medium uppercase tracking-widest mb-4">
+            <p className="text-sm md:text-base text-white font-medium uppercase tracking-widest mb-4">
               {activeSpeaker.occupation}
             </p>
 
@@ -221,7 +229,7 @@ const Speakers: React.FC = () => {
             <div className="w-16 h-[2px] bg-[#A9DA88] mb-4" />
 
             {/* Bio */}
-            <p className="text-white text-md leading-relaxed text-justify">
+            <p className="text-sm md:text-md text-white leading-relaxed text-justify">
               {activeSpeaker.bio}
             </p>
           </div>
