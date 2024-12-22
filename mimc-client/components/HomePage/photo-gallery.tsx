@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, Spacer, CardBody, CardHeader, Divider } from "@nextui-org/react";
+import { Card, Spacer, CardBody, CardHeader, Divider, Image } from "@nextui-org/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Pagination, Autoplay } from "swiper/modules";
 
@@ -14,48 +14,51 @@ const PhotoGallery: React.FC = () => {
   // Image data for card decks
   const galleryData = {
     LECTURES: {
-      images: [
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F1.jpg?alt=media&token=bb962e65-3a0e-406a-8fc4-bb0a25e03e35",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F2.jpg?alt=media&token=c09db826-95c6-4a26-8176-5a282702b028",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F3.jpg?alt=media&token=cea21c1d-3100-458d-af08-b1204692c79c",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F4.jpg?alt=media&token=b86f4bbb-3a65-4c6f-9493-6fa503d4929b",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F5.jpg?alt=media&token=7836bbb2-a8ac-4934-81ba-84c246144622",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F6.jpg?alt=media&token=d40e42bc-a26f-42d9-b267-b314e9c310dc",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F7.jpg?alt=media&token=6761369f-1ec2-47ea-9806-77ec7767ada3",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F8.jpg?alt=media&token=7667e1eb-c21a-4b72-be8a-970a67bef09c",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F9.jpg?alt=media&token=2ec4fcb9-fcec-4860-9b6e-7da096e43f1d",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F10.jpg?alt=media&token=e8ea73d0-1337-4d55-880a-9b3b220d8564",
-      ],
+      image: "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FSpeakers.png?alt=media&token=fe8b9836-eb41-44f6-a7e0-229b8c533bda",
+      // images: [
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F1.jpg?alt=media&token=bb962e65-3a0e-406a-8fc4-bb0a25e03e35",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F2.jpg?alt=media&token=c09db826-95c6-4a26-8176-5a282702b028",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F3.jpg?alt=media&token=cea21c1d-3100-458d-af08-b1204692c79c",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F4.jpg?alt=media&token=b86f4bbb-3a65-4c6f-9493-6fa503d4929b",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F5.jpg?alt=media&token=7836bbb2-a8ac-4934-81ba-84c246144622",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F6.jpg?alt=media&token=d40e42bc-a26f-42d9-b267-b314e9c310dc",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F7.jpg?alt=media&token=6761369f-1ec2-47ea-9806-77ec7767ada3",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F8.jpg?alt=media&token=7667e1eb-c21a-4b72-be8a-970a67bef09c",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F9.jpg?alt=media&token=2ec4fcb9-fcec-4860-9b6e-7da096e43f1d",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F10.jpg?alt=media&token=e8ea73d0-1337-4d55-880a-9b3b220d8564",
+      // ],
       description: "Explore captivating lectures that inspire and enlighten.",
     },
     ACTIVITIES: {
-      images: [
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F1.jpg?alt=media&token=d0bc02fc-e512-4b75-bdbb-5ac485bd41de",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F2.jpg?alt=media&token=dda6ccdc-2877-4b47-975a-38432f64fbf9",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F3.jpg?alt=media&token=b7dfb13e-1fcd-4c25-83f0-5a66884afc15",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F4.jpg?alt=media&token=74a6f82d-7d85-40c4-982f-77b8c16b4390",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F5.jpg?alt=media&token=3c06e54d-055a-4070-bde2-5869e6969811",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F6.jpg?alt=media&token=347bff5c-60bc-4e00-bc52-cd41c17b95bd",
-        // "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F7.jpg?alt=media&token=123cfac9-42eb-47ae-bf21-b642e54c0d9a",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F8.jpg?alt=media&token=ff693c9e-b660-48d0-88db-5f96002473b0",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F9.jpg?alt=media&token=10192508-5884-49a5-ac5b-40f648509e4b",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F10.jpg?alt=media&token=e70343e8-356d-44bb-b089-d04ae982a0e2",
-      ],
+      image: "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivities.png?alt=media&token=f61ffc67-9579-48a4-84b7-167fa71a5e68",
+      // images: [
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F1.jpg?alt=media&token=d0bc02fc-e512-4b75-bdbb-5ac485bd41de",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F2.jpg?alt=media&token=dda6ccdc-2877-4b47-975a-38432f64fbf9",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F3.jpg?alt=media&token=b7dfb13e-1fcd-4c25-83f0-5a66884afc15",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F4.jpg?alt=media&token=74a6f82d-7d85-40c4-982f-77b8c16b4390",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F5.jpg?alt=media&token=3c06e54d-055a-4070-bde2-5869e6969811",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F6.jpg?alt=media&token=347bff5c-60bc-4e00-bc52-cd41c17b95bd",
+      //   // "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F7.jpg?alt=media&token=123cfac9-42eb-47ae-bf21-b642e54c0d9a",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F8.jpg?alt=media&token=ff693c9e-b660-48d0-88db-5f96002473b0",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F9.jpg?alt=media&token=10192508-5884-49a5-ac5b-40f648509e4b",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F10.jpg?alt=media&token=e70343e8-356d-44bb-b089-d04ae982a0e2",
+      // ],
       description: "Discover engaging activities that bring everyone together.",
     },
     COMMUNITY: {
-      images: [
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F1.jpg?alt=media&token=04b2a6ac-4970-4be7-8c72-ee4b662eb123",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F2.jpg?alt=media&token=66a23857-48f9-4b3d-9e0b-29a59220a01d",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F3.jpg?alt=media&token=fbf7de57-d091-4580-aac7-238b6a97ccd9",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F4.jpg?alt=media&token=52f5cf9b-3184-46e3-ae6f-e9c2701aac19",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F5.jpg?alt=media&token=9a76c011-6f4e-4f1f-8d3c-63e1cfe1b7a5",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F6.jpg?alt=media&token=3baadd4e-af65-4bc0-9a1b-41e97ba125f8",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F7.jpg?alt=media&token=691e261c-0f48-4059-8088-257bb10a5f86",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F8.jpg?alt=media&token=bd8b7865-4283-40b6-945d-d188412a30b7",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F9.jpg?alt=media&token=3f78731f-8538-4e1e-8b3c-67082a13f431",
-        // "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F10.jpg?alt=media&token=2740ee7e-6ee6-4b81-8f68-0ee2fc3201cb",
-      ],
+      image: "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity.png?alt=media&token=c5d16359-725c-4bd4-abce-52b40aeb9f5a",
+      // images: [
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F1.jpg?alt=media&token=04b2a6ac-4970-4be7-8c72-ee4b662eb123",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F2.jpg?alt=media&token=66a23857-48f9-4b3d-9e0b-29a59220a01d",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F3.jpg?alt=media&token=fbf7de57-d091-4580-aac7-238b6a97ccd9",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F4.jpg?alt=media&token=52f5cf9b-3184-46e3-ae6f-e9c2701aac19",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F5.jpg?alt=media&token=9a76c011-6f4e-4f1f-8d3c-63e1cfe1b7a5",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F6.jpg?alt=media&token=3baadd4e-af65-4bc0-9a1b-41e97ba125f8",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F7.jpg?alt=media&token=691e261c-0f48-4059-8088-257bb10a5f86",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F8.jpg?alt=media&token=bd8b7865-4283-40b6-945d-d188412a30b7",
+      //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F9.jpg?alt=media&token=3f78731f-8538-4e1e-8b3c-67082a13f431",
+      //   // "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F10.jpg?alt=media&token=2740ee7e-6ee6-4b81-8f68-0ee2fc3201cb",
+      // ],
       description: "Celebrate the sense of belonging and shared purpose.",
     },
   };
@@ -145,7 +148,7 @@ const PhotoGallery: React.FC = () => {
       {/* 1x3 Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-12">
         {Object.entries(galleryData).map(
-          ([category, { images, description }], index) => (
+          ([category, { image, description }], index) => (
             <motion.div
               key={category}
               className={"p-4 rounded-lg"}
@@ -161,7 +164,7 @@ const PhotoGallery: React.FC = () => {
               <p className="text-sm text-center font-semibold text-[#F0FFC9] opacity-80 mb-4">
                 {description}
               </p>
-              <Swiper
+              {/* <Swiper
                 className="w-full max-w-sm mx-auto"
                 effect="cards"
                 grabCursor={false}
@@ -194,7 +197,32 @@ const PhotoGallery: React.FC = () => {
                     />
                   </SwiperSlide>
                 ))}
-              </Swiper>
+              </Swiper> */}
+              <Card
+                isHoverable
+                isPressable
+                className="relative bg-gradient-to-br from-[#6a0336] to-[#450222]"
+                style={{
+                  boxShadow: "0 0 25px 5px rgba(87, 3, 38, 0.4)",
+                }}
+              >
+                {/* <CardHeader className="absolute z-20 top-2 left-2 flex-col !items-start text-left">
+                  <p className="text-tiny text-[#F0FFC9]/70 uppercase font-bold">
+                    {category}
+                  </p>
+                  <h4 className="text-[white] text-small font-medium text-large">
+                    Learn from impactful speakers and enrich your faith.
+                  </h4>
+                </CardHeader> */}
+                <Image
+                  isBlurred
+                  isZoomed
+                  removeWrapper
+                  alt="About Image 2"
+                  className="object-cover"
+                  src={image}
+                />
+              </Card>
             </motion.div>
           ),
         )}
