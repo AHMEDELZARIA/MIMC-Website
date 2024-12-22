@@ -8,6 +8,7 @@ import {
   Radio,
   RadioGroup,
 } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const TicketPurchaseForm: React.FC = () => {
@@ -26,10 +27,11 @@ const TicketPurchaseForm: React.FC = () => {
     email: "",
     confirmEmail: "",
     phone: "",
-    smsOptIn: false,
+    smsOptIn: true,
     emergencyContactName: "",
     emergencyContactPhone: "",
   });
+  const router = useRouter();
 
   // Dynamic forms state
   const [adultTicketDetails, setAdultTicketDetails] = useState<any[]>([]);
@@ -47,7 +49,7 @@ const TicketPurchaseForm: React.FC = () => {
   useEffect(() => {
     const newTotal = Object.entries(tickets).reduce(
       (acc, [key, count]) => acc + count * prices[key as keyof typeof prices],
-      donation ? 2 : 0,
+      donation ? 3 : 0,
     );
 
     setTotalPrice(newTotal);
@@ -122,21 +124,22 @@ const TicketPurchaseForm: React.FC = () => {
   };
 
   const handleSubmit = async () => {
-    // const finalTickets = {
-    //   personalDetails,
-    //   adult: adultTicketDetails,
-    //   marriage: marriageTicketDetails,
-    //   youth: youthTicketDetails,
-    //   child: childTicketDetails,
-    //   donation,
-    // };
-    // const link = await (
-    //   await fetch(`http://localhost:8000/tickets-link`, {
-    //     method: "POST",
-    //     body: JSON.stringify(finalTickets),
-    //   })
-    // ).json();
-    // push(link.link);
+    const finalTickets = {
+      personalDetails,
+      adult: adultTicketDetails,
+      marriage: marriageTicketDetails,
+      youth: youthTicketDetails,
+      child: childTicketDetails,
+      donation,
+    };
+    const link = await (
+      await fetch(`http://localhost:7000/tickets-link`, {
+        // https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/tickets-link
+        method: "POST",
+        body: JSON.stringify(finalTickets),
+      })
+    ).json();
+    router.push(link.link);
   };
 
   return (
@@ -298,7 +301,7 @@ const TicketPurchaseForm: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <Input
             id="adult"
-            label="Adult Pass (14+ Years Old) - $20/ticket"
+            label="Adult Pass (14+ y/o) - $20/ticket"
             min="0"
             placeholder="0"
             type="number"
@@ -306,7 +309,7 @@ const TicketPurchaseForm: React.FC = () => {
           />
           <Input
             id="marriage"
-            label="Marriage Lecture (14+ Years Old) - $5/ticket"
+            label="Additional Marriage Lecture (14+ y/o) - $5/ticket"
             min="0"
             placeholder="0"
             type="number"
@@ -314,7 +317,7 @@ const TicketPurchaseForm: React.FC = () => {
           />
           <Input
             id="youth"
-            label="Youth Pass (7-13 Years Old) - $5/ticket"
+            label="Youth Pass (7-13 y/o) - $5/ticket"
             min="0"
             placeholder="0"
             type="number"
@@ -322,7 +325,7 @@ const TicketPurchaseForm: React.FC = () => {
           />
           <Input
             id="child"
-            label="Child Pass (0-6 Years Old) - Free"
+            label="Child Pass (0-6 y/o) - Free"
             min="0"
             placeholder="0"
             type="number"
@@ -338,7 +341,7 @@ const TicketPurchaseForm: React.FC = () => {
           radius="full"
           onChange={() => setDonation(!donation)}
         >
-          Donate $2 to MacMSA
+          Donate $3 to MacMSA
         </Checkbox>
 
         {/* Final Price */}
