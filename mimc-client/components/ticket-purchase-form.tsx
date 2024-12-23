@@ -136,6 +136,10 @@ const TicketPurchaseForm: React.FC = () => {
       await fetch(`http://localhost:7000/tickets-link`, {
         // https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/tickets-link
         method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(finalTickets),
       })
     ).json();
