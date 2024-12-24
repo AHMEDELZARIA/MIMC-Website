@@ -5,9 +5,10 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css"; // Import Rodal styles
-import { Button, card } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 
 import { cinzel } from "@/config/fonts";
+import { title } from "process";
 
 const Speakers: React.FC = () => {
   const [activeSpeaker, setActiveSpeaker] = useState<null | {
@@ -84,6 +85,11 @@ const Speakers: React.FC = () => {
     },
   };
 
+   const titleVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
+  };
+
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -126,13 +132,13 @@ const Speakers: React.FC = () => {
       >
         <motion.h3
           className={`${cinzel.className} text-xl font-bold text-center`}
-          variants={containerVariants}
+          variants={titleVariants}
         >
           PRESENTING OUR
         </motion.h3>
         <motion.h1
           className={`${cinzel.className} text-6xl md:text-7xl font-bold mb-8 text-center relative group`}
-          variants={containerVariants}
+          variants={titleVariants}
         >
           <span className="inline-block relative">
             SPEAKERS

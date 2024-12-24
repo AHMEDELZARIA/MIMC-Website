@@ -6,6 +6,7 @@ import { CalendarIcon } from "@heroicons/react/24/solid";
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline"; // Import additional icons for the legend
 
 import { cinzel } from "@/config/fonts";
+import { title } from "process";
 
 export default function Activities() {
   // Activities Data
@@ -31,7 +32,7 @@ export default function Activities() {
       category: "QUR'AN COMPETITION",
       imageUrl: "/imgs/act/act19.jpg",
       date: "Feb 15, 2025",
-      time: "11:00 AM - 4:30 PM",
+      time: "12:00 PM - 4:30 PM",
       requiresSignUp: true,
       link: "https://docs.google.com/forms/d/e/1FAIpQLScBDBGLH67Mqlzqg35h8xEQOaf0LabSYNzFqMMgr5j0ckbTeA/viewform?usp=dialog",
     },
@@ -71,22 +72,18 @@ export default function Activities() {
     },
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
+   const titleVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
   };
 
   return (
     <motion.section
       className=""
       initial="hidden"
-      variants={containerVariants}
       viewport={{ once: true, amount: 0.2 }}
       whileInView="visible"
+      variants={containerVariants}
     >
       {/* Section Title */}
       <h3
