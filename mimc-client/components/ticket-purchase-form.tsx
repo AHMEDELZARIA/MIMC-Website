@@ -133,7 +133,8 @@ const TicketPurchaseForm: React.FC = () => {
       donation,
     };
     const link = await (
-      await fetch(`http://localhost:7000/tickets-link`, {
+      await fetch(`https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/tickets-link`, {
+        // http://localhost:7000/tickets-link
         // https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/tickets-link
         method: "POST",
         headers: {
