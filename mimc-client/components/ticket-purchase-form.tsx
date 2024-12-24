@@ -368,7 +368,7 @@ const TicketPurchaseForm: React.FC = () => {
         <div className="flex justify-between items-center mb-3">
           <h3 className="text-xl font-bold text-[#A9DA88]">Final Price:</h3>
           <span className="text-2xl font-semibold text-[#A9DA88]">
-            ${totalPrice.toFixed(3)}
+            ${totalPrice.toFixed(2)}
           </span>
         </div>
 
