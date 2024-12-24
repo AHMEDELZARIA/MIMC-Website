@@ -19,7 +19,7 @@ const TicketStatusPopup: React.FC = () => {
         "JazakAllahu khairan for purchasing your ticket(s)! We look forward to hosting you! Please check your email for your receipt in a few minutes.",
         {
           position: "top-center",
-          autoClose: 5000,
+          autoClose: 10000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -28,10 +28,10 @@ const TicketStatusPopup: React.FC = () => {
       });
     } else if (canceled === "true") {
       toast.error(
-        "Your ticket purchase did not go through and was canceled. Please try again. If issue persists please contact us via email.",
+        "Your ticket purchase did not go through and was canceled. Please try again. If issue persists, please contact us via email.",
         {
           position: "top-center",
-          autoClose: 5000,
+          autoClose: 10000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
