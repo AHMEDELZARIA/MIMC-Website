@@ -77,7 +77,7 @@ const Speakers: React.FC = () => {
     },
     {
       name: "Surprise Guest",
-      occupation: "To be announced",
+      occupation: "To Be Announced",
       imageUrl: "/imgs/speakers/surprise-guest.png",
       bio: "...",
     },
