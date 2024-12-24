@@ -361,7 +361,7 @@ const TicketPurchaseForm: React.FC = () => {
           radius="full"
           onChange={() => setDonation(!donation)}
         >
-          Donate $2 to MacMSA
+          Donate $2 to MacMSA annually to support MIMC and future initiatives.
         </Checkbox>
 
         {/* Final Price */}
