@@ -139,7 +139,7 @@ const Intro: React.FC = () => {
           variants={fadeInVariants}
         >
           <strong className="text-[#F0FFC9]">
-            MIMC is back to McMaster University this February!
+            MIMC is back at McMaster University on February 15-16!
           </strong>{" "}
           A 2-day convention of lectures, activities, competitions, bazaar,
           vendor, and more! Join us alongside over{" "}

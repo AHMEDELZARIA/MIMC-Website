@@ -238,9 +238,9 @@ const TicketPurchaseForm: React.FC = () => {
             />
             <Input
               isRequired
-              label="Emergency Contact Phone"
+              label="Emergency Contact Number"
               name="emergencyContactPhone"
-              placeholder="Enter emergency contact phone"
+              placeholder="Enter emergency contact number"
               type="tel"
               value={personalDetails.emergencyContactPhone}
               onChange={handlePersonalDetailsChange}
@@ -277,19 +277,18 @@ const TicketPurchaseForm: React.FC = () => {
           </p>
           <ul className="list-disc pl-5 text-[white] text-sm mb-4">
             <li>
-              I consent to photography, videography, and audio recording, which
-              may be publicly released.
+              I consent to being photographed, filmed, and audio-recorded, with
+              the understanding that these recordings may be publicly released.
             </li>
             <li>
-              I consent to not hold MacMSA or McMaster University liable for
-              lost, stolen, or damaged property.
+              I agree not to hold MacMSA or McMaster University liable for any
+              lost, stolen, or damaged property, or for any physical injury
+              sustained during the event.
             </li>
-            <li>
-              I consent to receive emails regarding MIMC and future events.
-            </li>
+            <li>I consent to receiving emails about MIMC and future events.</li>
           </ul>
           <p className="text-white text-sm mb-2">
-            All proceeds for the marriage lecture go to charity. You must have
+            All proceeds from the marriage lecture go to charity. You must have
             purchased an Adult Pass in order to attend this lecture. More
             information on our Instagram{" "}
             <span className="text-[#A9DA88] font-medium">@macmsa_mimc</span>.
@@ -302,34 +301,46 @@ const TicketPurchaseForm: React.FC = () => {
         <h3 className="text-2xl font-semibold uppercase text-[#F0FFC9] mb-4">
           Select Your Tickets
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-4 place-items-start ">
+          <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+            Adult Pass (14+ y/o) - $20/ticket
+          </h3>
           <Input
             id="adult"
-            label="Adult Pass (14+ y/o) - $20/ticket"
+            // label="Adult Pass (14+ y/o) - $20/ticket"
             min="0"
             placeholder="0"
             type="number"
             onChange={handleTicketChange}
           />
+          <h3 className="text-[0.68rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+            Extra Marriage Lecture (14+ y/o) - $5/ticket
+          </h3>
           <Input
             id="marriage"
-            label="Additional Marriage Lecture (14+ y/o) - $5/ticket"
+            // label="Additional Marriage Lecture (14+ y/o) - $5/ticket"
             min="0"
             placeholder="0"
             type="number"
             onChange={handleTicketChange}
           />
+          <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+            Youth Pass (7-13 y/o) - $5/ticket
+          </h3>
           <Input
             id="youth"
-            label="Youth Pass (7-13 y/o) - $5/ticket"
+            // label="Youth Pass (7-13 y/o) - $5/ticket"
             min="0"
             placeholder="0"
             type="number"
             onChange={handleTicketChange}
           />
+          <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+            Child Pass (0-6 y/o) - Free
+          </h3>
           <Input
             id="child"
-            label="Child Pass (0-6 y/o) - Free"
+            // label="Child Pass (0-6 y/o) - Free"
             min="0"
             placeholder="0"
             type="number"
@@ -397,30 +408,43 @@ const TicketPurchaseForm: React.FC = () => {
                   )
                 }
               />
-              <RadioGroup
-                color="success"
-                label="Select your school (if applicable)"
-                orientation="horizontal"
-                value={adultTicketDetails[index].school}
-                onValueChange={(value) =>
-                  handleDynamicFormChange(index, "adult", "school", value)
-                }
-              >
-                <Radio value="mcmaster">McMaster</Radio>
-                <Radio value="brock">Brock</Radio>
-                <Radio value="uoft">UofT</Radio>
-                <Radio value="western">Western</Radio>
-                <Radio value="utm">UTM</Radio>
-                <Radio value="humber">Humber</Radio>
-                <Radio value="mohawk">Mohawk</Radio>
-                <Radio value="wlu">Laurier</Radio>
-                <Radio value="uw">Waterloo</Radio>
-                <Radio value="fanshawe">Fanshawe</Radio>
-                <Radio value="windsor">Windsor</Radio>
-                <Radio value="tmu">TMU</Radio>
-                <Radio value="guelph">Guelph</Radio>
-                <Radio value="seneca">Seneca</Radio>
-              </RadioGroup>
+              <div>
+                <label
+                  htmlFor={`school-select-${index}`}
+                  className="block mb-2 text-gray-400"
+                >
+                  Select your school (if applicable)
+                </label>
+                <select
+                  className="w-full p-4 text-sm bg-[#27272a] text-white rounded-xl outline-none cursor-pointer appearance-none"
+                  id={`school-select-${index}`}
+                  name="school"
+                  value={adultTicketDetails[index].school}
+                  onChange={(e) =>
+                    handleDynamicFormChange(
+                      index,
+                      "adult",
+                      "school",
+                      e.target.value,
+                    )
+                  }
+                >
+                  <option value="mcmaster">McMaster</option>
+                  <option value="brock">Brock</option>
+                  <option value="uoft">UofT</option>
+                  <option value="western">Western</option>
+                  <option value="utm">UTM</option>
+                  <option value="humber">Humber</option>
+                  <option value="mohawk">Mohawk</option>
+                  <option value="wlu">Laurier</option>
+                  <option value="uw">Waterloo</option>
+                  <option value="fanshawe">Fanshawe</option>
+                  <option value="windsor">Windsor</option>
+                  <option value="tmu">TMU</option>
+                  <option value="guelph">Guelph</option>
+                  <option value="seneca">Seneca</option>
+                </select>
+              </div>
               <RadioGroup
                 isRequired
                 className="mt-2"
