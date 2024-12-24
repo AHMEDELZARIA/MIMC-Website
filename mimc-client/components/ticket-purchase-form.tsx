@@ -434,6 +434,7 @@ const TicketPurchaseForm: React.FC = () => {
                     )
                   }
                 >
+                  <option value="none">None</option>
                   <option value="mcmaster">McMaster</option>
                   <option value="brock">Brock</option>
                   <option value="utsg">UTSG</option>
@@ -449,8 +450,8 @@ const TicketPurchaseForm: React.FC = () => {
                   <option value="humber">Humber</option>
                   <option value="mohawk">Mohawk</option>
                   <option value="seneca">Seneca</option>
-                  <option value="seneca">High School</option>
-                  <option value="seneca">Other</option>
+                  <option value="hs">High School</option>
+                  <option value="other">Other</option>
                 </select>
               </div>
               <RadioGroup
