@@ -150,9 +150,9 @@ const TicketPurchaseForm: React.FC = () => {
   return (
     <div className="flex justify-center items-center p-4">
       <div className="max-w-4xl w-full bg-[#3B0819] p-8 rounded-lg shadow-lg">
-        <div className="bg-yellow-200 text-yellow-800 p-4 rounded mb-4 font-bold uppercase">
+        {/* <div className="bg-yellow-200 text-yellow-800 p-4 rounded mb-4 font-bold uppercase">
           Ticket sales will open later this evening inshaAllah, stay tuned!
-        </div>
+        </div> */}
         {/* Event Info Section */}
         <div className="mb-5">
           <h3 className="text-2xl font-semibold uppercase text-[#F0FFC9] mb-2">
@@ -163,7 +163,7 @@ const TicketPurchaseForm: React.FC = () => {
             February 15-16, 2025
           </p>
           <p className="text-white text-sm">
-            <strong className="text-[#A9DA88]">Time:</strong> 10 AM - 9 PM
+            <strong className="text-[#A9DA88]">Time:</strong> 10:00 AM - 9:00 PM
           </p>
           <p className="text-white text-sm">
             <strong className="text-[#A9DA88]">Location:</strong> McMaster
@@ -596,8 +596,8 @@ const TicketPurchaseForm: React.FC = () => {
             className="font-bold uppercase bg-[#A9DA88] text-[#3B0819]"
             radius="full"
             variant="solid"
-            // onClick={() => handleSubmit()}
-            onClick={() => alert("Ticket sales will open later this evening inshaAllah, stay tuned!")}
+            onClick={() => handleSubmit()}
+            // onClick={() => alert("Ticket sales will open later this evening inshaAllah, stay tuned!")}
           >
             Proceed to Checkout
           </Button>

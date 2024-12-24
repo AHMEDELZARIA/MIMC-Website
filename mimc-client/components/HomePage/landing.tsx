@@ -95,10 +95,10 @@ const Landing: React.FC = () => {
           <Image
             alt="MIMC 2025"
             className="rounded-lg"
-            height={545}
+            height={768}
             layout="responsive"
-            src="/imgs/mimc2025-fancy1.png"
-            width={1998}
+            src="/imgs/fancyfinal.png"
+            width={1366}
           />
 
           {/* <div style={{ maxHeight: '50%', width: '100%', position: 'relative' }}>
