@@ -14,7 +14,7 @@ const PhotoGallery: React.FC = () => {
   // Image data for card decks
   const galleryData = {
     LECTURES: {
-      image: "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FSpeakers.png?alt=media&token=fe8b9836-eb41-44f6-a7e0-229b8c533bda",
+      image: "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2Ffinallecture.jpg?alt=media&token=afae7d47-9ce7-45c7-a1ff-d0440d4e8578",
       // images: [
       //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F1.jpg?alt=media&token=bb962e65-3a0e-406a-8fc4-bb0a25e03e35",
       //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FLectures%2F2.jpg?alt=media&token=c09db826-95c6-4a26-8176-5a282702b028",
@@ -30,7 +30,7 @@ const PhotoGallery: React.FC = () => {
       description: "Explore captivating lectures that inspire and enlighten.",
     },
     ACTIVITIES: {
-      image: "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivities.png?alt=media&token=f61ffc67-9579-48a4-84b7-167fa71a5e68",
+      image: "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2Ffinalactivity.jpg?alt=media&token=8974185c-cded-4c16-833a-db1b06587142",
       // images: [
       //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F1.jpg?alt=media&token=d0bc02fc-e512-4b75-bdbb-5ac485bd41de",
       //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FActivites%2F2.jpg?alt=media&token=dda6ccdc-2877-4b47-975a-38432f64fbf9",
@@ -46,7 +46,7 @@ const PhotoGallery: React.FC = () => {
       description: "Discover engaging activities that bring everyone together.",
     },
     COMMUNITY: {
-      image: "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity.png?alt=media&token=c5d16359-725c-4bd4-abce-52b40aeb9f5a",
+      image: "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2Ffinalcommunity.jpg?alt=media&token=0806cb54-7aa3-40e5-afd6-c94341cec6bb",
       // images: [
       //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F1.jpg?alt=media&token=04b2a6ac-4970-4be7-8c72-ee4b662eb123",
       //   "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FHomePage%2FCommunity%2F2.jpg?alt=media&token=66a23857-48f9-4b3d-9e0b-29a59220a01d",
@@ -67,7 +67,6 @@ const PhotoGallery: React.FC = () => {
   const slidingData = {
     Vertical: {
       images: [
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FgalleryHoizontal%2Fv1.jpg?alt=media&token=5f7dc113-c67e-4d52-b692-b83e8952a5d5",
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FgalleryHoizontal%2Fv10.jpg?alt=media&token=de0ca870-23fd-4ebb-afd8-9436c54d509b",
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FgalleryHoizontal%2Fv11.jpg?alt=media&token=f3ff1cb0-dda0-42e0-8dc2-9095d752743b",
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FgalleryHoizontal%2Fv12.jpg?alt=media&token=981f5041-995f-40ea-8c46-f513904ca90a",
@@ -76,7 +75,6 @@ const PhotoGallery: React.FC = () => {
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FgalleryHoizontal%2Fv15.jpg?alt=media&token=a2d66770-7c3c-4cd5-ad96-64249c895697",
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FgalleryHoizontal%2Fv16.jpg?alt=media&token=1158ad27-6297-4378-a633-1a85514a683f",
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FgalleryHoizontal%2Fv17.jpg?alt=media&token=0c2a53bb-f590-4e69-a393-754f051be760",
-        "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FgalleryHoizontal%2Fv18.jpg?alt=media&token=cbe1a18f-e30a-4f46-abec-a2caa400765f",
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FgalleryHoizontal%2Fv19.jpg?alt=media&token=ea69aba6-844c-41cf-8f50-7cc9df07b68c",
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FgalleryHoizontal%2Fv2.jpg?alt=media&token=622c7e26-fedb-4995-a983-266c6322381c",
         "https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2FgalleryHoizontal%2Fv20.jpg?alt=media&token=026c1c5b-a570-4a3b-a8fb-be7b6686a15f",
