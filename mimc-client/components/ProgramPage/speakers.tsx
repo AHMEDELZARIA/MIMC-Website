@@ -75,6 +75,12 @@ const Speakers: React.FC = () => {
       imageUrl: "/imgs/speakers/shAarij.png",
       bio: "Shaykh Aarij Anwer is an Imam in London, Ontario, with diverse academic and professional experience. He holds degrees in Computer Science, Education, and Islamic Jurisprudence and is pursuing a Master’s in Tafsir. He leads Qutoof Academy for Arabic studies, teaches at AlKauthar Institute, and coordinates Islamic education at the London Muslim Mosque. Previously, he held leadership roles at London Muslim Mosque and Khalid Bin Waleed Mosque and served as a chaplain at Western University. He is also a marriage officiant, Hajj and Umrah leader, Zakat advisor, IDA lecturer, and board member at SPFunds Trust and the London Muslim Mosque.",
     },
+    {
+      name: "Surprise Guest",
+      occupation: "To be announced",
+      imageUrl: "/imgs/speakers/surprise-guest.png",
+      bio: "...",
+    },
   ];
 
   const containerVariants = {
