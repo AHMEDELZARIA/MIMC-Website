@@ -10,6 +10,8 @@ import {
 } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const TicketPurchaseForm: React.FC = () => {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -123,7 +125,132 @@ const TicketPurchaseForm: React.FC = () => {
     }
   };
 
+  const validateFields = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email validation
+    const phoneRegex = /^\d{10,15}$/; // Allows 10-15 digits for phone numbers
+
+    // Check if at least one ticket is selected
+    const totalTickets = Object.values(tickets).reduce(
+      (sum, count) => sum + count,
+      0,
+    );
+
+    if (totalTickets === 0) {
+      toast.error("You must select at least one ticket to proceed.");
+
+      return false;
+    }
+
+    // Ensure at least one adult ticket is selected to buy child tickets
+    if (tickets.child > 0 && tickets.adult === 0) {
+      toast.error(
+        "You must purchase at least one Adult ticket to purchase a child ticket. For any concerns, please email us at info@macmsa.com."
+      );
+      return false;
+    }
+
+    // Validate personal details
+    if (!personalDetails.firstName.trim()) {
+      toast.error("First Name is required.");
+
+      return false;
+    }
+    if (!personalDetails.lastName.trim()) {
+      toast.error("Last Name is required.");
+
+      return false;
+    }
+    if (!personalDetails.email.trim()) {
+      toast.error("Email is required.");
+
+      return false;
+    }
+    if (!emailRegex.test(personalDetails.email)) {
+      toast.error("Please enter a valid email address.");
+
+      return false;
+    }
+    if (personalDetails.email !== personalDetails.confirmEmail) {
+      toast.error("Emails do not match.");
+
+      return false;
+    }
+    if (!personalDetails.phone.trim()) {
+      toast.error("Phone number is required.");
+
+      return false;
+    }
+    if (!phoneRegex.test(personalDetails.phone)) {
+      toast.error("Phone number must contain only digits and be 10-15 characters long.");
+      
+      return false;
+    }
+    if (!personalDetails.emergencyContactName.trim()) {
+      toast.error("Emergency Contact Name is required.");
+
+      return false;
+    }
+    if (!personalDetails.emergencyContactPhone.trim()) {
+      toast.error("Emergency Contact Phone is required.");
+
+      return false;
+    }
+    if (!phoneRegex.test(personalDetails.emergencyContactPhone)) {
+      toast.error("Emergency Contact Phone must contain only digits and be 10-15 characters long.");
+      
+      return false;
+    }
+
+    // Validate dynamic forms
+    for (const [type, details] of Object.entries({
+      adult: adultTicketDetails,
+      marriage: marriageTicketDetails,
+      youth: youthTicketDetails,
+      child: childTicketDetails,
+    })) {
+      for (const [index, detail] of details.entries()) {
+        for (const [field, value] of Object.entries(detail)) {
+          // Skip validation for optional fields like 'school'
+          if (field === "school") continue;
+
+          if (!value.trim()) {
+            toast.error(
+              `${type.charAt(0).toUpperCase() + type.slice(1)} Ticket #${
+                index + 1
+              }: ${field.charAt(0).toUpperCase() + field.slice(1)} is required.`
+            );
+            return false;
+          }
+
+          // Validate phone number for youth/child caregiver fields
+          if (field === "caregiverPhone" && !phoneRegex.test(value)) {
+            toast.error(
+              `${type.charAt(0).toUpperCase() + type.slice(1)} Ticket #${
+                index + 1
+              }: Caregiver's Phone must contain only digits and be 10-15 characters long.`
+            );
+            return false;
+          }
+
+          // Validate email for adult/marriage tickets
+          if (field === "email" && !emailRegex.test(value)) {
+            toast.error(
+              `${type.charAt(0).toUpperCase() + type.slice(1)} Ticket #${
+                index + 1
+              }: Please enter a valid email address.`
+            );
+            return false;
+          }
+        }
+      }
+    }
+
+    return true;
+  };
+
   const handleSubmit = async () => {
+    if (!validateFields()) return;
+
     const finalTickets = {
       personalDetails,
       adult: adultTicketDetails,
@@ -149,6 +276,7 @@ const TicketPurchaseForm: React.FC = () => {
 
   return (
     <div className="flex justify-center items-center p-4">
+      <ToastContainer />
       <div className="max-w-4xl w-full bg-[#3B0819] p-8 rounded-lg shadow-lg">
         {/* <div className="bg-yellow-200 text-yellow-800 p-4 rounded mb-4 font-bold uppercase">
           Ticket sales will open later this evening inshaAllah, stay tuned!
