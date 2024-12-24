@@ -49,7 +49,7 @@ const TicketPurchaseForm: React.FC = () => {
   useEffect(() => {
     const newTotal = Object.entries(tickets).reduce(
       (acc, [key, count]) => acc + count * prices[key as keyof typeof prices],
-      donation ? 3 : 0,
+      donation ? 2 : 0,
     );
 
     setTotalPrice(newTotal);
@@ -246,7 +246,7 @@ const TicketPurchaseForm: React.FC = () => {
               onChange={handlePersonalDetailsChange}
             />
           </div>
-          <Checkbox
+          {/* <Checkbox
             color="success"
             isSelected={personalDetails.smsOptIn}
             name="smsOptIn"
@@ -259,7 +259,7 @@ const TicketPurchaseForm: React.FC = () => {
             }
           >
             Opt-in for SMS announcements during the event
-          </Checkbox>
+          </Checkbox> */}
         </div>
 
         <Divider className="my-3" />
@@ -356,7 +356,7 @@ const TicketPurchaseForm: React.FC = () => {
           radius="full"
           onChange={() => setDonation(!donation)}
         >
-          Donate $3 to MacMSA
+          Donate $2 to MacMSA
         </Checkbox>
 
         {/* Final Price */}
