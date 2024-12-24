@@ -150,6 +150,9 @@ const TicketPurchaseForm: React.FC = () => {
   return (
     <div className="flex justify-center items-center p-4">
       <div className="max-w-4xl w-full bg-[#3B0819] p-8 rounded-lg shadow-lg">
+        <div className="bg-yellow-200 text-yellow-800 p-4 rounded mb-4 font-bold uppercase">
+          Ticket sales will open later this evening inshaAllah, stay tuned!
+        </div>
         {/* Event Info Section */}
         <div className="mb-5">
           <h3 className="text-2xl font-semibold uppercase text-[#F0FFC9] mb-2">
@@ -190,13 +193,14 @@ const TicketPurchaseForm: React.FC = () => {
               placeholder="Enter last name"
               value={personalDetails.lastName}
               onChange={handlePersonalDetailsChange}
-              style={{
+            />
+              {/* style={{
                 color: "white",
                 "::placeholder": {
                   color: "rgba(255, 255, 255, 0.6)", // Optional: For placeholder styling
                 },
-              }}
-            />
+              }} */}
+            
           </div>
           <Input
             isRequired
@@ -592,7 +596,8 @@ const TicketPurchaseForm: React.FC = () => {
             className="font-bold uppercase bg-[#A9DA88] text-[#3B0819]"
             radius="full"
             variant="solid"
-            onClick={() => handleSubmit()}
+            // onClick={() => handleSubmit()}
+            onClick={() => alert("Ticket sales will open later this evening inshaAllah, stay tuned!")}
           >
             Proceed to Checkout
           </Button>
