@@ -431,18 +431,21 @@ const TicketPurchaseForm: React.FC = () => {
                 >
                   <option value="mcmaster">McMaster</option>
                   <option value="brock">Brock</option>
-                  <option value="uoft">UofT</option>
-                  <option value="western">Western</option>
+                  <option value="utsg">UTSG</option>
                   <option value="utm">UTM</option>
+                  <option value="wlu">WLU</option>
+                  <option value="york">York</option>
+                  <option value="tmu">TMU</option>
+                  <option value="uw">Waterloo</option>
+                  <option value="western">Western</option>
+                  <option value="guelph">Guelph</option>
+                  <option value="windsor">Windsor</option>
+                  <option value="fanshawe">Fanshawe</option>
                   <option value="humber">Humber</option>
                   <option value="mohawk">Mohawk</option>
-                  <option value="wlu">Laurier</option>
-                  <option value="uw">Waterloo</option>
-                  <option value="fanshawe">Fanshawe</option>
-                  <option value="windsor">Windsor</option>
-                  <option value="tmu">TMU</option>
-                  <option value="guelph">Guelph</option>
                   <option value="seneca">Seneca</option>
+                  <option value="seneca">High School</option>
+                  <option value="seneca">Other</option>
                 </select>
               </div>
               <RadioGroup
