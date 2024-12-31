@@ -47,7 +47,7 @@ const Speakers: React.FC = () => {
     },
     {
       name: "Ust. Nabeela Syeda",
-      occupation: "Registered Psychotherapist at CMC",
+      occupation: "Aalimah and Registered Psychotherapist (Qualifying)",
       imageUrl: "/imgs/speakers/ustNabeela.png",
       bio: "Nabeela Syeda is a Registered Psychotherapist (Qualifying) with the CRPO and a member of the Ontario Association of Mental Health Professionals. She holds an Alimiyyah degree, a Master of Education in Counselling, and a Bachelor’s in Mental Health Studies. Nabeela specializes in self-esteem, stress management, immigrant experiences, trauma, and mood disorders, integrating Islamic principles with a client-centered approach. She has worked at CAMH, supported university students, and empowered Muslim women with eating disorders. Passionate about fostering resilience and hope, Nabeela combines her expertise and faith to promote healing and well-being within her community.",
     },
