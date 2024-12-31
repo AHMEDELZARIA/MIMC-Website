@@ -22,7 +22,7 @@ const TicketPurchaseForm: React.FC = () => {
     child: 0,
   });
   // const { push } = useRouter();
-  const [donation, setDonation] = useState(false);
+  const [donation, setDonation] = useState(true);
   const [personalDetails, setPersonalDetails] = useState({
     firstName: "",
     lastName: "",
