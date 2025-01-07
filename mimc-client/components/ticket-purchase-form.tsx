@@ -482,15 +482,19 @@ const TicketPurchaseForm: React.FC = () => {
         </div>
 
         {/* Donate Checkbox */}
-        <Checkbox
-          className="mb-2 text-[#570326] font-semibold"
-          color="success"
-          isSelected={donation}
-          radius="full"
-          onChange={() => setDonation(!donation)}
-        >
-          Donate $3 to MacMSA to support MIMC and future initiatives.
-        </Checkbox>
+        <div className="mb-2 flex items-center space-x-2">
+          <input
+            checked={donation}
+            className="custom-checkbox"
+            id="donation"
+            type="checkbox"
+            onChange={() => setDonation(!donation)}
+          />
+          <label className="font-semibold" htmlFor="donation">
+            Donate $3 to MacMSA to support MIMC and future initiatives.
+          </label>
+        </div>
+
 
         {/* Final Price */}
         <div className="flex justify-between items-center mb-3">
@@ -582,20 +586,51 @@ const TicketPurchaseForm: React.FC = () => {
                   <option value="other">Other</option>
                 </select>
               </div>
-              <RadioGroup
-                isRequired
-                className="mt-2"
-                color="success"
-                label="Gender"
-                orientation="horizontal"
-                value={adultTicketDetails[index].gender}
-                onValueChange={(value) =>
-                  handleDynamicFormChange(index, "adult", "gender", value)
-                }
-              >
-                <Radio value="male">Male</Radio>
-                <Radio value="female">Female</Radio>
-              </RadioGroup>
+              <fieldset className="mt-2">
+                <legend className="mb-2 text-gray-400">
+                  Gender <span className="text-red-500">*</span>
+                </legend>
+                <div className="flex space-x-4">
+                  <label className="flex items-center space-x-2">
+                    <input
+                      required
+                      checked={adultTicketDetails[index].gender === "male"}
+                      className="custom-radio"
+                      name={`gender-${index}`}
+                      type="radio"
+                      value="male"
+                      onChange={(e) =>
+                        handleDynamicFormChange(
+                          index,
+                          "adult",
+                          "gender",
+                          e.target.value,
+                        )
+                      }
+                    />
+                    <span className="text-white ml-2">Male</span>
+                  </label>
+                  <label className="flex items-center space-x-2 ml-2">
+                    <input
+                      required
+                      checked={adultTicketDetails[index].gender === "female"}
+                      className="custom-radio"
+                      name={`gender-${index}`}
+                      type="radio"
+                      value="female"
+                      onChange={(e) =>
+                        handleDynamicFormChange(
+                          index,
+                          "adult",
+                          "gender",
+                          e.target.value,
+                        )
+                      }
+                    />
+                    <span className="text-white ml-2">Female</span>
+                  </label>
+                </div>
+              </fieldset>
             </div>
           ))}
 
