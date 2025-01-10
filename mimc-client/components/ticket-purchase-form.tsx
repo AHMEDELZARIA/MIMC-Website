@@ -495,7 +495,6 @@ const TicketPurchaseForm: React.FC = () => {
           </label>
         </div>
 
-
         {/* Final Price */}
         <div className="flex justify-between items-center mb-3">
           <h3 className="text-xl font-bold text-[#A9DA88]">Final Price:</h3>
