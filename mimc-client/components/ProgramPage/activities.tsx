@@ -119,7 +119,7 @@ export default function Activities() {
   return (
     <motion.section
       className=""
-      initial="hidden"
+      initial="visible"
       viewport={{ once: true, amount: 0.2 }}
       whileInView="visible"
       variants={containerVariants}
