@@ -82,16 +82,15 @@ const Landing: React.FC = () => {
         className="absolute inset-0 flex flex-col items-center justify-center text-white bg-opacity-50 px-4 md:px-8 z-10"
         variants={textVariants}
       >
-        <div className="container mx-auto text-center">
-          {/* <motion.h1
-            className={`${cinzel.className} text-[10rem] font-bold text-shadow`}
-            variants={textVariants}
-            transition={{ duration: 1 }}
-          >
-            MIMC 2025
-          </motion.h1> */}
-
-          {/* Responsive Image */}
+        <motion.div
+          className="container mx-auto text-center"
+          initial={{ opacity: 0, y: 30 }} // Start slightly below and hidden
+          animate={{ opacity: 1, y: 0 }} // Fade in and move to position
+          transition={{
+            duration: 1.2, // Smooth duration
+            ease: [0.22, 1, 0.36, 1], // Custom easing curve for smooth acceleration and deceleration
+          }}
+        >
           <Image
             alt="MIMC 2025"
             className="rounded-lg"
@@ -99,72 +98,12 @@ const Landing: React.FC = () => {
             layout="responsive"
             src="/imgs/fancyfinal.png"
             width={1366}
+            style={{
+              transform: "translateZ(0)", // Enable hardware acceleration
+              willChange: "opacity, transform", // Optimize animation performance
+            }}
           />
-
-          {/* <div style={{ maxHeight: '50%', width: '100%', position: 'relative' }}>
-            <Image
-              src="/imgs/mimc2025-fancy1.png"
-              alt="MIMC 2025"
-              layout="responsive"
-              width={1998}
-              height={545}
-              className="rounded-lg"
-              style={{ objectFit: 'contain', height: '80%' }}
-            />
-          </div> */}
-
-          {/* <div className="relative w-full max-h-[500px]">
-            <div className="relative w-full h-0 pb-[27.3%]">
-              <Image
-                src="/imgs/mimc2025-fancy1.png"
-                alt="MIMC 2025"
-                layout="fill"
-                objectFit="contain"
-                className="rounded-lg"
-              />
-            </div>
-          </div> */}
-
-          {/* <motion.p
-            className={`${cinzel.className} text-4xl font-bold italic text-[#F0FFC9] mb-4`}
-            variants={textVariants}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            Truth and Falsehood
-          </motion.p> */}
-
-          {/* Countdown Timer */}
-          {/* {hydrated && ( // Render only after hydration
-            <motion.div
-              className="flex flex-col items-center text-[#F0FFC9] font-bold text-xl md:text-3xl"
-              variants={textVariants}
-              transition={{ duration: 1, delay: 0.8 }}
-            >
-              <div className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <span className="text-4xl md:text-5xl">{timeLeft.days}</span>
-                  <span className="text-sm md:text-base">Days</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-4xl md:text-5xl">{timeLeft.hours}</span>
-                  <span className="text-sm md:text-base">Hours</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-4xl md:text-5xl">
-                    {timeLeft.minutes}
-                  </span>
-                  <span className="text-sm md:text-base">Minutes</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-4xl md:text-5xl">
-                    {timeLeft.seconds}
-                  </span>
-                  <span className="text-sm md:text-base">Seconds</span>
-                </div>
-              </div>
-            </motion.div>
-          )} */}
-        </div>
+        </motion.div>
       </motion.div>
 
       {/* Video Background */}
@@ -179,6 +118,8 @@ const Landing: React.FC = () => {
           autoPlay
           loop
           muted
+          playsInline
+          disablePictureInPicture
           className="w-full h-full object-cover"
           src="https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/home-background.mp4?alt=media&token=360e304f-1161-445c-8ddb-3f0605e7648f"
           style={{
@@ -186,7 +127,9 @@ const Landing: React.FC = () => {
               "linear-gradient(to bottom, #570326 60%, transparent 100%)",
             WebkitMaskImage:
               "linear-gradient(to bottom, #570326 60%, transparent 100%)",
+            pointerEvents: "none",
           }}
+          onContextMenu={(e) => e.preventDefault()}
         />
       </motion.div>
     </motion.section>

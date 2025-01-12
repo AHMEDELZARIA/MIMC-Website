@@ -35,7 +35,7 @@ export default function Activities() {
       category: "QUR'AN COMPETITION",
       imageUrl: "/imgs/act/act19.jpg",
       date: "Sat Feb 15, 2025",
-      time: "12:00 PM - 4:00 PM",
+      time: "12:00 PM - 4:30 PM",
       requiresSignUp: true,
       link: "https://docs.google.com/forms/d/e/1FAIpQLScBDBGLH67Mqlzqg35h8xEQOaf0LabSYNzFqMMgr5j0ckbTeA/viewform?usp=dialog",
     },
@@ -44,7 +44,7 @@ export default function Activities() {
       category: "GLASS MAKING",
       imageUrl: "/imgs/act/stained-glass.jpg",
       date: "Sat Feb 15, 2025",
-      time: "2:00 PM - 4:30 PM",
+      time: "2:30 PM - 4:30 PM",
       requiresSignUp: true,
       link: "https://docs.google.com/forms/d/1AOjYALVt3Gx007jWrKriwCtTQ7qAc9XEoxW07IF-2Pc/prefill",
     },
@@ -64,15 +64,6 @@ export default function Activities() {
       date: "Sun Feb 16, 2025",
       time: "5:15 PM - 6:15 PM",
       requiresSignUp: false,
-    },
-    {
-      title: "INTER-MSA",
-      category: "EXEC FORUM",
-      imageUrl: "/imgs/act/inter-msa.jpg",
-      date: "Sat Feb 15, 2025",
-      time: "12:00 PM - 1:00 PM",
-      requiresSignUp: false,
-      link: "https://docs.google.com/forms/d/e/1FAIpQLSdh537_or0Xho97_PAvDwDf6NAz-kAOzKysrRzYmvTJ8UmhWg/viewform"
     },
     {
       title: "NETWORKING PROGRAM",
@@ -95,9 +86,18 @@ export default function Activities() {
       category: "BOOK DISCUSSION",
       imageUrl: "/imgs/act/book.jpg",
       date: "Sat Feb 15, 2025",
-      time: "5:00 PM - 6:00 PM",
+      time: "5:15 PM - 6:15 PM",
       requiresSignUp: true,
       link: "https://docs.google.com/forms/d/e/1FAIpQLSdBs3ZkYtD9LcUW7zDKevJAjR_aR2BKBQboi_5_etBAMGfdUA/viewform?usp=sharing",
+    },
+    {
+      title: "INTER-MSA",
+      category: "EXEC FORUM",
+      imageUrl: "/imgs/act/inter-msa.jpg",
+      date: "Sat Feb 15, 2025",
+      time: "12:00 PM - 6:15 PM",
+      requiresSignUp: true,
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSdh537_or0Xho97_PAvDwDf6NAz-kAOzKysrRzYmvTJ8UmhWg/viewform"
     },
   ];
 
@@ -180,7 +180,7 @@ export default function Activities() {
         {activities.map((activity, index) => (
           <a
             key={index}
-            className="relative cursor-pointer w-80 h-80 mx-auto rounded-full overflow-hidden border-5 border-[#A9DA88] flex flex-col items-center justify-self transition-all duration-400 hover:border-[#A9DA88] hover:shadow-2xl hover:shadow-[#A9DA88] active:scale-95 group"
+            className="relative cursor-pointer w-80 h-80 mx-auto rounded-full overflow-hidden border-5 border-[#A9DA88] flex flex-col items-center justify-self transition-all duration-400 hover:border-[#A9DA88] hover:shadow-2xl hover:shadow-[#A9DA88] group"
             href={activity.link} // Link to the activity page
             rel="noopener noreferrer" // Security best practice
             target="_blank" // Open in a new tab
