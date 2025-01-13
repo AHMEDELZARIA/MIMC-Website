@@ -46,7 +46,7 @@ export default function Activities() {
       date: "Sat Feb 15, 2025",
       time: "2:30 PM - 4:30 PM",
       requiresSignUp: true,
-      link: "https://docs.google.com/forms/d/1AOjYALVt3Gx007jWrKriwCtTQ7qAc9XEoxW07IF-2Pc/prefill",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSfpW8y-vrhswzn0lOQv3YBDSHSBShvsvuVlYMBvWyHpzaYgZg/viewform",
     },
     {
       title: "ESCAPE ROOM",
@@ -55,7 +55,7 @@ export default function Activities() {
       date: "Sun Feb 16, 2025",
       time: "1:30 PM - 6:15 PM",
       requiresSignUp: true,
-      link: "https://docs.google.com/forms/d/1hMh2SH41CUmwhs55DuzYG91BF3pvaEguYEXg-rVlczQ/prefill",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSeFVKjKd5HK9KBJ0boBy4_UIK8MrTcFOfEzsOll1pIjsLP_fw/viewform",
     },
     {
       title: "RAMADAN",
