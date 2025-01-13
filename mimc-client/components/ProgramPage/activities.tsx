@@ -40,7 +40,7 @@ export default function Activities() {
       link: "https://docs.google.com/forms/d/e/1FAIpQLScBDBGLH67Mqlzqg35h8xEQOaf0LabSYNzFqMMgr5j0ckbTeA/viewform?usp=dialog",
     },
     {
-      title: "FAUX STAINED",
+      title: "STAINED",
       category: "GLASS MAKING",
       imageUrl: "/imgs/act/stained-glass.jpg",
       date: "Sat Feb 15, 2025",
