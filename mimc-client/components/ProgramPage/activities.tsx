@@ -12,15 +12,15 @@ import { link } from "fs";
 export default function Activities() {
   // Activities Data
   const activities = [
-    {
-      title: "QIYAM NIGHT",
-      category: "ACCOMMODATIONS",
-      imageUrl: "/imgs/com/c33.jpg",
-      date: "Sat Feb 14, 2025",
-      time: "9:00 PM - 8:00 AM",
-      requiresSignUp: true,
-      link: "https://docs.google.com/forms/d/e/1FAIpQLScSY9QW0pA2dmAtre7kUIHpryEL04PQp3IOeJHS4EkI-Btuqw/viewform?usp=sharing"
-    },
+    // {
+    //   title: "QIYAM NIGHT",
+    //   category: "ACCOMMODATIONS",
+    //   imageUrl: "/imgs/com/c33.jpg",
+    //   date: "Sat Feb 14, 2025",
+    //   time: "9:00 PM - 8:00 AM",
+    //   requiresSignUp: true,
+    //   link: "https://docs.google.com/forms/d/e/1FAIpQLScSY9QW0pA2dmAtre7kUIHpryEL04PQp3IOeJHS4EkI-Btuqw/viewform?usp=sharing"
+    // },
     {
       title: "SHARK TANK",
       category: "COMPETITION & WORKSHOP",
