@@ -8,7 +8,6 @@ import "rodal/lib/rodal.css"; // Import Rodal styles
 import { Button } from "@nextui-org/react";
 
 import { cinzel } from "@/config/fonts";
-import { title } from "process";
 
 const Speakers: React.FC = () => {
   const [activeSpeaker, setActiveSpeaker] = useState<null | {
@@ -91,7 +90,7 @@ const Speakers: React.FC = () => {
     },
   };
 
-   const titleVariants = {
+  const titleVariants = {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
   };

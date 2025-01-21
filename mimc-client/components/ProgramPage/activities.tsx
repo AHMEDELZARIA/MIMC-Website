@@ -70,7 +70,7 @@ export default function Activities() {
       category: "CAMPUS TO CAREER",
       imageUrl: "/imgs/act/networking.jpg",
       date: "Sun Feb 16, 2025",
-      time: "11:00 AM - 1:00 PM",
+      time: "11:00 AM - 2:30 PM",
       requiresSignUp: false,
     },
     {

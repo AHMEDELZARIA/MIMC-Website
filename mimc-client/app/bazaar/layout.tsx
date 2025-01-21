@@ -1,4 +1,4 @@
-export default function SponsorLayout({
+export default function BazaarLayout({
   children,
 }: {
   children: React.ReactNode;

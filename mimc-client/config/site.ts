@@ -17,8 +17,8 @@ export const siteConfig = {
       href: "/itinerary-map",
     },
     {
-      label: "Sponsors",
-      href: "/sponsors",
+      label: "Bazaar",
+      href: "/bazaar",
     },
   ],
   navMenuItems: [
@@ -35,8 +35,8 @@ export const siteConfig = {
       href: "/itinerary-map",
     },
     {
-      label: "Sponsors",
-      href: "/sponsors",
+      label: "Bazaar",
+      href: "/bazaar",
     },
   ],
   links: {
