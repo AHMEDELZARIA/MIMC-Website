@@ -42,7 +42,7 @@ const TicketPurchaseForm: React.FC = () => {
   const [childTicketDetails, setChildTicketDetails] = useState<any[]>([]);
 
   const prices = {
-    adult: 20,
+    adult: 30,
     marriage: 5,
     youth: 5,
     child: 0,
@@ -213,7 +213,7 @@ const TicketPurchaseForm: React.FC = () => {
           // Skip validation for optional fields like 'school'
           if (field === "school") continue;
 
-          if (!value.trim()) {
+          if (typeof value === 'string' && !value.trim()) {
             toast.error(
               `${type.charAt(0).toUpperCase() + type.slice(1)} Ticket #${
                 index + 1
@@ -223,7 +223,7 @@ const TicketPurchaseForm: React.FC = () => {
           }
 
           // Validate phone number for youth/child caregiver fields
-          if (field === "caregiverPhone" && !phoneRegex.test(value)) {
+          if (field === "caregiverPhone" && !phoneRegex.test(value as string)) {
             toast.error(
               `${type.charAt(0).toUpperCase() + type.slice(1)} Ticket #${
                 index + 1
@@ -233,7 +233,7 @@ const TicketPurchaseForm: React.FC = () => {
           }
 
           // Validate email for adult/marriage tickets
-          if (field === "email" && !emailRegex.test(value)) {
+          if (field === "email" && !emailRegex.test(value as string)) {
             toast.error(
               `${type.charAt(0).toUpperCase() + type.slice(1)} Ticket #${
                 index + 1
@@ -436,11 +436,11 @@ const TicketPurchaseForm: React.FC = () => {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-4 place-items-start ">
           <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
-            Adult Pass (14+ y/o) - $20/ticket
+            Adult Pass (14+ y/o) - $30/ticket
           </h3>
           <Input
             id="adult"
-            // label="Adult Pass (14+ y/o) - $20/ticket"
+            // label="Adult Pass (14+ y/o) - $30/ticket"
             min="0"
             placeholder="0"
             type="number"
