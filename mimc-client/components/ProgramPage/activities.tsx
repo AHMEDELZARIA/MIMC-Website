@@ -63,7 +63,8 @@ export default function Activities() {
       imageUrl: "/imgs/act/ramadan.png",
       date: "Sun Feb 16, 2025",
       time: "5:15 PM - 6:15 PM",
-      requiresSignUp: false,
+      requiresSignUp: true,
+      link:"https://docs.google.com/forms/d/e/1FAIpQLSeQ4u0TfC1tIGc2S_hpYXx4lvUeKsy2kdhMfndd5HJ7VxdryA/viewform",
     },
     {
       title: "NETWORKING PROGRAM",
