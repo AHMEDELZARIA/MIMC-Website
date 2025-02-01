@@ -13,6 +13,10 @@ import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import {
+  getMIMCCouponsRemaining
+} from "./../utils/firebase.utils";
+
 const TicketPurchaseForm: React.FC = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [tickets, setTickets] = useState({
@@ -20,6 +24,7 @@ const TicketPurchaseForm: React.FC = () => {
     marriage: 0,
     youth: 0,
     child: 0,
+    free: 0,
   });
   // const { push } = useRouter();
   const [donation, setDonation] = useState(true);
@@ -40,12 +45,14 @@ const TicketPurchaseForm: React.FC = () => {
   const [marriageTicketDetails, setMarriageTicketDetails] = useState<any[]>([]);
   const [youthTicketDetails, setYouthTicketDetails] = useState<any[]>([]);
   const [childTicketDetails, setChildTicketDetails] = useState<any[]>([]);
+  const [freeTicketDetails, setFreeTicketDetails] = useState<any[]>([]);
 
   const prices = {
     adult: 30,
     marriage: 5,
     youth: 5,
     child: 0,
+    free: 0,
   };
 
   useEffect(() => {
@@ -80,6 +87,10 @@ const TicketPurchaseForm: React.FC = () => {
     } else if (id === "child") {
       setChildTicketDetails(
         Array(count).fill({ fullName: "", caregiverPhone: "" }),
+      );
+    } else if (id === "free") {
+      setFreeTicketDetails(
+        Array(count).fill({ fullName: "", email: "", school: "", gender: "" }),
       );
     }
   };
@@ -118,6 +129,12 @@ const TicketPurchaseForm: React.FC = () => {
         type === "youth" ? setYouthTicketDetails : setChildTicketDetails;
 
       setDetails((prev) =>
+        prev.map((item, i) =>
+          i === index ? { ...item, [field]: value } : item,
+        ),
+      );
+    } else if (type === "free") {
+      setFreeTicketDetails((prev) =>
         prev.map((item, i) =>
           i === index ? { ...item, [field]: value } : item,
         ),
@@ -207,6 +224,7 @@ const TicketPurchaseForm: React.FC = () => {
       marriage: marriageTicketDetails,
       youth: youthTicketDetails,
       child: childTicketDetails,
+      free: freeTicketDetails,
     })) {
       for (const [index, detail] of details.entries()) {
         for (const [field, value] of Object.entries(detail)) {
@@ -257,10 +275,11 @@ const TicketPurchaseForm: React.FC = () => {
       marriage: marriageTicketDetails,
       youth: youthTicketDetails,
       child: childTicketDetails,
+      free: freeTicketDetails,
       donation,
     };
     const link = await (
-      await fetch(`https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/tickets-link`, {
+      await fetch(`http://localhost:5000/free-tickets-purchase`, {
         // http://localhost:7000/tickets-link
         // https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/tickets-link
         method: "POST",
@@ -436,6 +455,17 @@ const TicketPurchaseForm: React.FC = () => {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-4 place-items-start ">
           <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+            Coupon code
+          </h3>
+          <Input
+            id="coupon"
+            // label="Coupon code"
+            min="0"
+            placeholder=""
+            type="text"
+            onChange={handleTicketChange}
+          />
+          <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
             Adult Pass (14+ y/o) - $30/ticket
           </h3>
           <Input
@@ -475,6 +505,18 @@ const TicketPurchaseForm: React.FC = () => {
             id="child"
             // label="Child Pass (0-6 y/o) - Free"
             min="0"
+            placeholder="0"
+            type="number"
+            onChange={handleTicketChange}
+          />
+          <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+            FREE Adult Pass (14+ y/o) - $0/ticket
+          </h3>
+          <Input
+            id="free"
+            // label="FREE Adult Pass (14+ y/o) - $0/ticket"
+            min="0"
+            max={getMIMCCouponsRemaining.toString()}
             placeholder="0"
             type="number"
             onChange={handleTicketChange}
@@ -749,6 +791,131 @@ const TicketPurchaseForm: React.FC = () => {
                   )
                 }
               />
+            </div>
+          ))}
+
+          {freeTicketDetails.map((_, index) => (
+            <div key={`free-${index}`}>
+              <h4 className="font-bold text-[#F0FFC9] mb-3">
+                FREE Adult Ticket #{index + 1}
+              </h4>
+              <Input
+                isRequired
+                className="mb-3"
+                label="Full Name"
+                placeholder="Enter full name"
+                value={freeTicketDetails[index].fullName}
+                onChange={(e) =>
+                  handleDynamicFormChange(
+                    index,
+                    "free",
+                    "fullName",
+                    e.target.value,
+                  )
+                }
+              />
+              <Input
+                isRequired
+                className="mb-3"
+                label="Email Address"
+                placeholder="Enter email address"
+                type="email"
+                value={freeTicketDetails[index].email}
+                onChange={(e) =>
+                  handleDynamicFormChange(
+                    index,
+                    "free",
+                    "email",
+                    e.target.value,
+                  )
+                }
+              />
+              <div>
+                <label
+                  htmlFor={`school-select-${index}`}
+                  className="block mb-2 text-gray-400"
+                >
+                  Select your school (if applicable)
+                </label>
+                <select
+                  className="w-full p-4 text-sm bg-[#27272a] text-white rounded-xl outline-none cursor-pointer appearance-none"
+                  id={`school-select-${index}`}
+                  name="school"
+                  value={freeTicketDetails[index].school}
+                  onChange={(e) =>
+                    handleDynamicFormChange(
+                      index,
+                      "free",
+                      "school",
+                      e.target.value,
+                    )
+                  }
+                >
+                  <option value="none">None</option>
+                  <option value="mcmaster">McMaster</option>
+                  <option value="brock">Brock</option>
+                  <option value="utsg">UTSG</option>
+                  <option value="utm">UTM</option>
+                  <option value="wlu">WLU</option>
+                  <option value="york">York</option>
+                  <option value="tmu">TMU</option>
+                  <option value="uw">Waterloo</option>
+                  <option value="western">Western</option>
+                  <option value="guelph">Guelph</option>
+                  <option value="windsor">Windsor</option>
+                  <option value="fanshawe">Fanshawe</option>
+                  <option value="humber">Humber</option>
+                  <option value="mohawk">Mohawk</option>
+                  <option value="seneca">Seneca</option>
+                  <option value="hs">High School</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <fieldset className="mt-2">
+                <legend className="mb-2 text-gray-400">
+                  Gender <span className="text-red-500">*</span>
+                </legend>
+                <div className="flex space-x-4">
+                  <label className="flex items-center space-x-2">
+                    <input
+                      required
+                      checked={freeTicketDetails[index].gender === "male"}
+                      className="custom-radio"
+                      name={`gender-${index}`}
+                      type="radio"
+                      value="male"
+                      onChange={(e) =>
+                        handleDynamicFormChange(
+                          index,
+                          "free",
+                          "gender",
+                          e.target.value,
+                        )
+                      }
+                    />
+                    <span className="text-white ml-2">Male</span>
+                  </label>
+                  <label className="flex items-center space-x-2 ml-2">
+                    <input
+                      required
+                      checked={freeTicketDetails[index].gender === "female"}
+                      className="custom-radio"
+                      name={`gender-${index}`}
+                      type="radio"
+                      value="female"
+                      onChange={(e) =>
+                        handleDynamicFormChange(
+                          index,
+                          "free",
+                          "gender",
+                          e.target.value,
+                        )
+                      }
+                    />
+                    <span className="text-white ml-2">Female</span>
+                  </label>
+                </div>
+              </fieldset>
             </div>
           ))}
         </div>

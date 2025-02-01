@@ -10,6 +10,7 @@ import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 import CustomCursor from "@/components/custom-cursor";
 import TicketStatusPopup from "@/components/HomePage/ticket-status-popup";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: {
@@ -48,7 +49,8 @@ export default function RootLayout({
             <Navbar />
             <main className="container mx-auto max-w-full flex-grow">
               <CustomCursor />
-              <TicketStatusPopup />
+              <Suspense><TicketStatusPopup /></Suspense>
+              {/* <TicketStatusPopup /> */}
               {children}
             </main>
             <footer className="w-full flex items-center justify-center font-medium py-3 bg-[#F0FFC9]">

@@ -42,7 +42,7 @@ const TicketStatusPopup: React.FC = () => {
 
     // Clear query parameters
     if (success || canceled) {
-      router.replace("/", { shallow: true });
+      router.replace("/");
     }
   }, [searchParams, router]);
 
