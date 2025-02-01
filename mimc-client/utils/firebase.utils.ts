@@ -83,14 +83,15 @@ export const useFirestoreQuery = (
 };
 
 export const getMIMCCouponsRemaining = async (couponCodeName: string) => {
-  const docRef = doc(firestore, 'mimc-coupons', couponCodeName);
-  const docSnap = await getDoc(docRef);
+  const docSnap = await getCollection("mimc-coupons")
 
-  if (docSnap.exists()) {
-    return docSnap.data().couponsRemaining;
-  } else {
-    return null;
+  for (const key in docSnap) {
+    if (docSnap[key].couponCodeName === couponCodeName) {
+      return docSnap[key].couponsRemaining;
+    }
   }
+  return null;
+
 };
 
 export const convertTimestampToDate = (date: { seconds: number; nanoseconds: number; }) => {

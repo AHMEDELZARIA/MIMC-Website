@@ -40,6 +40,14 @@ const TicketPurchaseForm: React.FC = () => {
   });
   const router = useRouter();
 
+
+  useEffect(() => {
+    const fetchCoupons = async () => {
+      console.log(await getMIMCCouponsRemaining("ICNARELIEF"));
+    };
+    fetchCoupons();
+  }, []);
+
   // Dynamic forms state
   const [adultTicketDetails, setAdultTicketDetails] = useState<any[]>([]);
   const [marriageTicketDetails, setMarriageTicketDetails] = useState<any[]>([]);
@@ -279,7 +287,7 @@ const TicketPurchaseForm: React.FC = () => {
       donation,
     };
     const link = await (
-      await fetch(`http://localhost:5000/free-tickets-purchase`, {
+      await fetch(`http://localhost:3001/free-tickets-purchase`, {
         // http://localhost:7000/tickets-link
         // https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/tickets-link
         method: "POST",
@@ -516,7 +524,7 @@ const TicketPurchaseForm: React.FC = () => {
             id="free"
             // label="FREE Adult Pass (14+ y/o) - $0/ticket"
             min="0"
-            max={getMIMCCouponsRemaining.toString()}
+            max={getMIMCCouponsRemaining("ICNARELIEF").toString()}
             placeholder="0"
             type="number"
             onChange={handleTicketChange}
