@@ -9,7 +9,7 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 import CustomCursor from "@/components/custom-cursor";
-// import TicketStatusPopup from "@/components/HomePage/ticket-status-popup";
+import TicketStatusPopup from "@/components/HomePage/ticket-status-popup";
 
 export const metadata: Metadata = {
   title: {
@@ -48,7 +48,7 @@ export default function RootLayout({
             <Navbar />
             <main className="container mx-auto max-w-full flex-grow">
               <CustomCursor />
-              {/* <TicketStatusPopup /> */}
+              <TicketStatusPopup />
               {children}
             </main>
             <footer className="w-full flex items-center justify-center font-medium py-3 bg-[#F0FFC9]">
