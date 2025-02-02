@@ -27,7 +27,6 @@ const TicketPurchaseForm: React.FC = () => {
     free: 0,
   });
   // const { push } = useRouter();
-  const [donation, setDonation] = useState(true);
   const [personalDetails, setPersonalDetails] = useState({
     firstName: "",
     lastName: "",
@@ -40,6 +39,7 @@ const TicketPurchaseForm: React.FC = () => {
   });
   const router = useRouter();
 
+  const [donation, setDonation] = useState(true);
   const [couponsRemaining, setCouponsRemaining] = useState(0);
   const [isCouponValid, setIsCouponValid] = useState(false);
 
@@ -48,6 +48,9 @@ const TicketPurchaseForm: React.FC = () => {
     const remaining = await getMIMCCouponsRemaining(couponCode);
     setCouponsRemaining(remaining);
     setIsCouponValid(remaining > 0);
+    if (remaining > 0) {
+      setDonation(false); // Disable donation when coupon is valid
+    }
   };
 
   // Dynamic forms state
@@ -564,6 +567,7 @@ const TicketPurchaseForm: React.FC = () => {
             id="donation"
             type="checkbox"
             onChange={() => setDonation(!donation)}
+            disabled={isCouponValid} // Disable checkbox if coupon is valid
           />
           <label className="font-semibold" htmlFor="donation">
             Donate $3 to MacMSA to support MIMC and future initiatives.
