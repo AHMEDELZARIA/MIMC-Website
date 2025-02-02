@@ -75,13 +75,13 @@ const Speakers: React.FC = () => {
       bio: "Shaykh Aarij Anwer is an Imam in London, Ontario, with diverse academic and professional experience. He holds degrees in Computer Science, Education, and Islamic Jurisprudence and is pursuing a Master’s in Tafsir. He leads Qutoof Academy for Arabic studies, teaches at AlKauthar Institute, and coordinates Islamic education at the London Muslim Mosque. Previously, he held leadership roles at London Muslim Mosque and Khalid Bin Waleed Mosque and served as a chaplain at Western University. He is also a marriage officiant, Hajj and Umrah leader, Zakat advisor, IDA lecturer, and board member at SPFunds Trust and the London Muslim Mosque.",
     },
     {
-      name: "Surprise Guest",
-      occupation: "To Be Announced",
-      imageUrl: "/imgs/speakers/surprise-guest.png",
-      bio: "...",
+      name: "Sh. Junaid Bhaiyat",
+      occupation: "Scholar & Entrepeneur",
+      imageUrl: "/imgs/speakers/shJunaid.png",
+      bio: "Sheikh Junaid Bhaiyat completed the memorization of the Qur’an at the age of 12. He then studied the art of Tajweed and the Urdu language in India. Thereafter, he pursued higher Islamic studies for many years in Canada, Malaysia, and Madinah. That included the completion of a rigorous 7-year Alimiyyah degree, a Masters Degree, publishing a thesis on Hadith, and numerous ijaazaat in the many Islamic sciences. Upon return to Canada, Sheikh Junaid was appointed the Resident Scholar & Director Of Religious Affairs at the International Muslims Organization(IMO). As an entrepreneur, he has co-founded a firm which is currently building water treatment plants in South America.",
     },
   ];
-
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
