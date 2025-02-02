@@ -40,13 +40,15 @@ const TicketPurchaseForm: React.FC = () => {
   });
   const router = useRouter();
 
+  const [couponsRemaining, setCouponsRemaining] = useState(0);
+  const [isCouponValid, setIsCouponValid] = useState(false);
 
-  useEffect(() => {
-    const fetchCoupons = async () => {
-      console.log(await getMIMCCouponsRemaining("ICNARELIEF"));
-    };
-    fetchCoupons();
-  }, []);
+  const handleCouponChange = async (event: { target: { value: any; }; }) => {
+    const couponCode = event.target.value;
+    const remaining = await getMIMCCouponsRemaining(couponCode);
+    setCouponsRemaining(remaining);
+    setIsCouponValid(remaining > 0);
+  };
 
   // Dynamic forms state
   const [adultTicketDetails, setAdultTicketDetails] = useState<any[]>([]);
@@ -74,7 +76,22 @@ const TicketPurchaseForm: React.FC = () => {
 
   const handleTicketChange = (e: { target: { id: any; value: any } }) => {
     const { id, value } = e.target;
-    const count = Math.max(parseInt(value) || 0, 0);
+    let count = Math.max(parseInt(value) || 0, 0);
+
+    // Ensure inputted num free tickets is less than or equal to the remaining coupons
+    if (id === "free" && count > couponsRemaining) {
+      count = couponsRemaining;
+      toast.error(`You can only select up to ${couponsRemaining} free tickets.`);
+      return false;
+    }
+
+    // Ensure number of free tickets is less than or equal to the remaining coupons
+    if (tickets.free > couponsRemaining) {
+      toast.error(
+        "The number of free tickets you selected exceeds the remaining amount of tickets with that coupon code. Please enter a valid coupon code or reduce the number of free tickets."
+      );
+      return false;
+    }
 
     setTickets((prev) => ({
       ...prev,
@@ -469,9 +486,12 @@ const TicketPurchaseForm: React.FC = () => {
             id="coupon"
             // label="Coupon code"
             min="0"
-            placeholder=""
+            placeholder="Enter coupon code"
             type="text"
-            onChange={handleTicketChange}
+            onChange={handleCouponChange}
+            onInput={(e) => {
+            (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+            }}
           />
           <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
             Adult Pass (14+ y/o) - $30/ticket
@@ -517,18 +537,23 @@ const TicketPurchaseForm: React.FC = () => {
             type="number"
             onChange={handleTicketChange}
           />
-          <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
-            FREE Adult Pass (14+ y/o) - $0/ticket
-          </h3>
-          <Input
-            id="free"
-            // label="FREE Adult Pass (14+ y/o) - $0/ticket"
-            min="0"
-            max={getMIMCCouponsRemaining("ICNARELIEF").toString()}
-            placeholder="0"
-            type="number"
-            onChange={handleTicketChange}
-          />
+          {isCouponValid && (
+            <>
+              <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+                FREE Adult Pass (14+ y/o) - $0/ticket
+              </h3>
+              <Input
+                id="free"
+                // label="FREE Adult Pass (14+ y/o) - $0/ticket"
+                min="0"
+                placeholder="0"
+                type="number"
+                onChange={handleTicketChange}
+                max={couponsRemaining}
+              />
+            </>
+          )}
+          
         </div>
 
         {/* Donate Checkbox */}
