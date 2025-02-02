@@ -306,18 +306,36 @@ const TicketPurchaseForm: React.FC = () => {
       free: freeTicketDetails,
       donation,
     };
-    const link = await (
-      await fetch(`http://localhost:3001/free-tickets-purchase`, {
-        // http://localhost:7000/tickets-link
-        // https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/tickets-link
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(finalTickets),
-      })
-    ).json();
+
+    let link;
+    if (isCouponValid) {
+      link = await (
+        await fetch(`http://localhost:3001/free-tickets-purchase`, {
+          // http://localhost:7000/free-tickets-purchase
+          // https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/free-tickets-purchase
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(finalTickets),
+        })
+      ).json();
+    } else {
+      link = await (
+        await fetch(`http://localhost:3001/tickets-link`, {
+          // http://localhost:7000/tickets-link
+          // https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/tickets-link
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(finalTickets),
+        })
+      ).json();
+    }
+   
     router.push(link.link);
   };
 
