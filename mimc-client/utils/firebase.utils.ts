@@ -91,7 +91,20 @@ export const getMIMCCouponsRemaining = async (couponCodeName: string) => {
     }
   }
   return null;
+};
 
+export const updateMIMCCouponsRemaining = async (couponCodeName: string, numTicketsClaimed: number) => {
+  const docSnap = await getCollection("mimc-coupons")
+
+  for (const key in docSnap) {
+    console.log(key);
+    if (docSnap[key].couponCodeName === couponCodeName) {
+      const docRef = doc(firestore, "mimc-coupons", key);
+      await updateDoc(docRef, {
+        couponsRemaining: increment(-numTicketsClaimed),
+      });
+    }
+  }
 };
 
 export const convertTimestampToDate = (date: { seconds: number; nanoseconds: number; }) => {

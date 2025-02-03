@@ -14,7 +14,8 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import {
-  getMIMCCouponsRemaining
+  getMIMCCouponsRemaining,
+  updateMIMCCouponsRemaining
 } from "./../utils/firebase.utils";
 
 const TicketPurchaseForm: React.FC = () => {
@@ -40,16 +41,36 @@ const TicketPurchaseForm: React.FC = () => {
   const router = useRouter();
 
   const [donation, setDonation] = useState(true);
+  const [isProceedButtonDisabled, setIsProceedButtonDisabled] = useState(false);
   const [couponsRemaining, setCouponsRemaining] = useState(0);
   const [isCouponValid, setIsCouponValid] = useState(false);
+  const [couponCode, setCouponCode] = useState("");
 
   const handleCouponChange = async (event: { target: { value: any; }; }) => {
-    const couponCode = event.target.value;
-    const remaining = await getMIMCCouponsRemaining(couponCode);
+    setCouponCode(event.target.value);
+    const remaining = await getMIMCCouponsRemaining(event.target.value);
     setCouponsRemaining(remaining);
     setIsCouponValid(remaining > 0);
-    if (remaining > 0) {
+    if (remaining > 0) { // valid coupon
       setDonation(false); // Disable donation when coupon is valid
+      setTickets((prev) => ({
+        adult: 0,
+        marriage: 0,
+        youth: 0,
+        child: 0,
+        free: 0,
+      }));
+      setAdultTicketDetails([]);
+      setMarriageTicketDetails([]);
+      setYouthTicketDetails([]);
+      setChildTicketDetails([]);
+      setFreeTicketDetails([]);
+    } else { // not valid coupon
+      setTickets((prev) => ({
+        ...prev,
+        free: 0,
+      }));
+      setFreeTicketDetails([]);
     }
   };
 
@@ -194,6 +215,17 @@ const TicketPurchaseForm: React.FC = () => {
       return false;
     }
 
+    if (isCouponValid) {
+      if (tickets.free <= 0) {
+        toast.error("You must select at least one free ticket to use the coupon code.");
+        return false;
+      }
+      if (tickets.adult > 0 || tickets.marriage > 0 || tickets.youth > 0 || tickets.child > 0) {
+        toast.error("You cannot purchase paid tickets with a coupon code for free tickets. Please do 2 separate transactions.");
+        return false;
+      }
+    } 
+
     // Validate personal details
     if (!personalDetails.firstName.trim()) {
       toast.error("First Name is required.");
@@ -306,18 +338,38 @@ const TicketPurchaseForm: React.FC = () => {
       free: freeTicketDetails,
       donation,
     };
-    const link = await (
-      await fetch(`http://localhost:3001/free-tickets-purchase`, {
-        // http://localhost:7000/tickets-link
-        // https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/tickets-link
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(finalTickets),
-      })
-    ).json();
+    // console.log("tickets", finalTickets);
+    let link;
+    if (isCouponValid) {
+      // reduce couponremaining in firebase database by number of free tickets used
+      updateMIMCCouponsRemaining(couponCode, finalTickets.free.length);
+      link = await (
+        await fetch(`https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/free-tickets-purchase`, {
+          // http://localhost:7000/free-tickets-purchase
+          // https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/free-tickets-purchase
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(finalTickets),
+        })
+      ).json();
+    } else {
+      link = await (
+        await fetch(`https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/tickets-link`, {
+          // http://localhost:7000/tickets-link
+          // https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/tickets-link
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(finalTickets),
+        })
+      ).json();
+    }
+   
     router.push(link.link);
   };
 
@@ -483,7 +535,7 @@ const TicketPurchaseForm: React.FC = () => {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-4 place-items-start ">
           <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
-            Coupon code
+            Coupon code (discounts apply at checkout)
           </h3>
           <Input
             id="coupon"
@@ -496,50 +548,7 @@ const TicketPurchaseForm: React.FC = () => {
             (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.toUpperCase().replace(/[^A-Z0-9]/g, '');
             }}
           />
-          <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
-            Adult Pass (14+ y/o) - $30/ticket
-          </h3>
-          <Input
-            id="adult"
-            // label="Adult Pass (14+ y/o) - $30/ticket"
-            min="0"
-            placeholder="0"
-            type="number"
-            onChange={handleTicketChange}
-          />
-          <h3 className="text-[0.68rem] font-semibold uppercase text-[#F0FFC9] ml-1">
-            Extra Marriage Lecture (14+ y/o) - $5/ticket
-          </h3>
-          <Input
-            id="marriage"
-            // label="Additional Marriage Lecture (14+ y/o) - $5/ticket"
-            min="0"
-            placeholder="0"
-            type="number"
-            onChange={handleTicketChange}
-          />
-          <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
-            Youth Pass (7-13 y/o) - $5/ticket
-          </h3>
-          <Input
-            id="youth"
-            // label="Youth Pass (7-13 y/o) - $5/ticket"
-            min="0"
-            placeholder="0"
-            type="number"
-            onChange={handleTicketChange}
-          />
-          <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
-            Child Pass (0-6 y/o) - Free
-          </h3>
-          <Input
-            id="child"
-            // label="Child Pass (0-6 y/o) - Free"
-            min="0"
-            placeholder="0"
-            type="number"
-            onChange={handleTicketChange}
-          />
+          
           {isCouponValid && (
             <>
               <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
@@ -556,23 +565,84 @@ const TicketPurchaseForm: React.FC = () => {
               />
             </>
           )}
+          {!isCouponValid && (
+            <>
+            
+              <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+                Adult Pass (14+ y/o) - $30/ticket
+              </h3>
+              <Input
+                id="adult"
+                // label="Adult Pass (14+ y/o) - $30/ticket"
+                min="0"
+                placeholder="0"
+                type="number"
+                onChange={handleTicketChange}
+              />
+              <h3 className="text-[0.68rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+                Extra Marriage Lecture (14+ y/o) - $5/ticket
+              </h3>
+              <Input
+                id="marriage"
+                // label="Additional Marriage Lecture (14+ y/o) - $5/ticket"
+                min="0"
+                placeholder="0"
+                type="number"
+                onChange={handleTicketChange}
+              />
+              <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+                Youth Pass (7-13 y/o) - $5/ticket
+              </h3>
+              <Input
+                id="youth"
+                // label="Youth Pass (7-13 y/o) - $5/ticket"
+                min="0"
+                placeholder="0"
+                type="number"
+                onChange={handleTicketChange}
+              />
+              <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+                Child Pass (0-6 y/o) - Free
+              </h3>
+              <Input
+                id="child"
+                // label="Child Pass (0-6 y/o) - Free"
+                min="0"
+                placeholder="0"
+                type="number"
+                onChange={handleTicketChange}
+              />
+            </>
+          )}
           
         </div>
 
-        {/* Donate Checkbox */}
-        <div className="mb-2 flex items-center space-x-2">
-          <input
-            checked={donation}
-            className="custom-checkbox"
-            id="donation"
-            type="checkbox"
-            onChange={() => setDonation(!donation)}
-            disabled={isCouponValid} // Disable checkbox if coupon is valid
-          />
-          <label className="font-semibold" htmlFor="donation">
-            Donate $3 to MacMSA to support MIMC and future initiatives.
-          </label>
-        </div>
+        {isCouponValid && (
+            <>
+            <h3 className="text-[0.7rem] font-semibold text-[#F0FFC9] ml-1 mb-2">
+              NOTE: You can not purchase paid tickets or donate while using a coupon code for free tickets. Please do 2 separate transactions.
+            </h3>
+            </>
+        )}
+        
+        {!isCouponValid && (
+            <>
+            {/* Donate Checkbox */}
+            <div className="mb-2 flex items-center space-x-2">
+              <input
+                checked={donation}
+                className="custom-checkbox"
+                id="donation"
+                type="checkbox"
+                onChange={() => setDonation(!donation)}
+                disabled={isCouponValid} // Disable checkbox if coupon is valid
+              />
+              <label className="font-semibold" htmlFor="donation">
+                Donate $3 to MacMSA to support MIMC and future initiatives.
+              </label>
+            </div>
+            </>
+        )}
 
         {/* Final Price */}
         <div className="flex justify-between items-center mb-3">
@@ -959,15 +1029,19 @@ const TicketPurchaseForm: React.FC = () => {
 
         {/* Checkout Buttons */}
         <div className="flex justify-end gap-4 mt-6">
-          <Button
+            <Button
             className="font-bold uppercase bg-[#A9DA88] text-[#3B0819]"
             radius="full"
             variant="solid"
-            onClick={() => handleSubmit()}
-            // onClick={() => alert("Ticket sales will open later this evening inshaAllah, stay tuned!")}
-          >
+            onClick={() => {
+              handleSubmit();
+              setIsProceedButtonDisabled(true);
+              setTimeout(() => setIsProceedButtonDisabled(false), 5000);
+            }}
+            disabled={isProceedButtonDisabled}
+            >
             Proceed to Checkout
-          </Button>
+            </Button>
         </div>
       </div>
     </div>
