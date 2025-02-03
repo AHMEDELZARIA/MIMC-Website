@@ -196,6 +196,17 @@ const TicketPurchaseForm: React.FC = () => {
       return false;
     }
 
+    if (isCouponValid) {
+      if (tickets.free <= 0) {
+        toast.error("You must select at least one free ticket to use the coupon code.");
+        return false;
+      }
+      if (tickets.adult > 0 || tickets.marriage > 0 || tickets.youth > 0 || tickets.child > 0) {
+        toast.error("You cannot purchase paid tickets with a coupon code for free tickets. Please do 2 separate transactions.");
+        return false;
+      }
+    } 
+
     // Validate personal details
     if (!personalDetails.firstName.trim()) {
       toast.error("First Name is required.");
