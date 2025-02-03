@@ -548,6 +548,7 @@ const TicketPurchaseForm: React.FC = () => {
             (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.toUpperCase().replace(/[^A-Z0-9]/g, '');
             }}
           />
+          
           {isCouponValid && (
             <>
               <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
@@ -562,6 +563,9 @@ const TicketPurchaseForm: React.FC = () => {
                 onChange={handleTicketChange}
                 max={couponsRemaining}
               />
+              <h4 className="text-[0.7rem] font-semibold text-[#F0FFC9] ml-1">
+                You can not purchase paid tickets or donate with a coupon code for free tickets. Please do 2 separate transactions.
+              </h4>
             </>
           )}
           {!isCouponValid && (
