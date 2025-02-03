@@ -16,7 +16,7 @@ const TicketStatusPopup: React.FC = () => {
 
     if (success === "true") {
       toast.success(
-        "JazakAllahu khairan for purchasing your ticket(s)! We look forward to hosting you! Please check your email for your receipt in a few minutes.",
+        "JazakAllahu khairan for purchasing your ticket(s)! We look forward to hosting you! You will recieve your ticket(s) via email 2-5 days before MIMC.",
         {
           position: "top-center",
           autoClose: 10000,

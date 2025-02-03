@@ -14,7 +14,8 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import {
-  getMIMCCouponsRemaining
+  getMIMCCouponsRemaining,
+  updateMIMCCouponsRemaining
 } from "./../utils/firebase.utils";
 
 const TicketPurchaseForm: React.FC = () => {
@@ -42,10 +43,11 @@ const TicketPurchaseForm: React.FC = () => {
   const [donation, setDonation] = useState(true);
   const [couponsRemaining, setCouponsRemaining] = useState(0);
   const [isCouponValid, setIsCouponValid] = useState(false);
+  const [couponCode, setCouponCode] = useState("");
 
   const handleCouponChange = async (event: { target: { value: any; }; }) => {
-    const couponCode = event.target.value;
-    const remaining = await getMIMCCouponsRemaining(couponCode);
+    setCouponCode(event.target.value);
+    const remaining = await getMIMCCouponsRemaining(event.target.value);
     setCouponsRemaining(remaining);
     setIsCouponValid(remaining > 0);
     if (remaining > 0) {
@@ -306,11 +308,13 @@ const TicketPurchaseForm: React.FC = () => {
       free: freeTicketDetails,
       donation,
     };
-
+    // console.log("tickets", finalTickets);
     let link;
     if (isCouponValid) {
+      // reduce couponremaining in firebase database by number of free tickets used
+      updateMIMCCouponsRemaining(couponCode, finalTickets.free.length);
       link = await (
-        await fetch(`http://localhost:3001/free-tickets-purchase`, {
+        await fetch(`https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/free-tickets-purchase`, {
           // http://localhost:7000/free-tickets-purchase
           // https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/free-tickets-purchase
           method: "POST",
@@ -323,7 +327,7 @@ const TicketPurchaseForm: React.FC = () => {
       ).json();
     } else {
       link = await (
-        await fetch(`http://localhost:3001/tickets-link`, {
+        await fetch(`https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/tickets-link`, {
           // http://localhost:7000/tickets-link
           // https://us-central1-macmsa-clientapp.cloudfunctions.net/clientapp/tickets-link
           method: "POST",
