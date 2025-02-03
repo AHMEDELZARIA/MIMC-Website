@@ -41,6 +41,7 @@ const TicketPurchaseForm: React.FC = () => {
   const router = useRouter();
 
   const [donation, setDonation] = useState(true);
+  const [isProceedButtonDisabled, setIsProceedButtonDisabled] = useState(false);
   const [couponsRemaining, setCouponsRemaining] = useState(0);
   const [isCouponValid, setIsCouponValid] = useState(false);
   const [couponCode, setCouponCode] = useState("");
@@ -992,15 +993,19 @@ const TicketPurchaseForm: React.FC = () => {
 
         {/* Checkout Buttons */}
         <div className="flex justify-end gap-4 mt-6">
-          <Button
+            <Button
             className="font-bold uppercase bg-[#A9DA88] text-[#3B0819]"
             radius="full"
             variant="solid"
-            onClick={() => handleSubmit()}
-            // onClick={() => alert("Ticket sales will open later this evening inshaAllah, stay tuned!")}
-          >
+            onClick={() => {
+              handleSubmit();
+              setIsProceedButtonDisabled(true);
+              setTimeout(() => setIsProceedButtonDisabled(false), 5000);
+            }}
+            disabled={isProceedButtonDisabled}
+            >
             Proceed to Checkout
-          </Button>
+            </Button>
         </div>
       </div>
     </div>
