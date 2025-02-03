@@ -535,7 +535,7 @@ const TicketPurchaseForm: React.FC = () => {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-4 place-items-start ">
           <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
-            Coupon code
+            Coupon code (discounts apply at checkout)
           </h3>
           <Input
             id="coupon"
