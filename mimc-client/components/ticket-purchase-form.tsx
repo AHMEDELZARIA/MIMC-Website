@@ -563,9 +563,6 @@ const TicketPurchaseForm: React.FC = () => {
                 onChange={handleTicketChange}
                 max={couponsRemaining}
               />
-              <h4 className="text-[0.7rem] font-semibold text-[#F0FFC9] ml-1">
-                You can not purchase paid tickets or donate with a coupon code for free tickets. Please do 2 separate transactions.
-              </h4>
             </>
           )}
           {!isCouponValid && (
@@ -620,20 +617,32 @@ const TicketPurchaseForm: React.FC = () => {
           
         </div>
 
-        {/* Donate Checkbox */}
-        <div className="mb-2 flex items-center space-x-2">
-          <input
-            checked={donation}
-            className="custom-checkbox"
-            id="donation"
-            type="checkbox"
-            onChange={() => setDonation(!donation)}
-            disabled={isCouponValid} // Disable checkbox if coupon is valid
-          />
-          <label className="font-semibold" htmlFor="donation">
-            Donate $3 to MacMSA to support MIMC and future initiatives.
-          </label>
-        </div>
+        {isCouponValid && (
+            <>
+            <h3 className="text-[0.7rem] font-semibold text-[#F0FFC9] ml-1 mb-2">
+              NOTE: You can not purchase paid tickets or donate while using a coupon code for free tickets. Please do 2 separate transactions.
+            </h3>
+            </>
+        )}
+        
+        {!isCouponValid && (
+            <>
+            {/* Donate Checkbox */}
+            <div className="mb-2 flex items-center space-x-2">
+              <input
+                checked={donation}
+                className="custom-checkbox"
+                id="donation"
+                type="checkbox"
+                onChange={() => setDonation(!donation)}
+                disabled={isCouponValid} // Disable checkbox if coupon is valid
+              />
+              <label className="font-semibold" htmlFor="donation">
+                Donate $3 to MacMSA to support MIMC and future initiatives.
+              </label>
+            </div>
+            </>
+        )}
 
         {/* Final Price */}
         <div className="flex justify-between items-center mb-3">
