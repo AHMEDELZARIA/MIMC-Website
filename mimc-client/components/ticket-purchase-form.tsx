@@ -51,8 +51,26 @@ const TicketPurchaseForm: React.FC = () => {
     const remaining = await getMIMCCouponsRemaining(event.target.value);
     setCouponsRemaining(remaining);
     setIsCouponValid(remaining > 0);
-    if (remaining > 0) {
+    if (remaining > 0) { // valid coupon
       setDonation(false); // Disable donation when coupon is valid
+      setTickets((prev) => ({
+        adult: 0,
+        marriage: 0,
+        youth: 0,
+        child: 0,
+        free: 0,
+      }));
+      setAdultTicketDetails([]);
+      setMarriageTicketDetails([]);
+      setYouthTicketDetails([]);
+      setChildTicketDetails([]);
+      setFreeTicketDetails([]);
+    } else { // not valid coupon
+      setTickets((prev) => ({
+        ...prev,
+        free: 0,
+      }));
+      setFreeTicketDetails([]);
     }
   };
 
@@ -530,50 +548,6 @@ const TicketPurchaseForm: React.FC = () => {
             (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.toUpperCase().replace(/[^A-Z0-9]/g, '');
             }}
           />
-          <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
-            Adult Pass (14+ y/o) - $30/ticket
-          </h3>
-          <Input
-            id="adult"
-            // label="Adult Pass (14+ y/o) - $30/ticket"
-            min="0"
-            placeholder="0"
-            type="number"
-            onChange={handleTicketChange}
-          />
-          <h3 className="text-[0.68rem] font-semibold uppercase text-[#F0FFC9] ml-1">
-            Extra Marriage Lecture (14+ y/o) - $5/ticket
-          </h3>
-          <Input
-            id="marriage"
-            // label="Additional Marriage Lecture (14+ y/o) - $5/ticket"
-            min="0"
-            placeholder="0"
-            type="number"
-            onChange={handleTicketChange}
-          />
-          <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
-            Youth Pass (7-13 y/o) - $5/ticket
-          </h3>
-          <Input
-            id="youth"
-            // label="Youth Pass (7-13 y/o) - $5/ticket"
-            min="0"
-            placeholder="0"
-            type="number"
-            onChange={handleTicketChange}
-          />
-          <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
-            Child Pass (0-6 y/o) - Free
-          </h3>
-          <Input
-            id="child"
-            // label="Child Pass (0-6 y/o) - Free"
-            min="0"
-            placeholder="0"
-            type="number"
-            onChange={handleTicketChange}
-          />
           {isCouponValid && (
             <>
               <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
@@ -587,6 +561,55 @@ const TicketPurchaseForm: React.FC = () => {
                 type="number"
                 onChange={handleTicketChange}
                 max={couponsRemaining}
+              />
+            </>
+          )}
+          {!isCouponValid && (
+            <>
+            
+              <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+                Adult Pass (14+ y/o) - $30/ticket
+              </h3>
+              <Input
+                id="adult"
+                // label="Adult Pass (14+ y/o) - $30/ticket"
+                min="0"
+                placeholder="0"
+                type="number"
+                onChange={handleTicketChange}
+              />
+              <h3 className="text-[0.68rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+                Extra Marriage Lecture (14+ y/o) - $5/ticket
+              </h3>
+              <Input
+                id="marriage"
+                // label="Additional Marriage Lecture (14+ y/o) - $5/ticket"
+                min="0"
+                placeholder="0"
+                type="number"
+                onChange={handleTicketChange}
+              />
+              <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+                Youth Pass (7-13 y/o) - $5/ticket
+              </h3>
+              <Input
+                id="youth"
+                // label="Youth Pass (7-13 y/o) - $5/ticket"
+                min="0"
+                placeholder="0"
+                type="number"
+                onChange={handleTicketChange}
+              />
+              <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
+                Child Pass (0-6 y/o) - Free
+              </h3>
+              <Input
+                id="child"
+                // label="Child Pass (0-6 y/o) - Free"
+                min="0"
+                placeholder="0"
+                type="number"
+                onChange={handleTicketChange}
               />
             </>
           )}
