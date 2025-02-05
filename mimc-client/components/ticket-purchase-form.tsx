@@ -552,11 +552,11 @@ const TicketPurchaseForm: React.FC = () => {
           {isCouponValid && (
             <>
               <h3 className="text-[0.7rem] font-semibold uppercase text-[#F0FFC9] ml-1">
-                FREE Adult Pass (14+ y/o) - $0/ticket
+                FREE Pass (14+ y/o) - $0/ticket
               </h3>
               <Input
                 id="free"
-                // label="FREE Adult Pass (14+ y/o) - $0/ticket"
+                // label="FREE Pass (14+ y/o) - $0/ticket"
                 min="0"
                 placeholder="0"
                 type="number"
