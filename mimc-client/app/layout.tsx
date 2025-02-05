@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import { Link } from "@nextui-org/link";
 import clsx from "clsx";
+import { Suspense } from "react";
 
 import { Providers } from "./providers";
 
@@ -10,7 +11,7 @@ import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 import CustomCursor from "@/components/custom-cursor";
 import TicketStatusPopup from "@/components/HomePage/ticket-status-popup";
-import { Suspense } from "react";
+
 
 export const metadata: Metadata = {
   title: {
