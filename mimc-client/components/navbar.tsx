@@ -9,8 +9,8 @@ import { Logo, InstagramIcon } from "@/components/icons";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/program", label: "Program Details" },
-  { href: "/bazaar", label: "Bazaar" },
-  // { href: "/sponsors", label: "Sponsors" },
+  { href: "/market", label: "Market" },
+  { href: "/sponsors", label: "Sponsors" },
 ];
 
 export const Navbar = () => {
