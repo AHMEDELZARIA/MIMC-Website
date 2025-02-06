@@ -80,7 +80,7 @@ export default function SponsorsPage() {
       logoSize: "w-36",
     },
     {
-      group: "Bronze/Other",
+      group: "Bronze",
       sponsors: [
         {
           name: "Ayaat Academy",
