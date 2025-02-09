@@ -65,7 +65,7 @@ const buildings = [
   {
     name: "DBAC",
     position: { lat: 43.26499956463301, lng: -79.91584275657611 },
-    description: "Location for the Art and Calligraphy Workshop.",
+    description: "Location for prayer.",
     color: "#FF33A8",
   },
 ];
