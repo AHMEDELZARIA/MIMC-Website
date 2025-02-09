@@ -5,8 +5,7 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/pagination";
 import { Card, CardHeader, Spacer, Image } from "@nextui-org/react";
-import { useRef } from "react";
-import React, { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 
 import { cinzel } from "@/config/fonts";
 
@@ -18,9 +17,6 @@ const Intro: React.FC = () => {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   };
-
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft()); // Initialize with the current countdown
-  const [hydrated, setHydrated] = useState(false); // Track hydration status
 
   // Function to calculate time remaining
   function calculateTimeLeft() {
@@ -40,16 +36,17 @@ const Intro: React.FC = () => {
     }
   }
 
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [hydrated, setHydrated] = useState(false);
+
   useEffect(() => {
-    // Mark component as hydrated
     setHydrated(true);
 
-    // Start countdown timer
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    return () => clearInterval(timer); // Cleanup interval on component unmount
+    return () => clearInterval(timer);
   }, []);
 
   const textVariants = {
@@ -60,6 +57,13 @@ const Intro: React.FC = () => {
       transition: { duration: 1, delay: 0.1, ease: "easeOut" },
     },
   };
+
+  // Determine if the countdown has ended
+  const countdownEnded =
+    timeLeft.days === 0 &&
+    timeLeft.hours === 0 &&
+    timeLeft.minutes === 0 &&
+    timeLeft.seconds === 0;
 
   return (
     <motion.section
@@ -72,7 +76,7 @@ const Intro: React.FC = () => {
           linear-gradient(to bottom, #570326 20%, transparent 30%, transparent 80%, #570326 100%), 
           url('https://firebasestorage.googleapis.com/v0/b/macmsa-clientapp.appspot.com/o/mimcImages%2Fabout%2Fbg.png?alt=media&token=754b7456-9330-45e4-a0a1-5348fd004c2b')
         `,
-        backgroundSize: "cover", // Keep the image filling the container
+        backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
@@ -80,39 +84,37 @@ const Intro: React.FC = () => {
       variants={fadeInVariants}
     >
       <div className="container mx-auto flex flex-col items-center justify-center px-4 md:px-8 relative z-10">
-        {/* <motion.p
-          className={`${cinzel.className} text-4xl font-bold italic text-[#F0FFC9] mb-4`}
-          variants={textVariants}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          Truth and Falsehood
-        </motion.p> */}
-
-        {/* Countdown Timer */}
-        {hydrated && ( // Render only after hydration
+        {/* Countdown Timer or End Message */}
+        {hydrated && (
           <motion.div
             className="flex flex-col items-center text-[#F0FFC9] font-bold text-xl md:text-3xl pb-12"
             transition={{ duration: 1, delay: 0.8 }}
             variants={textVariants}
           >
-            <div className="flex gap-4">
-              <div className="flex flex-col items-center">
-                <span className="text-4xl md:text-5xl">{timeLeft.days}</span>
-                <span className="text-sm md:text-base">Days</span>
+            {countdownEnded ? (
+              <span className="text-4xl md:text-5xl text-center">
+                THE WAIT IS OVER! MIMC IS TODAY!
+              </span>
+            ) : (
+              <div className="flex gap-4">
+                <div className="flex flex-col items-center">
+                  <span className="text-4xl md:text-5xl">{timeLeft.days}</span>
+                  <span className="text-sm md:text-base">Days</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-4xl md:text-5xl">{timeLeft.hours}</span>
+                  <span className="text-sm md:text-base">Hours</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-4xl md:text-5xl">{timeLeft.minutes}</span>
+                  <span className="text-sm md:text-base">Minutes</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-4xl md:text-5xl">{timeLeft.seconds}</span>
+                  <span className="text-sm md:text-base">Seconds</span>
+                </div>
               </div>
-              <div className="flex flex-col items-center">
-                <span className="text-4xl md:text-5xl">{timeLeft.hours}</span>
-                <span className="text-sm md:text-base">Hours</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <span className="text-4xl md:text-5xl">{timeLeft.minutes}</span>
-                <span className="text-sm md:text-base">Minutes</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <span className="text-4xl md:text-5xl">{timeLeft.seconds}</span>
-                <span className="text-sm md:text-base">Seconds</span>
-              </div>
-            </div>
+            )}
           </motion.div>
         )}
 

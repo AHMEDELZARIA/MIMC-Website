@@ -8,6 +8,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import { motion } from "framer-motion";
+import { Spacer } from "@nextui-org/react";
 
 // Map container style
 const containerStyle = {
@@ -55,12 +56,12 @@ const buildings = [
     description: "Interactive workshops and group activities.",
     color: "#33FF57",
   },
-  {
-    name: "Student Centre",
-    position: { lat: 43.26356654215769, lng: -79.9177269126629 },
-    description: "Lunch and refreshments area.",
-    color: "#3357FF",
-  },
+  // {
+  //   name: "Student Centre",
+  //   position: { lat: 43.26356654215769, lng: -79.9177269126629 },
+  //   description: "Lunch and refreshments area.",
+  //   color: "#3357FF",
+  // },
   {
     name: "DBAC",
     position: { lat: 43.26499956463301, lng: -79.91584275657611 },
@@ -112,18 +113,8 @@ const Map: React.FC = () => {
           <span className="absolute left-1/2 bottom-0 h-[3px] w-0 bg-[#F0FFC9] transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0" />
         </span>
       </motion.h1>
-      <motion.p
-        className="text-sm md:text-base font-medium text-[#F0FFC9] opacity-80 mb-8 text-justify"
-        initial="hidden"
-        variants={containerVariants}
-        viewport={{ once: true, amount: 0.2 }}
-        whileInView="visible"
-      >
-        Navigate McMaster University with ease using this interactive map.
-        Explore the key locations for the event, including lecture halls, dining
-        areas, and activity venues. Use the legend within the map to quickly
-        identify locations by their unique colors.
-      </motion.p>
+
+      <Spacer y={10} />
 
       {/* Google Map */}
       <div className="relative">

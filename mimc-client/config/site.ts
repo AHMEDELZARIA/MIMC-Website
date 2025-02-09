@@ -13,8 +13,8 @@ export const siteConfig = {
       href: "/program",
     },
     {
-      label: "Itinerary & Map",
-      href: "/itinerary-map",
+      label: "Itinerary",
+      href: "/itinerary",
     },
     {
       label: "Market",
@@ -35,8 +35,8 @@ export const siteConfig = {
       href: "/program",
     },
     {
-      label: "Itinerary & Map",
-      href: "/itinerary-map",
+      label: "Itinerary",
+      href: "/itinerary",
     },
     {
       label: "Market",

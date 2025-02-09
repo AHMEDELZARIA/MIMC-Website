@@ -9,6 +9,7 @@ import { Logo, InstagramIcon } from "@/components/icons";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/program", label: "Program Details" },
+  { href: "/itinerary", label: "Itinerary" },
   { href: "/market", label: "Market" },
   { href: "/sponsors", label: "Sponsors" },
 ];
