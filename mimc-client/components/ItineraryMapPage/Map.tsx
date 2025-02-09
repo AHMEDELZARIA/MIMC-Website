@@ -9,6 +9,7 @@ import {
 } from "@react-google-maps/api";
 import { motion } from "framer-motion";
 import { Spacer } from "@nextui-org/react";
+import { cinzel } from "@/config/fonts";
 
 // Map container style
 const containerStyle = {
@@ -102,7 +103,7 @@ const Map: React.FC = () => {
     >
       {/* Section Title */}
       <motion.h1
-        className="text-6xl md:text-7xl font-bold mb-4 text-center relative group"
+        className={`${cinzel.className} text-6xl md:text-7xl font-bold mb-8 text-center relative group`}
         initial="hidden"
         variants={containerVariants}
         viewport={{ once: true, amount: 0.2 }}
