@@ -49,6 +49,11 @@ export default function SponsorsPage() {
           logo: "/imgs/sponsors/mustravelz.png",
           link: "https://mustravelz.com/",
         },
+        {
+          name: "Matari Coffee Co.",
+          logo: "/imgs/sponsors/matari.png",
+          link: "https://mataricoffee.com",
+        },
       ],
       logoSize: "w-72",
     },
@@ -75,6 +80,11 @@ export default function SponsorsPage() {
           name: "MAH",
           logo: "/imgs/sponsors/mah.png",
           link: "https://www.mahcanada.com/",
+        },
+        {
+          name: "UOSSM",
+          logo: "/imgs/sponsors/uossm.png",
+          link: "https://www.uossm-canada.org/?gad_source=1&gbraid=0AAAAA-E-1dL7QMsRJY4oi8oOMObLpRVSB&gclid=CjwKCAiA5Ka9BhB5EiwA1ZVtvFLtalvnrzrXA429pFx0HI1RvaMjkmF4GPW5RFEGDWwUliv8UQX-DhoCRUQQAvD_BwE",
         },
       ],
       logoSize: "w-36",
