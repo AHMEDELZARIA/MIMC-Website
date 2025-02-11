@@ -168,7 +168,7 @@ export default function MarketPage() {
     },
     {
       logo: "/imgs/vendors/firdous-books.png",
-      name: "Firdous Books",
+      name: "Firdaus Books",
       instagram: "https://www.instagram.com/firdous.books/",
       website: "https://firdousbooks.ca",
       backgroundImage: "/imgs/vendors/firdous-books-bg.png",
@@ -180,6 +180,64 @@ export default function MarketPage() {
         "https://www.instagram.com/zhr1_perfume/?igsh=MTVhdG9mMWRvcXBqYw%3D%3D",
       website: "",
       backgroundImage: "/imgs/vendors/zhr1-bg.png",
+    },
+    {
+      logo: "/imgs/vendors/thawby.png",
+      name: "Thawby",
+      instagram: "https://www.instagram.com/thawb.y/",
+      website: "https://thawby.store/password",
+      backgroundImage: "/imgs/vendors/thawby-bg.png",
+    },
+    {
+      logo: "/imgs/vendors/annisaa.png",
+      name: "An-Nisaa",
+      instagram: "https://www.instagram.com/annisaa.to/",
+      website: "https://an-nisaa.ca/?fbclid=PAZXh0bgNhZW0CMTEAAabP2As3WXw8vP_-lmXGAYjf3XONkcgbE565BX26qpG0sb5P4DMzvl6yj6Y_aem_Yi9S_85u4nKndmTDzfdYLA",
+      backgroundImage: "/imgs/vendors/annisaa-bg.png",
+    },
+    {
+      logo: "/imgs/vendors/amerex.png",
+      name: "Amerex Fragrances",
+      instagram: "https://www.instagram.com/amerex_fragrances/",
+      website: "",
+      backgroundImage: "/imgs/vendors/amerex-bg.png",
+    },
+    {
+      logo: "/imgs/vendors/ameera.png",
+      name: "resin.by_ameera",
+      instagram: "https://www.instagram.com/resin.by_ameera/",
+      website: "",
+      backgroundImage: "/imgs/vendors/ameera-bg.png",
+    },
+    {
+      logo: "/imgs/vendors/akhirah-athletic.png",
+      name: "Akhirah Athletic",
+      instagram: "https://www.instagram.com/akhirahathletic/",
+      website:
+        "https://akhirahathletic.com/?fbclid=PAZXh0bgNhZW0CMTEAAaaPJN-VBqboomPhoo0vGfq5n252jtr8o26OHdFrdzIGqXh9I8H59IjvJ5Q_aem_kXxy_AFDwU9Y5BSVvlqL-A",
+      backgroundImage: "/imgs/vendors/akhirah-athletic-bg.png",
+    },
+    {
+      logo: "/imgs/vendors/healing.png",
+      name: "Healing Culture",
+      instagram: "https://www.instagram.com/healingculture.ca/",
+      website:
+        "https://healingculture.ca/?fbclid=PAZXh0bgNhZW0CMTEAAaZLWISzWVwKqxLfb9m1CAbu8pd-UGqCKVKa1MrKg3eYVWvnb4Uug7HWR70_aem_0AlGfgusLFDc7t-HF_9wpQ",
+      backgroundImage: "/imgs/vendors/healing-bg.png",
+    },
+    {
+      logo: "/imgs/vendors/48.png",
+      name: "48 Embroidery",
+      instagram: "https://www.instagram.com/48__embroidery/",
+      website: "",
+      backgroundImage: "/imgs/vendors/48-bg.png",
+    },
+    {
+      logo: "/imgs/vendors/mp.png",
+      name: "MP Chic Collection",
+      instagram: "https://www.instagram.com/mp_chic_collection/",
+      website: "",
+      backgroundImage: "/imgs/vendors/mp-bg.png",
     },
   ];
 
@@ -370,7 +428,7 @@ export default function MarketPage() {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                         transition={{ duration: 0.4 }}
-                        className="cursor-pointer text-[#F0FFC9] hover:text-[#A9DA88] transition-colors"
+                        className="text-[#F0FFC9] hover:text-[#A9DA88] transition-colors"
                       >
                         <img
                           src="/imgs/website-icon.png"
