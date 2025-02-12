@@ -92,11 +92,11 @@ export default function SponsorsPage() {
     {
       group: "Bronze",
       sponsors: [
-        {
-          name: "Ayaat Academy",
-          logo: "/imgs/sponsors/ayaat-academy.png",
-          link: "https://ayaatacademy.ca/",
-        },
+        // {
+        //   name: "Ayaat Academy",
+        //   logo: "/imgs/sponsors/ayaat-academy.png",
+        //   link: "https://ayaatacademy.ca/",
+        // },
         {
           name: "IDRF",
           logo: "/imgs/sponsors/idrf.png",
