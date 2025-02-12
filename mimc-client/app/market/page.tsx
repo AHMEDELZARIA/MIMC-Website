@@ -39,13 +39,6 @@ export default function MarketPage() {
       menu: "",
       backgroundImage: "/imgs/vendors/beavertails-bg.png",
     },
-    // {
-    //   logo: "/imgs/vendors/mustache-burger.png",
-    //   name: "Mustache Burger",
-    //   instagram: "https://www.instagram.com/mustacheburger/",
-    //   menu: "",
-    //   backgroundImage: "/imgs/vendors/mustache-burger-bg.png",
-    // },
     {
       logo: "/imgs/vendors/food-from-east.png",
       name: "Food From East",
@@ -53,13 +46,6 @@ export default function MarketPage() {
       menu: "",
       backgroundImage: "/imgs/vendors/food-from-east-bg.png",
     },
-    // {
-    //   logo: "/imgs/vendors/potato-bar.png",
-    //   name: "Potato Bar",
-    //   instagram: "https://www.instagram.com/potatobar.ca/",
-    //   menu: "",
-    //   backgroundImage: "/imgs/vendors/potato-bar-bg.png",
-    // },
   ];
 
   // Existing Vendors Array (Bazaar Section)
@@ -192,7 +178,8 @@ export default function MarketPage() {
       logo: "/imgs/vendors/annisaa.png",
       name: "An-Nisaa",
       instagram: "https://www.instagram.com/annisaa.to/",
-      website: "https://an-nisaa.ca/?fbclid=PAZXh0bgNhZW0CMTEAAabP2As3WXw8vP_-lmXGAYjf3XONkcgbE565BX26qpG0sb5P4DMzvl6yj6Y_aem_Yi9S_85u4nKndmTDzfdYLA",
+      website:
+        "https://an-nisaa.ca/?fbclid=PAZXh0bgNhZW0CMTEAAabP2As3WXw8vP_-lmXGAYjf3XONkcgbE565BX26qpG0sb5P4DMzvl6yj6Y_aem_Yi9S_85u4nKndmTDzfdYLA",
       backgroundImage: "/imgs/vendors/annisaa-bg.png",
     },
     {
@@ -358,8 +345,7 @@ export default function MarketPage() {
         <div className="absolute top-0 left-0 right-0 h-[30%] bg-gradient-to-t from-transparent to-[#570326]" />
         <motion.div
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          animate="visible"
           className="relative z-10 py-16"
         >
           <motion.h3
