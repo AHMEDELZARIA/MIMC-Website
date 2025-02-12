@@ -39,13 +39,13 @@ export default function MarketPage() {
       menu: "",
       backgroundImage: "/imgs/vendors/beavertails-bg.png",
     },
-    {
-      logo: "/imgs/vendors/mustache-burger.png",
-      name: "Mustache Burger",
-      instagram: "https://www.instagram.com/mustacheburger/",
-      menu: "",
-      backgroundImage: "/imgs/vendors/mustache-burger-bg.png",
-    },
+    // {
+    //   logo: "/imgs/vendors/mustache-burger.png",
+    //   name: "Mustache Burger",
+    //   instagram: "https://www.instagram.com/mustacheburger/",
+    //   menu: "",
+    //   backgroundImage: "/imgs/vendors/mustache-burger-bg.png",
+    // },
     {
       logo: "/imgs/vendors/food-from-east.png",
       name: "Food From East",
