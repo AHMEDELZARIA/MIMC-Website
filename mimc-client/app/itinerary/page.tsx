@@ -39,7 +39,7 @@ export default function ItineraryPage() {
         <img
           src="/imgs/itinerary/bg-itinerary.jpg"
           alt="Itinerary Background"
-          className="w-full h-full object-cover opacity-40"
+          className="w-full h-full object-cover opacity-70"
         />
       </div>
 
