@@ -46,6 +46,13 @@ export default function MarketPage() {
       menu: "",
       backgroundImage: "/imgs/vendors/food-from-east-bg.png",
     },
+    {
+      logo: "/imgs/vendors/potato-bar.png",
+      name: "Potato Bar",
+      instagram: "https://www.instagram.com/potatobar.ca/",
+      menu: "",
+      backgroundImage: "/imgs/vendors/potato-bar-bg.png",
+    },
   ];
 
   // Existing Vendors Array (Bazaar Section)
