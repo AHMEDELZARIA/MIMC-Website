@@ -971,6 +971,7 @@ const TicketPurchaseForm: React.FC = () => {
                   <option value="western">Western</option>
                   <option value="guelph">Guelph</option>
                   <option value="windsor">Windsor</option>
+                  <option value="otu">Ontario Tech</option>
                   <option value="fanshawe">Fanshawe</option>
                   <option value="humber">Humber</option>
                   <option value="mohawk">Mohawk</option>
