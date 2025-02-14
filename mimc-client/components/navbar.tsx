@@ -90,12 +90,12 @@ export const Navbar = () => {
           </a>
 
           {/* BUY NOW */}
-          <a
+          {/* <a
             className="px-4 py-1 text-[#F0FFC9] border-2 border-[#F0FFC9] font-semibold hover:bg-[#F0FFC9] hover:text-[#570326] transition-all"
             href="/buy-tickets"
           >
             BUY NOW
-          </a>
+          </a> */}
 
           {/* Burger Menu (visible on small screens) */}
           <button
