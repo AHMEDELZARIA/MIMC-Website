@@ -92,9 +92,12 @@ const Intro: React.FC = () => {
             variants={textVariants}
           >
             {countdownEnded ? (
-              <span className="text-4xl md:text-5xl text-center">
-                THE WAIT IS OVER! MIMC IS TODAY!
-              </span>
+              <div className="flex justify-center">
+                <span className="block text-2xl font-bold text-center text-[#F0FFC9] px-8 py-4 bg-white/10 backdrop-blur-sm rounded-xl shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
+                  Jazakum Allahu Khairan for attending! See you next year, إن
+                  شاء الله
+                </span>
+              </div>
             ) : (
               <div className="flex gap-4">
                 <div className="flex flex-col items-center">

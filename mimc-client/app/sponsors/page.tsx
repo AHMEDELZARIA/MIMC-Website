@@ -65,6 +65,11 @@ export default function SponsorsPage() {
           logo: "/imgs/sponsors/nzf.png",
           link: "https://www.nzfcanada.com/?utm_source=google_grants&campaign=&utm_medium=search_ad&utm_content=&utm_term=&gad_source=1&gclid=CjwKCAiAtYy9BhBcEiwANWQQLyGA5gsJXRLLAwxeprdTY3KYrRLUZG3Om8aqMUQCxomi8F8Qw7Dr-hoCVIoQAvD_BwE",
         },
+        {
+          name: "MAC",
+          logo: "/imgs/sponsors/mac.png",
+          link: "https://www.macnet.ca/?",
+        },
       ],
       logoSize: "w-48",
     },
@@ -92,11 +97,6 @@ export default function SponsorsPage() {
     {
       group: "Bronze",
       sponsors: [
-        // {
-        //   name: "Ayaat Academy",
-        //   logo: "/imgs/sponsors/ayaat-academy.png",
-        //   link: "https://ayaatacademy.ca/",
-        // },
         {
           name: "IDRF",
           logo: "/imgs/sponsors/idrf.png",
@@ -106,6 +106,11 @@ export default function SponsorsPage() {
           name: "ISNA",
           logo: "/imgs/sponsors/isna.png",
           link: "https://www.isnacanada.com/",
+        },
+        {
+          name: "DiscoverU",
+          logo: "/imgs/sponsors/discoveru.png",
+          link: "https://www.instagram.com/discoverulife/?hl=en",
         },
       ],
       logoSize: "w-24",
